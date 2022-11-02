@@ -1,0 +1,36 @@
+{
+  "canisters": {
+    "segenie_backend": {
+      "candid": "src/segenie_backend/segenie_backend.did",
+      "package": "segenie_backend",
+      "type": "rust"
+    },
+    "segenie_frontend": {
+      "dependencies": [
+        "segenie_backend"
+      ],
+      "frontend": {
+        "entrypoint": "src/segenie_frontend/src/index.html"
+      },
+      "source": [
+        "src/segenie_frontend/assets",
+        "dist/segenie_frontend/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "dfx": "0.11.2",
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000",
+      "type": "ephemeral"
+    }
+  },
+  "version": 1
+}
