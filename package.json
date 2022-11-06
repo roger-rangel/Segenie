@@ -23,7 +23,7 @@
     "buffer": "6.0.3",
     "events": "3.3.0",
     "html-webpack-plugin": "5.5.0",
-    "process": "0.11.10",
+    "process": "^0.11.10",
     "stream-browserify": "3.0.0",
     "terser-webpack-plugin": "^5.3.3",
     "util": "0.12.4",
@@ -41,7 +41,12 @@
     "last 2 edge version"
   ],
   "dependencies": {
+    "css-loader": "^6.7.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.4.1",
+    "typescript": "^4.8.4",
+    "url-loader": "^4.1.1"
   }
 }
