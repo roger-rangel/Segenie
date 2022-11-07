@@ -6,7 +6,7 @@ use std::{cell::RefCell, collections::BTreeMap};
 pub type BadgeId = Nat;
 
 /// Stores all the necessary information about a badge.
-#[derive(Clone, CandidType)]
+#[derive(Clone, CandidType, PartialEq, Debug)]
 pub struct Badge {
     /// A unique identifier for the badge.
     id: BadgeId,
@@ -54,4 +54,38 @@ pub fn do_get_badge(id: BadgeId) -> Option<Badge> {
             None
         }
     })
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn creating_badge_works() {
+        let creator = get_creator();
+        let badge_name = String::from("badge1");
+        let badge_desc = String::from("A basic badge.");
+
+        do_create_badge(creator, badge_name.clone(), badge_desc.clone());
+
+        assert_eq!(
+            do_get_badge(Nat::from(0)),
+            Some(Badge {
+                id: Nat::from(0),
+                creator,
+                name: badge_name,
+                description: badge_desc,
+            })
+        );
+    }
+
+    #[test]
+    fn get_badge_works_when_badge_doesnt_exist() {
+        assert_eq!(do_get_badge(Nat::from(0)), None);
+    }
+
+    fn get_creator() -> Principal {
+        Principal::from_text("arlij-g2zpo-epfot-36ufg-vm4gj-3j4tj-rsjjt-fsv2m-sp4z7-nnk6b-lqe")
+            .unwrap()
+    }
 }
