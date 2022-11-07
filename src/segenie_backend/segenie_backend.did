@@ -2,9 +2,10 @@ type Badge = record {
     "id": nat;
     "name": text;
     "description": text;
-    "creator":  principal;
+    "creator": principal;
 }
 
 service : {
     "create_badge": (text, text) -> (text);
+    "get_badge": (nat) -> (Badge);
 }

@@ -13,6 +13,6 @@ fn create_badge(name: String, description: String) -> String {
 
 /// Get a specific badge with the provided `BadgeId`.
 #[ic_cdk_macros::query]
-fn get_badge(id: BadgeId) -> Option<Badge> {
-    badges::do_get_badge(id)
+fn get_badge(id: BadgeId) -> Badge {
+    badges::do_get_badge(id).unwrap()
 }
