@@ -7,5 +7,6 @@ type Badge = record {
 
 service : {
     "create_badge": (text, text) -> (text);
+    "update_badge_metadata": (nat, text, text) -> (text);
     "get_badge": (nat) -> (Badge);
 }

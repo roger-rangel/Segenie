@@ -2,6 +2,13 @@ use candid::types::number::Nat;
 use ic_cdk::export::{candid::CandidType, Principal};
 use std::{cell::RefCell, collections::BTreeMap};
 
+/// Errors related for badge logic.
+#[derive(PartialEq, Debug)]
+pub enum Error {
+    /// The badge with provided `BadgeId` doesn't exist.
+    BadgeNotFound,
+}
+
 /// The type used to represent an Badges id.
 pub type BadgeId = Nat;
 
@@ -46,6 +53,26 @@ pub fn do_create_badge(creator: Principal, name: String, description: String) {
     BADGE_COUNT.with(|counter| *counter.borrow_mut() += 1);
 }
 
+pub fn do_update_metadata(id: BadgeId, name: String, description: String) -> Result<(), Error> {
+    BADGES.with(|badges| {
+        let mut badges = badges.borrow_mut();
+        if let Some(badge) = badges.clone().get(&id) {
+            badges.insert(
+                id.clone(),
+                Badge {
+                    id,
+                    name,
+                    description,
+                    creator: badge.creator,
+                },
+            );
+            Ok(())
+        } else {
+            Err(Error::BadgeNotFound)
+        }
+    })
+}
+
 pub fn do_get_badge(id: BadgeId) -> Option<Badge> {
     BADGES.with(|badges| {
         if let Some(badge) = badges.borrow().get(&id) {
@@ -76,6 +103,52 @@ mod tests {
                 name: badge_name,
                 description: badge_desc,
             })
+        );
+    }
+
+    #[test]
+    fn updating_badge_metadata_works() {
+        let creator = get_creator();
+        let badge_name = String::from("badge1");
+        let badge_desc = String::from("A basic badge.");
+
+        do_create_badge(creator, badge_name.clone(), badge_desc.clone());
+
+        assert_eq!(
+            do_get_badge(Nat::from(0)),
+            Some(Badge {
+                id: Nat::from(0),
+                creator,
+                name: badge_name,
+                description: badge_desc,
+            })
+        );
+
+        let new_name = String::from("New name");
+        let new_desc = String::from("New description");
+        assert_eq!(
+            do_update_metadata(Nat::from(0), new_name.clone(), new_desc.clone()),
+            Ok(())
+        );
+
+        assert_eq!(
+            do_get_badge(Nat::from(0)),
+            Some(Badge {
+                id: Nat::from(0),
+                creator,
+                name: new_name,
+                description: new_desc,
+            })
+        );
+    }
+
+    #[test]
+    fn updating_badge_metadata_fails_for_non_existing_badge() {
+        let new_name = String::from("New name");
+        let new_desc = String::from("New description");
+        assert_eq!(
+            do_update_metadata(Nat::from(0), new_name.clone(), new_desc.clone()),
+            Err(Error::BadgeNotFound)
         );
     }
 
