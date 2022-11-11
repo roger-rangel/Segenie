@@ -33,6 +33,21 @@ thread_local! {
     static BADGE_COUNT: RefCell<BadgeId> = RefCell::new(Nat::from(0));
 }
 
+pub fn get_dummy_badge() -> Badge {
+    Badge {
+        id: Nat::from(0),
+        name: String::from("UNKNOWN"),
+        description: String::from("This badge doesn't exist."),
+        creator: get_dummy_principal()
+    }
+}
+
+fn get_dummy_principal() -> Principal {
+    // this should never panic.
+    Principal::from_text("arlij-g2zpo-epfot-36ufg-vm4gj-3j4tj-rsjjt-fsv2m-sp4z7-nnk6b-lqe")
+        .unwrap()
+}
+
 /// Creates a new badge and increases the `BADGE_COUNT`.
 pub fn do_create_badge(creator: Principal, name: String, description: String) {
     BADGE_COUNT.with(|count| {
@@ -158,7 +173,6 @@ mod tests {
     }
 
     fn get_creator() -> Principal {
-        Principal::from_text("arlij-g2zpo-epfot-36ufg-vm4gj-3j4tj-rsjjt-fsv2m-sp4z7-nnk6b-lqe")
-            .unwrap()
+        get_dummy_principal()
     }
 }

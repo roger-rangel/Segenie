@@ -22,5 +22,8 @@ fn update_badge_metadata(id: BadgeId, name: String, description: String) -> Stri
 /// Get a specific badge with the provided `BadgeId`.
 #[ic_cdk_macros::query]
 fn get_badge(id: BadgeId) -> Badge {
-    badges::do_get_badge(id).unwrap()
+    match badges::do_get_badge(id) {
+        Some(b) => b,
+        None => badges::get_dummy_badge()
+    }
 }
