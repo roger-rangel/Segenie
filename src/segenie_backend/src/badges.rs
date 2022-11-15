@@ -164,7 +164,7 @@ mod tests {
 
         let new_name = String::from("New name");
         let new_desc = String::from("New description");
-        let new_image_url = Some(String::from("https::/domain.com/image.jpg"));
+        let new_image_url = Some(String::from("https://domain.com/image.jpg"));
         assert_eq!(
             do_update_metadata(
                 Nat::from(0),
