@@ -1,43 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-    font-family: sans-serif;
-    font-size: 1.5rem;
-}
+$grid-breakpoints: (
+  'xs': 0,
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px,
+  'xxl': 1400px,
+);
 
-img {
-    max-width: 50vw;
-    max-height: 25vw;
-    display: block;
-    margin: auto;
-}
+$container-widths: (
+  'xs': 100%,
+  'sm': 540px,
+  'md': 720px,
+  'lg': 960px,
+  'xl': 1140px,
+  'xxl': 1320px,
+);
 
-form {
-    display: flex;
-    justify-content: center;
-    gap: 0.5em;
-    flex-flow: row wrap;
-    max-width: 40vw;
-    margin: auto;
-    align-items: baseline;
-}
-
-button[type="submit"] {
-    padding: 5px 20px;
-    margin: 10px auto;
-    float: right;
-}
-
-#greeting {
-    margin: 10px auto;
-    padding: 10px 60px;
-    border: 1px solid #222;
-}
-
-#greeting:empty {
-    display: none;
+@mixin media-breakpoint-up($grid-breakpoint) {
+  @media only screen and (min-width: map.get($grid-breakpoints, $grid-breakpoint)) {
+    @content;
+  }
 }

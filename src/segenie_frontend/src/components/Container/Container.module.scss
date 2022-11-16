@@ -1,0 +1,29 @@
+@use 'sass:map';
+@import '../../../assets/main.css';
+
+.container {
+  padding: 0 0.75rem;
+  width: 100%;
+
+  @include media-breakpoint-up('sm') {
+    padding: 0;
+    max-width: map.get($container-widths, 'sm');
+    margin: 0 auto;
+  }
+
+  @include media-breakpoint-up('md') {
+    max-width: map.get($container-widths, 'md');
+  }
+
+  @include media-breakpoint-up('lg') {
+    max-width: map.get($container-widths, 'lg');
+  }
+
+  @include media-breakpoint-up('xl') {
+    max-width: map.get($container-widths, 'xl');
+  }
+
+  @include media-breakpoint-up('xxl') {
+    max-width: map.get($container-widths, 'xxl');
+  }
+}
