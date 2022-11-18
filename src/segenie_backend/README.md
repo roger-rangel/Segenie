@@ -1,19 +1,19 @@
-### How to create a badge?
+### How to create a portal?
 ```
-dfx canister call segenie_backend create_badge '("name", "description")'
+dfx canister call segenie_backend create_portal '("name", "description")'
 ```
 
-### How get a badge?
+### How get a portal?
 ```
-dfx canister call segenie_backend get_badge '(0)'
+dfx canister call segenie_backend get_portal '(0)'
 ```
 
 ### How to update metadata?
 ```
-dfx canister call segenie_backend update_badge_metadata '(0, "new name", "new desc", null)'
+dfx canister call segenie_backend update_portal_metadata '(0, "new name", "new desc", null)'
 ```
 Or
 ```
-dfx canister call segenie_backend update_badge_metadata '(0, "new name", "new desc", opt "https://domain.com/image.jpg")'
+dfx canister call segenie_backend update_portal_metadata '(0, "new name", "new desc", opt "https://domain.com/image.jpg")'
 ```
-To set the `image_url` for the badge.
+To set the `image_url` for the portal.

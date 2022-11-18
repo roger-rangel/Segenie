@@ -1,4 +1,4 @@
-type Badge = record {
+type Portal = record {
     "id": nat;
     "name": text;
     "description": text;
@@ -7,7 +7,7 @@ type Badge = record {
 }
 
 service : {
-    "create_badge": (text, text) -> (text);
-    "update_badge_metadata": (nat, text, text, opt text) -> (text);
-    "get_badge": (nat) -> (Badge);
+    "create_portal": (text, text) -> (text);
+    "update_portal_metadata": (nat, text, text, opt text) -> (text);
+    "get_portal": (nat) -> (Portal);
 }

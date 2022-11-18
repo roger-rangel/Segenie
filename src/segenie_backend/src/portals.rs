@@ -2,44 +2,44 @@ use candid::types::number::Nat;
 use ic_cdk::export::{candid::CandidType, Principal};
 use std::{cell::RefCell, collections::BTreeMap};
 
-/// Errors related for badge logic.
+/// Errors related for portal logic.
 #[derive(PartialEq, Debug)]
 pub enum Error {
-    /// The badge with provided `BadgeId` doesn't exist.
-    BadgeNotFound,
+    /// The portal with provided `PortalId` doesn't exist.
+    PortalNotFound,
 }
 
-/// The type used to represent an Badges id.
-pub type BadgeId = Nat;
+/// The type used to represent an Portals id.
+pub type PortalId = Nat;
 
-/// Stores all the necessary information about a badge.
+/// Stores all the necessary information about a portal.
 #[derive(Clone, CandidType, PartialEq, Debug)]
-pub struct Badge {
-    /// A unique identifier for the badge.
-    id: BadgeId,
-    /// A name for the badge.
+pub struct Portal {
+    /// A unique identifier for the portal.
+    id: PortalId,
+    /// A name for the portal.
     name: String,
-    /// A description for the badge.
+    /// A description for the portal.
     description: String,
-    /// The url of the image for the badge.
+    /// The url of the image for the portal.
     image_url: Option<String>,
-    /// The creator of the badge.
+    /// The creator of the portal.
     creator: Principal,
 }
 
-/// Maps `BadgeId` to the specific Badge.
-type BadgeStore = BTreeMap<BadgeId, Badge>;
+/// Maps `PortalId` to the specific Portal.
+type PortalStore = BTreeMap<PortalId, Portal>;
 
 thread_local! {
-    static BADGES: RefCell<BadgeStore> = RefCell::default();
-    static BADGE_COUNT: RefCell<BadgeId> = RefCell::new(Nat::from(0));
+    static BADGES: RefCell<PortalStore> = RefCell::default();
+    static BADGE_COUNT: RefCell<PortalId> = RefCell::new(Nat::from(0));
 }
 
-pub fn get_dummy_badge() -> Badge {
-    Badge {
+pub fn get_dummy_portal() -> Portal {
+    Portal {
         id: Nat::from(0),
         name: String::from("UNKNOWN"),
-        description: String::from("This badge doesn't exist."),
+        description: String::from("This portal doesn't exist."),
         image_url: None,
         creator: get_dummy_principal(),
     }
@@ -50,8 +50,8 @@ fn get_dummy_principal() -> Principal {
     Principal::from_text("arlij-g2zpo-epfot-36ufg-vm4gj-3j4tj-rsjjt-fsv2m-sp4z7-nnk6b-lqe").unwrap()
 }
 
-/// Creates a new badge and increases the `BADGE_COUNT`.
-pub fn do_create_badge(
+/// Creates a new portal and increases the `BADGE_COUNT`.
+pub fn do_create_portal(
     creator: Principal,
     name: String,
     description: String,
@@ -59,7 +59,7 @@ pub fn do_create_badge(
 ) {
     BADGE_COUNT.with(|count| {
         let id = (count.borrow()).clone();
-        let badge = Badge {
+        let portal = Portal {
             id: id.clone(),
             name,
             description,
@@ -67,9 +67,9 @@ pub fn do_create_badge(
             creator,
         };
 
-        BADGES.with(|badges| {
-            let mut badges = badges.borrow_mut();
-            badges.insert(id, badge);
+        BADGES.with(|portals| {
+            let mut portals = portals.borrow_mut();
+            portals.insert(id, portal);
         })
     });
 
@@ -77,35 +77,35 @@ pub fn do_create_badge(
 }
 
 pub fn do_update_metadata(
-    id: BadgeId,
+    id: PortalId,
     name: String,
     description: String,
     image_url: Option<String>,
 ) -> Result<(), Error> {
-    BADGES.with(|badges| {
-        let mut badges = badges.borrow_mut();
-        if let Some(badge) = badges.clone().get(&id) {
-            badges.insert(
+    BADGES.with(|portals| {
+        let mut portals = portals.borrow_mut();
+        if let Some(portal) = portals.clone().get(&id) {
+            portals.insert(
                 id.clone(),
-                Badge {
+                Portal {
                     id,
                     name,
                     description,
                     image_url,
-                    creator: badge.creator,
+                    creator: portal.creator,
                 },
             );
             Ok(())
         } else {
-            Err(Error::BadgeNotFound)
+            Err(Error::PortalNotFound)
         }
     })
 }
 
-pub fn do_get_badge(id: BadgeId) -> Option<Badge> {
-    BADGES.with(|badges| {
-        if let Some(badge) = badges.borrow().get(&id) {
-            Some(badge.clone())
+pub fn do_get_portal(id: PortalId) -> Option<Portal> {
+    BADGES.with(|portals| {
+        if let Some(portal) = portals.borrow().get(&id) {
+            Some(portal.clone())
         } else {
             None
         }
@@ -117,47 +117,47 @@ mod tests {
     use super::*;
 
     #[test]
-    fn creating_badge_works() {
+    fn creating_portal_works() {
         let creator = get_creator();
-        let badge_name = String::from("badge1");
-        let badge_desc = String::from("A basic badge.");
+        let portal_name = String::from("portal1");
+        let portal_desc = String::from("A basic portal.");
         let image_url = None;
 
-        do_create_badge(creator, badge_name.clone(), badge_desc.clone(), image_url);
+        do_create_portal(creator, portal_name.clone(), portal_desc.clone(), image_url.clone());
 
         assert_eq!(
-            do_get_badge(Nat::from(0)),
-            Some(Badge {
+            do_get_portal(Nat::from(0)),
+            Some(Portal {
                 id: Nat::from(0),
                 creator,
-                name: badge_name,
+                name: portal_name,
                 image_url,
-                description: badge_desc,
+                description: portal_desc,
             })
         );
     }
 
     #[test]
-    fn updating_badge_metadata_works() {
+    fn updating_portal_metadata_works() {
         let creator = get_creator();
-        let badge_name = String::from("badge1");
-        let badge_desc = String::from("A basic badge.");
+        let portal_name = String::from("portal1");
+        let portal_desc = String::from("A basic portal.");
         let image_url = None;
 
-        do_create_badge(
+        do_create_portal(
             creator,
-            badge_name.clone(),
-            badge_desc.clone(),
+            portal_name.clone(),
+            portal_desc.clone(),
             image_url.clone(),
         );
 
         assert_eq!(
-            do_get_badge(Nat::from(0)),
-            Some(Badge {
+            do_get_portal(Nat::from(0)),
+            Some(Portal {
                 id: Nat::from(0),
                 creator,
-                name: badge_name,
-                description: badge_desc,
+                name: portal_name,
+                description: portal_desc,
                 image_url,
             })
         );
@@ -176,8 +176,8 @@ mod tests {
         );
 
         assert_eq!(
-            do_get_badge(Nat::from(0)),
-            Some(Badge {
+            do_get_portal(Nat::from(0)),
+            Some(Portal {
                 id: Nat::from(0),
                 creator,
                 name: new_name,
@@ -188,7 +188,7 @@ mod tests {
     }
 
     #[test]
-    fn updating_badge_metadata_fails_for_non_existing_badge() {
+    fn updating_portal_metadata_fails_for_non_existing_portal() {
         let new_name = String::from("New name");
         let new_desc = String::from("New description");
         let new_image_url = Some(String::from("https::/domain.com/image.jpg"));
@@ -200,13 +200,13 @@ mod tests {
                 new_desc.clone(),
                 new_image_url
             ),
-            Err(Error::BadgeNotFound)
+            Err(Error::PortalNotFound)
         );
     }
 
     #[test]
-    fn get_badge_works_when_badge_doesnt_exist() {
-        assert_eq!(do_get_badge(Nat::from(0)), None);
+    fn get_portal_works_when_portal_doesnt_exist() {
+        assert_eq!(do_get_portal(Nat::from(0)), None);
     }
 
     fn get_creator() -> Principal {

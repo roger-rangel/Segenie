@@ -1,34 +1,34 @@
-mod badges;
+mod portals;
 
-use badges::{Badge, BadgeId};
 use ic_cdk_macros::*;
+use portals::{Portal, PortalId};
 
 #[update]
-fn create_badge(name: String, description: String, image_url: Option<String>) -> String {
+fn create_portal(name: String, description: String, image_url: Option<String>) -> String {
     let creator = ic_cdk::api::caller();
-    badges::do_create_badge(creator, name, description, image_url);
+    portals::do_create_portal(creator, name, description, image_url);
 
-    format!("Badge created successfully.")
+    format!("Portal created successfully.")
 }
 
 #[update]
-fn update_badge_metadata(
-    id: BadgeId,
+fn update_portal_metadata(
+    id: PortalId,
     name: String,
     description: String,
     image_url: Option<String>,
 ) -> String {
-    match badges::do_update_metadata(id, name, description, image_url) {
+    match portals::do_update_metadata(id, name, description, image_url) {
         Ok(_) => format!("Metadata updated successfully."),
         Err(e) => format!("Error while updating metadata: {:?}", e),
     }
 }
 
-/// Get a specific badge with the provided `BadgeId`.
+/// Get a specific portal with the provided `PortalId`.
 #[ic_cdk_macros::query]
-fn get_badge(id: BadgeId) -> Badge {
-    match badges::do_get_badge(id) {
+fn get_portal(id: PortalId) -> Portal {
+    match portals::do_get_portal(id) {
         Some(b) => b,
-        None => badges::get_dummy_badge(),
+        None => portals::get_dummy_portal(),
     }
 }
