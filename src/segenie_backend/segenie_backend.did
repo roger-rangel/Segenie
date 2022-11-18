@@ -10,4 +10,5 @@ service : {
     "create_portal": (text, text) -> (text);
     "update_portal_metadata": (nat, text, text, opt text) -> (text);
     "get_portal": (nat) -> (Portal);
+    "set_creator_metadata": (text) -> (text);
 }

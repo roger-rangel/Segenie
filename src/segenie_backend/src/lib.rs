@@ -1,3 +1,4 @@
+mod creators;
 mod portals;
 
 use ic_cdk_macros::*;
@@ -31,4 +32,12 @@ fn get_portal(id: PortalId) -> Portal {
         Some(b) => b,
         None => portals::get_dummy_portal(),
     }
+}
+
+#[update]
+fn set_creator_metadata(name: String) -> String {
+    let caller = ic_cdk::api::caller();
+    creators::do_set_creator_metadata(caller, name);
+
+    format!("Creator metadata set successfully.")
 }
