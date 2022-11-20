@@ -13,7 +13,7 @@ import { ReactComponent as LeftArrow } from '../../../../../assets/icons/left-ar
 import { ReactComponent as RightArrow } from '../../../../../assets/icons/right-arrow.svg';
 
 //Main Components
-import Button from '../Button/Button';
+import Button from '../../../../components/Button/Button';
 
 const NewPortalFirstModal = ({ onClickNextButton }) => {
   const [imageDataURL, setImageDataURL] = useState(null);

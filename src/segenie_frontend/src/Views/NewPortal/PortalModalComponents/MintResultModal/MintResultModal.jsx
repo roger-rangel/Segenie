@@ -4,7 +4,7 @@ import { ReactComponent as VerifyIcon } from '../../../../../assets/icons/verify
 import PropTypes from 'prop-types';
 import MintResultModalBody from '../MintResultModalBody/MintResultModalBody';
 import Modal from '../Modal/Modal';
-import ModalHeader from '../ModalHeader';
+import ModalHeader from '../ModalHeader/ModalHeader';
 import Button from '../../../../components/Button/Button';
 import Link from '../Link/Link';
 import { mintResultPropTypes } from '../MintResultCard/MintResultCard';

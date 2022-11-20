@@ -8,7 +8,7 @@ import NewPortalFirstModal from './PortalModalComponents/NewPortalFirstModal/New
 
 //components
 import Layer from '../../components/Layer/Layer';
-import Loader from '../../components/Loader';
+import Loader from '../../components/Loader/Loader';
 
 const newPortal = () => {
   const [currentModalIndex, setCurrentModalIndex] = useState(0);

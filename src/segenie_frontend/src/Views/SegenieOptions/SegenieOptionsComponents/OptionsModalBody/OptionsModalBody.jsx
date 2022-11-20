@@ -2,8 +2,7 @@ import React from 'react';
 
 //Main Components
 import Button from '../../../../components/Button/Button';
-
-import Divider from '../Divider';
+import Separator from '../../../../components/Separator/Separator';
 
 import Description from '../../../NewPortal/PortalModalComponents/Description/Description';
 import Link from '../../../NewPortal/PortalModalComponents/Link/Link';
@@ -48,7 +47,7 @@ const OptionsModalBody = () => {
         <React.Fragment key={index}>
           {index !== 0 && (
             <div className="col-start-1 col-end-3 mt-4 mb-4">
-              <Divider />
+              <Separator />
             </div>
           )}
           <Link to={mintOption.path} className="flex flex-col">

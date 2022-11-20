@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import WelcomePage from "./Views/WelcomePage";
 import NewPortal from "./Views/NewPortal";
+import SegenieOptions from "./Views/SegenieOptions/DiscoverTheMetaverse"
 import NavProvider from "./components/NavProvider";
 import App from "./App";
 import '../assets/main.css'

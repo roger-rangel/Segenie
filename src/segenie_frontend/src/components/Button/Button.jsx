@@ -1,5 +1,5 @@
 import styles from './Button.module.scss';
-import classNames from 'classnames';
+import {classnames} from 'tailwindcss-classnames';
 import PropTypes from 'prop-types';
 
 const Button = ({
@@ -13,12 +13,12 @@ const Button = ({
 }) => {
   return (
     <button
-      className={classNames(styles.button, styles[fill], styles[order])}
+      className={classnames(styles.button, styles[fill], styles[order])}
       disabled={isDisabled}
       type={type}
       onClick={onClick}
     >
-      <span className={classNames(styles.label, styles[fill])}>{label}</span>
+      <span className={classnames(styles.label, styles[fill])}>{label}</span>
       <Icon height="24px" />
     </button>
   );

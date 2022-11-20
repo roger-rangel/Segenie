@@ -77,7 +77,28 @@ module.exports = {
   module: {
    rules: [
      { test: /\.(ts|tsx|jsx|js)$/, loader: "ts-loader" },
-     { test: /\.css$/, use: ['style-loader','css-loader', 'postcss-loader'] }
+     { test: /\.css$/, use: ['style-loader','css-loader', 'postcss-loader'] },
+     {
+      test: /\.svg/,
+      use: {
+        loader: "svg-url-loader",
+        options: {
+          // make all svg images to work in IE
+          iesafe: true,
+        },
+      },
+     },
+     {
+      test: /\.s[ac]ss$/i,
+      use: [
+        // Creates `style` nodes from JS strings
+        "style-loader",
+        // Translates CSS into CommonJS
+        "css-loader",
+        // Compiles Sass to CSS
+        "sass-loader",
+      ],
+    },
    ]
   },
   plugins: [

@@ -1,12 +1,10 @@
-
-
 import ModalContainer from '../NewPortal/PortalModalComponents/ModalContainer/ModalContainer';
-import MintCategoriesModal from '../../components/MintCategoriesModal';
+import OptionsModal from './SegenieOptionsComponents/OptionsModal/OptionsModal';
 
 const MintCategories = () => {
   return (
     <ModalContainer>
-      <MintCategoriesModal />,
+      <OptionsModal />,
     </ModalContainer>
   );
 };

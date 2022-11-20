@@ -1,4 +1,4 @@
-import BadgeCreationSecondModalBody from '../BadgeCreationSecondModalBody/BadgeCreationSecondModalBody';
+import NewPortalSecondModalBody from '../NewPortalSecondModalBody/NewPortalSecondModalBody';
 import ModalFooter from '../ModalFooter/ModalFooter';
 import { ReactComponent as MintIcon } from '../../../../../assets/icons/mint-icon.svg';
 import { ReactComponent as LeftArrow } from '../../../../../assets/icons/left-arrow.svg';
@@ -45,7 +45,7 @@ const MintInformationModal = ({
   return (
     <Modal>
       <ModalHeader heading={heading} subtitle={subtitle} />
-      <BadgeCreationSecondModalBody
+      <NewPortalSecondModalBody
         mintInformation={mintInformation}
         setMintInformation={setMintInformation}
       />
