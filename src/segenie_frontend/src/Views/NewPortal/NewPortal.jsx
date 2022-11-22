@@ -13,7 +13,6 @@ import Loader from '../../components/Loader/Loader';
 const newPortal = () => {
   const [currentModalIndex, setCurrentModalIndex] = useState(0);
   const [portal, setPortal] = useState({
-    id: '',
     name: '',
     description: '',
     imageURL: '',

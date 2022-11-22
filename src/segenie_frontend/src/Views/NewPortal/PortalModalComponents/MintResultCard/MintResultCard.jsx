@@ -25,9 +25,8 @@ const MintResultCard = ({ mintResult }) => {
   );
 };
 
-// FOR SERGEJ: Not sure if ID Prop Types is correct
 export const mintResultPropTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   imageURL: PropTypes.string.isRequired,

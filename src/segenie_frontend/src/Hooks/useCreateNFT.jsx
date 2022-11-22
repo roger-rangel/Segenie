@@ -20,11 +20,6 @@ const useCreateNFT = () => {
         name: item.assetDisplayName,
         description: item.assetDescription,
         imageURL: item.assetSourceImageUrl,
-        comments: item.comments.map((comment) => ({
-          id: comment.commentId,
-          authorName: comment.authorDisplayName,
-          message: comment.commentLiteral,
-        })),
         creatorName: item.creatorDisplayName,
         isLiked: item.isLiked,
         createdAt: item.nanoEpochTimeCreated.toString(),

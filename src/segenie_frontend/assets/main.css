@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -133,4 +133,4 @@ $container-widths: (
   @media only screen and (min-width: map.get($grid-breakpoints, $grid-breakpoint)) {
     @content;
   }
-}
+} */
