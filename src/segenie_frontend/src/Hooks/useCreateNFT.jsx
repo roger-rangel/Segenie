@@ -1,3 +1,4 @@
+import React from 'react';
 import useICPDatabase from './useICPDatabase';
 import useWeb3Identity from './useWeb3Identity';
 import useActor from './useActor';

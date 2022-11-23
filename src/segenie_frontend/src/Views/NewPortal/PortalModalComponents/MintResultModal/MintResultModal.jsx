@@ -1,3 +1,4 @@
+import React from 'react';
 import ModalFooter from '../ModalFooter/ModalFooter';
 import { ReactComponent as MakeAgainIcon } from '../../../../../assets/icons/make-again-icon.svg';
 import { ReactComponent as VerifyIcon } from '../../../../../assets/icons/verify-icon.svg';

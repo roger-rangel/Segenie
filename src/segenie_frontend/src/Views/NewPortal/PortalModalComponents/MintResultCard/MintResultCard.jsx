@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import AspectRatio from '../AspectRatio/AspectRatio';
 import Heading from '../Heading/Heading';

@@ -47,7 +47,7 @@ module.exports = {
   entry: {
     // The frontend.entrypoint points to the HTML file for this build, so we need
     // to replace the extension to `.js`.
-    index: path.join(__dirname, frontend_entry).replace(/\.html$/, ".jsx"),
+    index: path.join(__dirname, frontend_entry).replace(/\.html$/, ".js"),
   },
   devtool: isDevelopment ? "source-map" : false,
   optimization: {
@@ -65,7 +65,7 @@ module.exports = {
     },
   },
   output: {
-    filename: "index.jsx",
+    filename: "index.js",
     path: path.join(__dirname, "dist", frontendDirectory),
   },
 
@@ -97,6 +97,14 @@ module.exports = {
         "css-loader",
         // Compiles Sass to CSS
         "sass-loader",
+      ],
+    },
+    {
+      test: /\.(png|jpe?g|gif)$/i,
+      use: [
+        {
+          loader: 'file-loader',
+        },
       ],
     },
    ]

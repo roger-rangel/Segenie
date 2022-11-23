@@ -1,3 +1,4 @@
+import React from 'react';
 import Heading from '../Heading/Heading';
 import PropTypes from 'prop-types';
 

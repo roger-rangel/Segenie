@@ -1,3 +1,4 @@
+import React from 'react';
 import NewPortalSecondModalBody from '../NewPortalSecondModalBody/NewPortalSecondModalBody';
 import ModalFooter from '../ModalFooter/ModalFooter';
 import { ReactComponent as MintIcon } from '../../../../../assets/icons/mint-icon.svg';

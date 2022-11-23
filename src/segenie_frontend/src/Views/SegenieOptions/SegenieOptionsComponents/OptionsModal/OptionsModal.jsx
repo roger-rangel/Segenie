@@ -1,3 +1,5 @@
+import React from 'react';
+
 // Modal Components
 import OptionsModalBody from '../OptionsModalBody/OptionsModalBody';
 import Modal from '../../../NewPortal/PortalModalComponents/Modal/Modal';

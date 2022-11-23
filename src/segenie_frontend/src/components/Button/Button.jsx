@@ -1,10 +1,11 @@
+import React from 'react';
 import styles from './Button.module.scss';
 import {classnames} from 'tailwindcss-classnames';
 import PropTypes from 'prop-types';
 
 const Button = ({
   label,
-  Icon,
+  imgSrc,
   fill = 'opaque',
   order = 'normal',
   isDisabled = false,
@@ -19,14 +20,14 @@ const Button = ({
       onClick={onClick}
     >
       <span className={classnames(styles.label, styles[fill])}>{label}</span>
-      <Icon height="24px" />
+      <img src={imgSrc} alt="" />
     </button>
   );
 };
 
 export const propTypes = {
   label: PropTypes.string.isRequired,
-  Icon: PropTypes.object.isRequired,
+  imgSrc: PropTypes.string.isRequired,
   fill: PropTypes.oneOf(['opaque', 'transparent']),
   order: PropTypes.oneOf(['normal', 'reverse']),
   isDisabled: PropTypes.bool, 

@@ -1,3 +1,4 @@
+import React from 'react';
 import TextInput from '../TextInput/TextInput';
 import Heading from '../Heading/Heading';
 import PropTypes from 'prop-types';
