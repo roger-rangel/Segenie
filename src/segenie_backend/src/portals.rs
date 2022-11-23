@@ -31,33 +31,18 @@ pub struct Portal {
 type PortalStore = BTreeMap<PortalId, Portal>;
 
 thread_local! {
-    static BADGES: RefCell<PortalStore> = RefCell::default();
-    static BADGE_COUNT: RefCell<PortalId> = RefCell::new(Nat::from(0));
+    static PORTALS: RefCell<PortalStore> = RefCell::default();
+    static PORTAL_COUNT: RefCell<PortalId> = RefCell::new(Nat::from(0));
 }
 
-pub fn get_dummy_portal() -> Portal {
-    Portal {
-        id: Nat::from(0),
-        name: String::from("UNKNOWN"),
-        description: String::from("This portal doesn't exist."),
-        image_url: None,
-        creator: get_dummy_principal(),
-    }
-}
-
-fn get_dummy_principal() -> Principal {
-    // this should never panic.
-    Principal::from_text("arlij-g2zpo-epfot-36ufg-vm4gj-3j4tj-rsjjt-fsv2m-sp4z7-nnk6b-lqe").unwrap()
-}
-
-/// Creates a new portal and increases the `BADGE_COUNT`.
+/// Creates a new portal and increases the `PORTAL_COUNT`.
 pub fn do_create_portal(
     creator: Principal,
     name: String,
     description: String,
     image_url: Option<String>,
 ) {
-    BADGE_COUNT.with(|count| {
+    PORTAL_COUNT.with(|count| {
         let id = (count.borrow()).clone();
         let portal = Portal {
             id: id.clone(),
@@ -67,22 +52,23 @@ pub fn do_create_portal(
             creator,
         };
 
-        BADGES.with(|portals| {
+        PORTALS.with(|portals| {
             let mut portals = portals.borrow_mut();
             portals.insert(id, portal);
         })
     });
 
-    BADGE_COUNT.with(|counter| *counter.borrow_mut() += 1);
+    PORTAL_COUNT.with(|counter| *counter.borrow_mut() += 1);
 }
 
+/// Updates the metadata of the given portal.
 pub fn do_update_metadata(
     id: PortalId,
     name: String,
     description: String,
     image_url: Option<String>,
 ) -> Result<(), Error> {
-    BADGES.with(|portals| {
+    PORTALS.with(|portals| {
         let mut portals = portals.borrow_mut();
         if let Some(portal) = portals.clone().get(&id) {
             portals.insert(
@@ -102,8 +88,10 @@ pub fn do_update_metadata(
     })
 }
 
+/// Returns the portal with the specified `PortalId`.
+/// In case there is no such portal returns `None`.
 pub fn do_get_portal(id: PortalId) -> Option<Portal> {
-    BADGES.with(|portals| {
+    PORTALS.with(|portals| {
         if let Some(portal) = portals.borrow().get(&id) {
             Some(portal.clone())
         } else {
@@ -123,7 +111,12 @@ mod tests {
         let portal_desc = String::from("A basic portal.");
         let image_url = None;
 
-        do_create_portal(creator, portal_name.clone(), portal_desc.clone(), image_url.clone());
+        do_create_portal(
+            creator,
+            portal_name.clone(),
+            portal_desc.clone(),
+            image_url.clone(),
+        );
 
         assert_eq!(
             do_get_portal(Nat::from(0)),
@@ -210,6 +203,6 @@ mod tests {
     }
 
     fn get_creator() -> Principal {
-        get_dummy_principal()
+        Principal::from_text("arlij-g2zpo-epfot-36ufg-vm4gj-3j4tj-rsjjt-fsv2m-sp4z7-nnk6b-lqe").unwrap()
     }
 }
