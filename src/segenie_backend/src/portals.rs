@@ -35,21 +35,6 @@ thread_local! {
     static PORTAL_COUNT: RefCell<PortalId> = RefCell::new(Nat::from(0));
 }
 
-pub fn get_dummy_portal() -> Portal {
-    Portal {
-        id: Nat::from(0),
-        name: String::from("UNKNOWN"),
-        description: String::from("This portal doesn't exist."),
-        image_url: None,
-        creator: get_dummy_principal(),
-    }
-}
-
-fn get_dummy_principal() -> Principal {
-    // this should never panic.
-    Principal::from_text("arlij-g2zpo-epfot-36ufg-vm4gj-3j4tj-rsjjt-fsv2m-sp4z7-nnk6b-lqe").unwrap()
-}
-
 /// Creates a new portal and increases the `PORTAL_COUNT`.
 pub fn do_create_portal(
     creator: Principal,
@@ -218,6 +203,6 @@ mod tests {
     }
 
     fn get_creator() -> Principal {
-        get_dummy_principal()
+        Principal::from_text("arlij-g2zpo-epfot-36ufg-vm4gj-3j4tj-rsjjt-fsv2m-sp4z7-nnk6b-lqe").unwrap()
     }
 }

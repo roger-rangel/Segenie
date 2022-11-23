@@ -14,7 +14,7 @@ type Creator = record {
 service : {
     "create_portal": (text, text) -> (text);
     "update_portal_metadata": (nat, text, text, opt text) -> (text);
-    "get_portal": (nat) -> (Portal);
+    "get_portal": (nat) -> (opt Portal);
     "set_creator_metadata": (text) -> (text);
-    "get_portal": () -> (Creator);
+    "get_creator_metadata": () -> (opt Creator);
 }

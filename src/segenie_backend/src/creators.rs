@@ -17,18 +17,6 @@ thread_local! {
     static CREATORS: RefCell<CreatorStore> = RefCell::default();
 }
 
-fn get_dummy_principal() -> Principal {
-    // this should never panic.
-    Principal::from_text("arlij-g2zpo-epfot-36ufg-vm4gj-3j4tj-rsjjt-fsv2m-sp4z7-nnk6b-lqe").unwrap()
-}
-
-pub fn get_dummy_metadata() -> Creator {
-    Creator {
-        principal: get_dummy_principal(),
-        name: String::from("NOT SET"),
-    }
-}
-
 /// Sets the metadata for the specific creator.
 pub fn do_set_creator_metadata(principal: Principal, name: String) {
     CREATORS.with(|creators| {
@@ -76,6 +64,6 @@ mod tests {
     }
 
     fn get_creator() -> Principal {
-        get_dummy_principal()
+        Principal::from_text("arlij-g2zpo-epfot-36ufg-vm4gj-3j4tj-rsjjt-fsv2m-sp4z7-nnk6b-lqe").unwrap()
     }
 }

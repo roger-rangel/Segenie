@@ -28,11 +28,8 @@ fn update_portal_metadata(
 
 /// Get a specific portal with the provided `PortalId`.
 #[ic_cdk_macros::query]
-fn get_portal(id: PortalId) -> Portal {
-    match portals::do_get_portal(id) {
-        Some(portal) => portal,
-        None => portals::get_dummy_portal(),
-    }
+fn get_portal(id: PortalId) -> Option<Portal> {
+    portals::do_get_portal(id)
 }
 
 #[update]
@@ -44,10 +41,7 @@ fn set_creator_metadata(name: String) -> String {
 }
 
 #[ic_cdk_macros::query]
-fn get_creator_metadata() -> Creator {
+fn get_creator_metadata() -> Option<Creator> {
     let caller = ic_cdk::api::caller();
-    match creators::do_get_creator_metadata(caller) {
-        Some(metadata) => metadata,
-        None => creators::get_dummy_metadata(),
-    }
+    creators::do_get_creator_metadata(caller)
 }
