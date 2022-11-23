@@ -3,12 +3,12 @@ import useICPDatabase from './useICPDatabase';
 import useWeb3Identity from './useWeb3Identity';
 import useActor from './useActor';
 
-const useCreateNFT = () => {
+const useNewPortal = () => {
   const { uploadDataURL } = useICPDatabase();
   const { authToken } = useWeb3Identity();
   const actor = useActor();
 
-  const fetchAllNFTs = async () => {
+  const getAllPortals = async () => {
     try {
       const { hadSuccess, responseResult, errorMessage } =
         await actor.getAssetViewModelsForFeed({
@@ -16,7 +16,7 @@ const useCreateNFT = () => {
           doSucceed: true,
         });
       if (!hadSuccess) throw new Error(errorMessage);
-      const NFTs = responseResult.map((item) => ({
+      const Portals = responseResult.map((item) => ({
         id: item.assetId,
         name: item.assetDisplayName,
         description: item.assetDescription,
@@ -25,14 +25,14 @@ const useCreateNFT = () => {
         isLiked: item.isLiked,
         createdAt: item.nanoEpochTimeCreated.toString(),
       }));
-      return NFTs;
+      return Portals;
     } catch (error) {
       console.error(error);
       throw error;
     }
   };
 
-  const newNFT = async (name, description, imageDataURL) => {
+  const createPortal = async (name, description, imageDataURL) => {
     try {
       checkAuthToken();
       const imageIPFSURL = await uploadDataURL(imageDataURL);
@@ -55,6 +55,6 @@ const useCreateNFT = () => {
     if (!authToken) throw new Error("Can't mint an NFT unauthenticated");
   };
 
-  return { newNFT, fetchAllNFTs };
+  return { createPortal, getAllPortals };
 };
-export default useCreateNFT;
+export default useNewPortal;

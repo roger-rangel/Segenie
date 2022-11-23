@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
 
-import useCreateNFT from '../../Hooks/useCreateNFT';
+import useNewPortal from '../../Hooks/useNewPortal';
 import ModalContainer from './PortalModalComponents/ModalContainer/ModalContainer';
 import MintResultModal from './PortalModalComponents/MintResultModal/MintResultModal';
 import MintInformationModal from './PortalModalComponents/MintInformationModal/MintInformation.Modal';
@@ -19,7 +19,7 @@ const newPortal = () => {
     creator: ''
   });
   const [shouldShowLoader, setShouldShowLoader] = useState(false);
-  const { newNFT } = useCreateNFT();
+  const { newNFT } = useNewPortal();
 
   const showPreviousModal = () => setCurrentModalIndex(currentModalIndex - 1);
   const showNextModal = () => setCurrentModalIndex(currentModalIndex + 1);
