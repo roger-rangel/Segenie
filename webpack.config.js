@@ -47,7 +47,7 @@ module.exports = {
   entry: {
     // The frontend.entrypoint points to the HTML file for this build, so we need
     // to replace the extension to `.js`.
-    index: path.join(__dirname, frontend_entry).replace(/\.html$/, ".jsx"),
+    index: path.join(__dirname, frontend_entry).replace(/\.html$/, ".js"),
   },
   devtool: isDevelopment ? "source-map" : false,
   optimization: {
@@ -76,8 +76,37 @@ module.exports = {
   // tutorial, uncomment the following lines:
   module: {
    rules: [
-     { test: /\.(ts|tsx|jsx)$/, loader: "ts-loader" },
-     { test: /\.css$/, use: ['style-loader','css-loader', 'postcss-loader'] }
+     { test: /\.(ts|tsx|jsx|js)$/, loader: "ts-loader" },
+     { test: /\.css$/, use: ['style-loader','css-loader', 'postcss-loader'] },
+     {
+      test: /\.svg/,
+      use: {
+        loader: "svg-url-loader",
+        options: {
+          // make all svg images to work in IE
+          iesafe: true,
+        },
+      },
+     },
+     {
+      test: /\.s[ac]ss$/i,
+      use: [
+        // Creates `style` nodes from JS strings
+        "style-loader",
+        // Translates CSS into CommonJS
+        "css-loader",
+        // Compiles Sass to CSS
+        "sass-loader",
+      ],
+    },
+    {
+      test: /\.(png|jpe?g|gif)$/i,
+      use: [
+        {
+          loader: 'file-loader',
+        },
+      ],
+    },
    ]
   },
   plugins: [

@@ -1,0 +1,69 @@
+.button {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.25rem;
+    border: none;
+  
+    &:not(:disabled) {
+      cursor: pointer;
+      transition: filter 0.125s ease-in-out;
+  
+      &:hover {
+        filter: brightness(0.7);
+      }
+    }
+  
+    &:disabled {
+      filter: grayscale(0.8);
+    }
+  
+    &.reverse {
+      flex-direction: row-reverse;
+    }
+  
+    &.opaque {
+      background-image: var(--accent-color);
+      padding: 0.5rem 1rem;
+    }
+  
+    &.transparent {
+      padding: 0.5rem 1rem;
+      background-image: var(--accent-color);
+      position: relative;
+      z-index: 0;
+  
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        background-color: var(--secondary-background-color);
+        background-clip: padding-box;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+      }
+    }
+  }
+  
+  .label {
+    font-family: Poppins;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.5;
+    white-space: nowrap;
+  
+    &.opaque {
+      color: var(--primary-font-color);
+    }
+  
+    &.transparent {
+      color: transparent;
+      background-image: var(--accent-color);
+      background-clip: text;
+    }
+  }

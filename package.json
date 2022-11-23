@@ -1,5 +1,6 @@
 {
   "name": "segenie_frontend",
+  "homepage": ".",
   "version": "0.1.0",
   "description": "Internet Computer starter application",
   "keywords": [
@@ -23,6 +24,7 @@
     "autoprefixer": "^10.4.13",
     "buffer": "6.0.3",
     "events": "3.3.0",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "5.5.0",
     "postcss": "^8.4.18",
     "postcss-loader": "^7.0.1",
@@ -39,17 +41,31 @@
   "engines": {
     "node": "^12 || ^14 || ^16 || ^18"
   },
-  "browserslist": [
-    "last 2 chrome version",
-    "last 2 firefox version",
-    "last 2 safari version",
-    "last 2 edge version"
-  ],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 2 chrome version",
+      "last 2 firefox version",
+      "last 2 safari version",
+      "last 2 edge version"
+    ]
+  },
   "dependencies": {
     "css-loader": "^6.7.1",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.6.0",
+    "react-router-dom": "^6.4.3",
+    "sass": "^1.56.1",
+    "sass-loader": "^13.2.0",
     "style-loader": "^3.3.1",
+    "svg-url-loader": "^8.0.0",
+    "tailwindcss-classnames": "^3.0.7",
     "ts-loader": "^9.4.1",
     "typescript": "^4.8.4",
     "url-loader": "^4.1.1"
