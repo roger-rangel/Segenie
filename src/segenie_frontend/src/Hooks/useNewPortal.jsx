@@ -1,4 +1,3 @@
-import React from 'react';
 import useICPDatabase from './useICPDatabase';
 import useWeb3Identity from './useWeb3Identity';
 import useActor from './useActor';
@@ -11,7 +10,7 @@ const useNewPortal = () => {
   const getAllPortals = async () => {
     try {
       const { hadSuccess, responseResult, errorMessage } =
-        await actor.getAssetViewModelsForFeed({
+        await actor.obtainPortalViewForFeed({
           forAuthToken: authToken ?? '0',
           doSucceed: true,
         });
@@ -35,13 +34,13 @@ const useNewPortal = () => {
   const createPortal = async (name, description, imageDataURL) => {
     try {
       checkAuthToken();
-      const imageIPFSURL = await uploadDataURL(imageDataURL);
+      const imageURL = await uploadDataURL(imageDataURL);
       const { hadSuccess, responseResult, errorMessage } =
-        await actor.mintAsset({
+        await actor.mintPortal({
           forAuthToken: authToken,
           assetDisplayNameIn: name,
           assetDescriptionIn: description,
-          assetUrlImageSourceIn: imageIPFSURL,
+          assetUrlImageSourceIn: imageURL,
           doSucceed: true,
         });
       if (!hadSuccess) throw new Error(errorMessage);
@@ -52,7 +51,7 @@ const useNewPortal = () => {
   };
 
   const checkAuthToken = () => {
-    if (!authToken) throw new Error("Can't mint an NFT unauthenticated");
+    if (!authToken) throw new Error("Can't create a new Portal without entering Web3");
   };
 
   return { createPortal, getAllPortals };
