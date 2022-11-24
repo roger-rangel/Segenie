@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import WelcomePage from "./Views/WelcomePage/WelcomePage";
 import NewPortal from "./Views/NewPortal";
 import SegenieOptions from "./Views/SegenieOptions/SegenieOptions"
@@ -13,7 +13,11 @@ import App from "./App";
  root.render(
   <Router>
     <Routes>
-      <Route path="/" element={<NewPortal />} /> 
+    <Route path="/" element={<App />}>
+      <Route path="/" exact element={<WelcomePage />} /> 
+      <Route path="/portal" element={<NewPortal />} /> 
+      <Route path="/options" element={<SegenieOptions />} /> 
+      </Route> 
     </Routes>
   </Router>
 );
