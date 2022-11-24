@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import SignInModalBody from '../AuthModalBody';
+import SignInModalBody from '../AuthModalBody/AuthModalBody';
 import Layer from '../../../components/Layer/Layer';
 import Loader from '../../../components/Loader/Loader';
 import useWeb3Identity from '../../../Hooks/useWeb3Identity';
