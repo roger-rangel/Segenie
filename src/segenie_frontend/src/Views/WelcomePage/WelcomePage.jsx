@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
-import './WelcomePage.module.scss'
+import './WelcomePage.scss'
 
 const WelcomePage = () => {
   const navigate = useNavigate();
@@ -24,8 +24,8 @@ const WelcomePage = () => {
                     onClick={portal}>Create a New Portal</a>
                 </div>
                 <div className="flex flex-col ">  
-                  <div class="card">
-                    Are you ready?
+                  <div class="card_metaverse">
+                    Coming Soon
                   </div>
                   <a className="mt-8 text-[#e6e6e6] flex justify-center font-raleway cursor-pointer" 
                     onClick={options}>Explore the Metaverse</a>
