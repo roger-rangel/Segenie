@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Web3Context } from '../../Context/Web3Context';
 import PropTypes from 'prop-types';
-import useActor from '../../CustomHooks/useActor';
+import useActor from '../../Hooks/useActor';
 import { useConnect } from '@connect2ic/react';
 import { AuthClient } from '@dfinity/auth-client';
 import { hash } from 'bcryptjs';

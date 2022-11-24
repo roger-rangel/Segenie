@@ -32,7 +32,13 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
             <Routes>
             <Route path="/" element={<App />}>
               <Route path="/" exact element={<WelcomePage />} /> 
-              <Route path="/portal" element={<NewPortal />} /> 
+              <Route 
+              path="/portal" 
+              element={
+              <RequireWeb3Auth>
+                <NewPortal />
+              </RequireWeb3Auth>} 
+              /> 
               <Route path="/options" element={<SegenieOptions />} /> 
               <Route path="/web3authorization" element={<Web3Authorization />} />
               </Route> 
