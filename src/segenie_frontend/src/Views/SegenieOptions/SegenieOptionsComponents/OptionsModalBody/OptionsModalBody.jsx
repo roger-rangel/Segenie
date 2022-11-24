@@ -16,7 +16,7 @@ const OptionsModalBody = () => {
   const segenieOptions = [
     {
       name: 'Portal',
-      path: '/new-portal', 
+      path: '/putsomethinghere', 
       imgSrc: Ball,
       description:
       "Create a portal that can give special access to hidden places inside the Metaverse",

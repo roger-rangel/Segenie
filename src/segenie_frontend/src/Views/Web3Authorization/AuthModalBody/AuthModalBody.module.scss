@@ -1,0 +1,119 @@
+:root {
+    --primary-font-color: #fafafa;
+    --secondary-font-color: #e6e6e6;
+    --primary-background-color: #18162c;
+    --secondary-background-color: #252041;
+    --accent-color-start: #21d4fd;
+    --accent-color-stop: #b721ff;
+    --accent-color: linear-gradient(
+      90deg,
+      var(--accent-color-start),
+      var(--accent-color-stop)
+    );
+    --placeholder-color: #b1b1b1;
+    --divider-color: #504992;
+  }
+  
+  // TODO: SCSS code has to be moved somewhere else as soon as the project architecture has been properly defined and refactoring of the project has begun
+  
+  // CODE TO BE MOVED START
+  
+  $grid-breakpoints: (
+    'xs': 0,
+    'sm': 576px,
+    'md': 768px,
+    'lg': 992px,
+    'xl': 1200px,
+    'xxl': 1400px,
+  );
+  
+  $container-widths: (
+    'xs': 100%,
+    'sm': 540px,
+    'md': 720px,
+    'lg': 960px,
+    'xl': 1140px,
+    'xxl': 1320px,
+  );
+  
+  @mixin media-breakpoint-up($grid-breakpoint) {
+    @media only screen and (min-width: map.get($grid-breakpoints, $grid-breakpoint)) {
+      @content;
+    }
+  }
+
+.authModalBody {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+
+  @include media-breakpoint-up('md') {
+    flex-direction: initial;
+    align-items: center;
+  }
+}
+
+.walletConnectContainer,
+.signInContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include media-breakpoint-up('md') {
+    flex: 1;
+  }
+}
+
+.linesContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  font-family: Raleway;
+  color: var(--secondary-font-color);
+
+  @include media-breakpoint-up('md') {
+    flex-direction: column;
+    justify-content: initial;
+  }
+}
+
+.line {
+  flex: 1;
+  max-width: 4rem;
+  border: 1px solid var(--divider-color);
+
+  @include media-breakpoint-up('md') {
+    flex: initial;
+    max-width: initial;
+    height: 4rem;
+  }
+}
+
+.signUpNoteContainer {
+  margin-bottom: 0.75rem;
+}
+
+.signUpButton {
+  color: transparent;
+  background-image: var(--accent-color);
+  background-clip: text;
+  font-family: Raleway;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.buttonContainer {
+  margin-top: 0.75rem;
+  align-self: center;
+}

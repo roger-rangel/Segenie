@@ -1,8 +1,10 @@
-import React from 'react';
+import { useContext } from 'react';
+import { Web3Context } from '../Context/Web3Context';
 
 const useWeb3Identity = () => {
+  const accessWeb3 = useContext(Web3Context);
 
-  return <h1>WEB3 IDENTITY</h1>;
+  return accessWeb3;
 };
 
 export default useWeb3Identity;

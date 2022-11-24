@@ -1,22 +1,21 @@
-import React from 'react';
 import useICPDatabase from './useICPDatabase';
 import useWeb3Identity from './useWeb3Identity';
 import useActor from './useActor';
 
-const useCreateNFT = () => {
+const useNewPortal = () => {
   const { uploadDataURL } = useICPDatabase();
   const { authToken } = useWeb3Identity();
   const actor = useActor();
 
-  const fetchAllNFTs = async () => {
+  const getAllPortals = async () => {
     try {
       const { hadSuccess, responseResult, errorMessage } =
-        await actor.getAssetViewModelsForFeed({
+        await actor.obtainPortalViewForFeed({
           forAuthToken: authToken ?? '0',
           doSucceed: true,
         });
       if (!hadSuccess) throw new Error(errorMessage);
-      const NFTs = responseResult.map((item) => ({
+      const Portals = responseResult.map((item) => ({
         id: item.assetId,
         name: item.assetDisplayName,
         description: item.assetDescription,
@@ -25,23 +24,23 @@ const useCreateNFT = () => {
         isLiked: item.isLiked,
         createdAt: item.nanoEpochTimeCreated.toString(),
       }));
-      return NFTs;
+      return Portals;
     } catch (error) {
       console.error(error);
       throw error;
     }
   };
 
-  const newNFT = async (name, description, imageDataURL) => {
+  const createPortal = async (name, description, imageDataURL) => {
     try {
       checkAuthToken();
-      const imageIPFSURL = await uploadDataURL(imageDataURL);
+      const imageURL = await uploadDataURL(imageDataURL);
       const { hadSuccess, responseResult, errorMessage } =
-        await actor.mintAsset({
+        await actor.mintPortal({
           forAuthToken: authToken,
           assetDisplayNameIn: name,
           assetDescriptionIn: description,
-          assetUrlImageSourceIn: imageIPFSURL,
+          assetUrlImageSourceIn: imageURL,
           doSucceed: true,
         });
       if (!hadSuccess) throw new Error(errorMessage);
@@ -52,9 +51,9 @@ const useCreateNFT = () => {
   };
 
   const checkAuthToken = () => {
-    if (!authToken) throw new Error("Can't mint an NFT unauthenticated");
+    if (!authToken) throw new Error("Can't create a new Portal without entering Web3");
   };
 
-  return { newNFT, fetchAllNFTs };
+  return { createPortal, getAllPortals };
 };
-export default useCreateNFT;
+export default useNewPortal;

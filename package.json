@@ -55,6 +55,9 @@
     ]
   },
   "dependencies": {
+    "@connect2ic/core": "^0.2.0-beta.5",
+    "@connect2ic/react": "^0.2.0-beta.5",
+    "bcryptjs": "^2.4.3",
     "css-loader": "^6.7.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
