@@ -7,7 +7,7 @@ import Link from '../Link/Link';
 import Modal from '../Modal/Modal';
 import ModalHeader from '../ModalHeader/ModalHeader';
 import ModalFooter from '../ModalFooter/ModalFooter';
-import NewPortalFirstModalBody from '../NewPortalFirstModalBody/NewPortalFirstModalBody';
+import NewPortalSecondModalBody from '../NewPortalSecondModalBody/NewPortalSecondModalBody';
 
 //Icons
 import { ReactComponent as LeftArrow } from '../../../../../assets/icons/left-arrow.svg';
@@ -21,11 +21,18 @@ const NewPortalFirstModal = ({ onClickNextButton }) => {
 
   const footerButtons = [
     <Link to="/mint-categories">
-      <button>Previous</button>
+      <Button 
+        label="Previous"
+        Icon={LeftArrow}
+        fill="transparent"
+        order="reverse"
+      />
     </Link>,
-    <button
+    <Button
+      label="Next"
+      Icon={RightArrow}
       onClick={() => onClickNextButton(imageDataURL)}
-    >Next</button>,
+    />,
   ];
 
   return (
@@ -34,7 +41,7 @@ const NewPortalFirstModal = ({ onClickNextButton }) => {
         heading="New Portal"
         subtitle="Create a portal that can give special access to hidden places inside the Metaverse"
       />
-      <NewPortalFirstModalBody
+      <NewPortalSecondModalBody
         imageDataURL={imageDataURL}
         setImageDataURL={setImageDataURL}
       />
