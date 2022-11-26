@@ -31,7 +31,6 @@ export const mintResultPropTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   imageURL: PropTypes.string.isRequired,
-  creator: PropTypes.string.isRequired,
 };
 
 MintResultCard.propTypes = {

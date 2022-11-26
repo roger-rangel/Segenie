@@ -11,8 +11,6 @@ const newPortal = () => {
   const [portal, setPortal] = useState({
     name: '',
     description: '',
-    imageURL: '',
-    creator: ''
   });
   const [shouldShowLoader, setShouldShowLoader] = useState(false);
 
@@ -20,35 +18,43 @@ const newPortal = () => {
   const showNextModal = () => setCurrentModalIndex(currentModalIndex + 1);
 
   const onClickNextButton = async (imageDataURL) => {
-    // this should be in onClickMintButton.
-    await useNewPortal().createPortal(portal.name, portal.description, portal.imageURL);
     showNextModal();
     setPortal({
       ...portal,
-      imageURL: imageDataURL,
     });
   };
 
-  const onClickMintButton = async ({ name, description, creator }) => {
+  const onClickMintButton = async ({ name, description }) => {
     try {
-      setShouldShowLoader(true);
-      //await newNFT(name, description, portal.imageURL);
-      showNextModal();
+      //setShouldShowLoader(true);
+      let res = await useNewPortal().createPortal(name, description, "");
+      alert(res);
+      //showNextModal();
       setPortal({
         ...portal,
         name,
         description,
-        creator
       });
     } catch (error) {
       console.error(error);
     } finally {
-      setShouldShowLoader(false);
+      //setShouldShowLoader(false);
     }
   };
 
   const modals = [
     <NewPortalFirstModal onClickNextButton={onClickNextButton} />,
+    <MintInformationModal
+      heading="Portal creation"
+      subtitle="Create a portal that can give special access to hidden places inside the Metaverse"
+      onClickPreviousButton={showPreviousModal}
+      onClickMintButton={onClickMintButton}
+    />,
+    <MintResultModal
+      heading="Amazing! A new Portal has been created!"
+      subtitle="Time to discover new worlds inside the Metaverse"
+      mintResult={portal}
+    />
   ];
 
   return (
@@ -60,7 +66,7 @@ const newPortal = () => {
         </Layer>
       )}
     </>
-  ); 
+  );
 };
 
 export default newPortal;

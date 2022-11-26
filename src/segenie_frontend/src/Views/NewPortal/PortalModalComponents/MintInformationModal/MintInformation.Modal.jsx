@@ -18,7 +18,6 @@ const MintInformationModal = ({
   const [mintInformation, setMintInformation] = useState({
     name: '',
     description: '',
-    creator: ''
   });
 
   const footerButtons = [
@@ -30,14 +29,13 @@ const MintInformationModal = ({
       onClick={onClickPreviousButton}
     />,
     <Button
-      label="Mint"
+      label="Create"
       Icon={MintIcon}
       // TODO: This is terrible form validation. If some of the input fields is not filled 
       // and the user tries to continue nothing happens, there is no note or anything saying which fields are required etc.
       isDisabled={
         !mintInformation.name ||
-        !mintInformation.description ||
-        !mintInformation.creator
+        !mintInformation.description
       }
       onClick={() => onClickMintButton(mintInformation)}
     />,
