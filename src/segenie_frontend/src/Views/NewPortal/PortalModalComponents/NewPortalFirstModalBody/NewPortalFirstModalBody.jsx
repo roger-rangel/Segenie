@@ -1,7 +1,6 @@
 import React from 'react';
 import Heading from '../Heading/Heading';
 import PropTypes from 'prop-types';
-import ImageFileInput from '../ImageFileInput/ImageFileInput';
 
 const BadgeCreationFirstModalBody = ({ imageDataURL, setImageDataURL }) => {
   const benefits = [
@@ -15,14 +14,6 @@ const BadgeCreationFirstModalBody = ({ imageDataURL, setImageDataURL }) => {
 
   return (
     <div className="flex items-center gap-8">
-      <div className="flex-1">
-        <div className="container max-w-[300px] ml-auto">
-          <ImageFileInput
-            imageDataURL={imageDataURL}
-            setImageDataURL={setImageDataURL}
-          />
-        </div>
-      </div>
       <div className="flex-1">
         <div className="text-left max-w-[300px] mr-auto">
           <Heading type="secondary">Benefits</Heading>

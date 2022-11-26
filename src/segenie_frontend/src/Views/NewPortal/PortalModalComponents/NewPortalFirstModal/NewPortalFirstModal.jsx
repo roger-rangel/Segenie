@@ -21,19 +21,11 @@ const NewPortalFirstModal = ({ onClickNextButton }) => {
 
   const footerButtons = [
     <Link to="/mint-categories">
-      <Button
-        label="Previous"
-        Icon={LeftArrow}
-        fill="transparent"
-        order="reverse"
-      />
+      <button>Previous</button>
     </Link>,
-    <Button
-      label="Next"
-      Icon={RightArrow}
-      isDisabled={!imageDataURL}
+    <button
       onClick={() => onClickNextButton(imageDataURL)}
-    />,
+    >Next</button>,
   ];
 
   return (

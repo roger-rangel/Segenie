@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Views
 import App from "./App";
-import NewPortal from "./Views/NewPortal";
+import NewPortal from "./Views/NewPortal/NewPortal";
 import WelcomePage from "./Views/WelcomePage/WelcomePage";
 import SegenieOptions from "./Views/SegenieOptions/SegenieOptions"
 import Web3Authorization from './Views/Web3Authorization/Web3Authorization';
