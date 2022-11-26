@@ -10,9 +10,15 @@ const useNewPortal = () => {
 
   const createPortal = async (name, description, imageDataURL) => {
     console.log("Creating a portal.")
-    
-    const response = await actor.create_portal(name, description);
-    return response;
+    try {
+      if(imageDataURL)
+        return await actor.create_portal(name, description, imageDataURL);
+      else 
+        return await actor.create_portal(name, description);
+    }catch(e) {
+      console.error(e);
+      throw e;
+    }
   };
 
   return { createPortal, getAllPortals };
