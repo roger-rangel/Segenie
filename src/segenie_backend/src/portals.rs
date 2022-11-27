@@ -29,9 +29,11 @@ pub struct Portal {
 
 /// Maps `PortalId` to the specific Portal.
 type PortalStore = BTreeMap<PortalId, Portal>;
+type CreatorPortalsStore = BTreeMap<Principal, Vec<PortalId>>;
 
 thread_local! {
     static PORTALS: RefCell<PortalStore> = RefCell::default();
+    static CREATOR_PORTALS: RefCell<CreatorPortalsStore> = RefCell::default();
     static PORTAL_COUNT: RefCell<PortalId> = RefCell::new(Nat::from(0));
 }
 
@@ -98,6 +100,24 @@ pub fn do_get_portal(id: PortalId) -> Option<Portal> {
             None
         }
     })
+}
+
+pub fn do_get_portals_of_creator(creator: Principal) -> Vec<Portal> {
+    let mut portal_ids: Vec<PortalId> = vec![];
+
+    CREATOR_PORTALS.with(|portals_by_creator| {
+        if let Some(portals) = portals_by_creator.borrow().get(&creator) {
+            portal_ids = portals.clone();
+        }
+    });
+
+    let mut portals = vec![];
+    for id in portal_ids {
+        if let Some(portal) = do_get_portal(id) {
+            portals.push(portal);
+        }
+    }
+    portals
 }
 
 #[cfg(test)]
@@ -203,6 +223,7 @@ mod tests {
     }
 
     fn get_creator() -> Principal {
-        Principal::from_text("arlij-g2zpo-epfot-36ufg-vm4gj-3j4tj-rsjjt-fsv2m-sp4z7-nnk6b-lqe").unwrap()
+        Principal::from_text("arlij-g2zpo-epfot-36ufg-vm4gj-3j4tj-rsjjt-fsv2m-sp4z7-nnk6b-lqe")
+            .unwrap()
     }
 }
