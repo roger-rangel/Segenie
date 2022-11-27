@@ -20,11 +20,10 @@ const NewPortalFirstModal = ({ onClickNextButton }) => {
   const [imageDataURL, setImageDataURL] = useState(null);
 
   const footerButtons = [
-    <Link to="/mint-categories">
+    <Link to="/">
       <Button 
-        label="Previous"
+        label="Back"
         Icon={LeftArrow}
-        fill="transparent"
         order="reverse"
       />
     </Link>,
