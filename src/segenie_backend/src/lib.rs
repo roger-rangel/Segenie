@@ -2,6 +2,7 @@ mod creators;
 mod portals;
 
 use creators::Creator;
+use ic_cdk::export::Principal;
 use ic_cdk_macros::*;
 use portals::{Portal, PortalId};
 
@@ -44,4 +45,15 @@ fn set_creator_metadata(name: String) -> String {
 fn get_creator_metadata() -> Option<Creator> {
     let caller = ic_cdk::api::caller();
     creators::do_get_creator_metadata(caller)
+}
+
+#[ic_cdk_macros::query]
+fn get_portals_of_creator(creator: Principal) -> Vec<Portal> {
+    portals::do_get_portals_of_creator(creator)
+}
+
+#[ic_cdk_macros::query]
+fn get_portals_of_caller() -> Vec<Portal> {
+    let caller = ic_cdk::api::caller();
+    portals::do_get_portals_of_creator(caller)
 }

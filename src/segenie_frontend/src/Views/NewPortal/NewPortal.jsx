@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import React, {useState} from 'react';
 
 import useNewPortal from '../../Hooks/useNewPortal';
 import ModalContainer from './PortalModalComponents/ModalContainer/ModalContainer';
@@ -6,47 +6,39 @@ import MintResultModal from './PortalModalComponents/MintResultModal/MintResultM
 import MintInformationModal from './PortalModalComponents/MintInformationModal/MintInformation.Modal';
 import NewPortalFirstModal from './PortalModalComponents/NewPortalFirstModal/NewPortalFirstModal';
 
-//components
-import Layer from '../../components/Layer/Layer';
-import Loader from '../../components/Loader/Loader';
-
 const newPortal = () => {
   const [currentModalIndex, setCurrentModalIndex] = useState(0);
   const [portal, setPortal] = useState({
     name: '',
     description: '',
-    imageURL: '',
-    creator: ''
   });
   const [shouldShowLoader, setShouldShowLoader] = useState(false);
-  const { newNFT } = useNewPortal();
 
   const showPreviousModal = () => setCurrentModalIndex(currentModalIndex - 1);
   const showNextModal = () => setCurrentModalIndex(currentModalIndex + 1);
 
-  const onClickNextButton = (imageDataURL) => {
+  const onClickNextButton = async (imageDataURL) => {
     showNextModal();
     setPortal({
       ...portal,
-      imageURL: imageDataURL,
     });
   };
 
-  const onClickMintButton = async ({ name, description, creator }) => {
+  const onClickMintButton = async ({ name, description }) => {
     try {
-      setShouldShowLoader(true);
-      await newNFT(name, description, portal.imageURL);
-      showNextModal();
+      //setShouldShowLoader(true);
+      let res = await useNewPortal().createPortal(name, description, "");
+      alert(res);
+      //showNextModal();
       setPortal({
         ...portal,
         name,
         description,
-        creator
       });
     } catch (error) {
       console.error(error);
     } finally {
-      setShouldShowLoader(false);
+      //setShouldShowLoader(false);
     }
   };
 
@@ -62,7 +54,7 @@ const newPortal = () => {
       heading="Amazing! A new Portal has been created!"
       subtitle="Time to discover new worlds inside the Metaverse"
       mintResult={portal}
-    />,
+    />
   ];
 
   return (
@@ -76,6 +68,5 @@ const newPortal = () => {
     </>
   );
 };
+
 export default newPortal;
-
-

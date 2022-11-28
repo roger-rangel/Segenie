@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Views
 import App from "./App";
-import NewPortal from "./Views/NewPortal";
+import NewPortal from "./Views/NewPortal/NewPortal";
 import WelcomePage from "./Views/WelcomePage/WelcomePage";
 import SegenieOptions from "./Views/SegenieOptions/SegenieOptions"
 import Web3Authorization from './Views/Web3Authorization/Web3Authorization';
@@ -25,26 +25,20 @@ import NavProvider from "./components/NavProvider";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
  root.render(
-    <Connect2ICProvider providers={[InternetIdentity]}>
-      <Web3AuthProvider>
-        <NavProvider>
+    // <Connect2ICProvider providers={[InternetIdentity]}>
+    //   <Web3AuthProvider>
+    //     <NavProvider>
           <Router>
             <Routes>
             <Route path="/" element={<App />}>
               <Route path="/" exact element={<WelcomePage />} /> 
-              <Route 
-              path="/portal" 
-              element={
-              <RequireWeb3Auth>
-                <NewPortal />
-              </RequireWeb3Auth>} 
-              /> 
+              <Route path="/portal" exact element={<NewPortal />} /> 
               <Route path="/options" element={<SegenieOptions />} /> 
               <Route path="/web3authorization" element={<Web3Authorization />} />
               </Route> 
             </Routes>
-          </Router>
-        </NavProvider>
+          </Router>,
+        {/* </NavProvider>
       </Web3AuthProvider>
-    </Connect2ICProvider>
+    </Connect2ICProvider> */}
 );

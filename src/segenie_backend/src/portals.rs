@@ -29,9 +29,11 @@ pub struct Portal {
 
 /// Maps `PortalId` to the specific Portal.
 type PortalStore = BTreeMap<PortalId, Portal>;
+type CreatorPortalsStore = BTreeMap<Principal, Vec<PortalId>>;
 
 thread_local! {
     static PORTALS: RefCell<PortalStore> = RefCell::default();
+    static CREATOR_PORTALS: RefCell<CreatorPortalsStore> = RefCell::default();
     static PORTAL_COUNT: RefCell<PortalId> = RefCell::new(Nat::from(0));
 }
 
@@ -42,8 +44,9 @@ pub fn do_create_portal(
     description: String,
     image_url: Option<String>,
 ) {
+    let mut id = Nat::from(0);
     PORTAL_COUNT.with(|count| {
-        let id = (count.borrow()).clone();
+        id = (count.borrow()).clone();
         let portal = Portal {
             id: id.clone(),
             name,
@@ -54,8 +57,17 @@ pub fn do_create_portal(
 
         PORTALS.with(|portals| {
             let mut portals = portals.borrow_mut();
-            portals.insert(id, portal);
+            portals.insert(id.clone(), portal);
         })
+    });
+
+    CREATOR_PORTALS.with(|portals_by_creator| {
+        let mut creator_portals = portals_by_creator.borrow_mut();
+        if let Some(portals) = creator_portals.get_mut(&creator) {
+            (*portals).push(id);
+        } else {
+            creator_portals.insert(creator, vec![id]);
+        }
     });
 
     PORTAL_COUNT.with(|counter| *counter.borrow_mut() += 1);
@@ -98,6 +110,24 @@ pub fn do_get_portal(id: PortalId) -> Option<Portal> {
             None
         }
     })
+}
+
+pub fn do_get_portals_of_creator(creator: Principal) -> Vec<Portal> {
+    let mut portal_ids: Vec<PortalId> = vec![];
+
+    CREATOR_PORTALS.with(|portals_by_creator| {
+        if let Some(portals) = portals_by_creator.borrow().get(&creator) {
+            portal_ids = portals.clone();
+        }
+    });
+
+    let mut portals = vec![];
+    for id in portal_ids {
+        if let Some(portal) = do_get_portal(id) {
+            portals.push(portal);
+        }
+    }
+    portals
 }
 
 #[cfg(test)]
@@ -202,7 +232,34 @@ mod tests {
         assert_eq!(do_get_portal(Nat::from(0)), None);
     }
 
+    #[test]
+    fn get_creator_portals_works() {
+        let creator = get_creator();
+        let name = String::from("portal1");
+        let description = String::from("A basic portal.");
+        let image_url = None;
+
+        do_create_portal(
+            creator,
+            name.clone(),
+            description.clone(),
+            image_url.clone(),
+        );
+
+        assert_eq!(
+            do_get_portals_of_creator(creator),
+            vec![Portal {
+                id: Nat::from(0),
+                creator,
+                name,
+                image_url,
+                description,
+            }]
+        );
+    }
+
     fn get_creator() -> Principal {
-        Principal::from_text("arlij-g2zpo-epfot-36ufg-vm4gj-3j4tj-rsjjt-fsv2m-sp4z7-nnk6b-lqe").unwrap()
+        Principal::from_text("arlij-g2zpo-epfot-36ufg-vm4gj-3j4tj-rsjjt-fsv2m-sp4z7-nnk6b-lqe")
+            .unwrap()
     }
 }

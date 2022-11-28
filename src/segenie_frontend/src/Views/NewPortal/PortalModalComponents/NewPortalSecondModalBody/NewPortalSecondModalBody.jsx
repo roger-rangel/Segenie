@@ -20,7 +20,6 @@ const NewPortalSecondModalBody = ({ mintInformation, setMintInformation }) => {
         'textArea textArea'; */}
       <div className="grid grid-cols-1 gap-2">
         <TextInput placeholder="Name" name="name" onChange={onChangeInput} />
-        <TextInput placeholder="Creator" name="creator" onChange={onChangeInput}/>
         <textarea
         //TODO: ADD THIS BELOW WITH TAILWIND CSS ===>  grid-area: textArea;
           className="py-2 px-4 bg-[#fafafa] rounded font-raleway text-base 
@@ -36,12 +35,8 @@ const NewPortalSecondModalBody = ({ mintInformation, setMintInformation }) => {
 };
 
 export const mintInformationPropTypes = {
-  // TODO: IS PROPTYPES A NUMBER OR STRING? I AM NOT SURE HOW TO HANDLE THE FRONTEND LOGIC FOR ID AND CREATOR, 
-  // SINCE THEY ARE AUTOMATICALLY GENERATED ONCE THE USER IS LOGGED IN AND IS MINTING, CORRECT??
-  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  creator: PropTypes.string.isRequired
 };
 
 NewPortalSecondModalBody.propTypes = {
