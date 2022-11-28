@@ -5,7 +5,14 @@ const useNewPortal = () => {
   const actor = createActor(canisterId);
 
   const getAllPortals = async () => {
-    console.log("Getting all portals.")
+    console.log("Getting all portals of the user.")
+    try {
+      const response = await actor.get_portals_of_caller();
+      console.log(response);
+    }catch(e) {
+      console.error(e);
+      throw e;
+    }
   };
 
   const createPortal = async (name, description, imageDataURL) => {
