@@ -25,6 +25,7 @@ $container-widths: (
 .container {
   padding: 0 0.75rem;
   width: 100%;
+  z-index: 30;
 
   @include media-breakpoint-up('sm') {
     padding: 0;

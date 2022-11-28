@@ -9,26 +9,26 @@ body {
 }
 
 :root {
-    --primary-font-color: #fafafa;
-    --secondary-font-color: #e6e6e6;
-    --primary-background-color: #18162c;
-    --secondary-background-color: #252041;
-    --accent-color-start: #3c67e3 ;
-    --accent-color-stop: #4e00c2;
-    --accent-color: linear-gradient(
-      90deg,
-      var(--accent-color-start),
-      var(--accent-color-stop)
-    );
-    --placeholder-color: #b1b1b1;
-    --divider-color: #504992;
-  }
+  --primary-font-color: #fafafa;
+  --secondary-font-color: #e6e6e6;
+  --primary-background-color: #18162c;
+  --secondary-background-color: #252041;
+  --accent-color-start: #38ef7d ;
+  --accent-color-stop: #11998e;
+  --accent-color: linear-gradient(
+    90deg,
+    var(--accent-color-start),
+    var(--accent-color-stop)
+  );
+  --placeholder-color: #b1b1b1;
+  --divider-color: #504992;
+}
 
-  @property --rotate {
-    syntax: "<angle>";
-    initial-value: 132deg;
-    inherits: false;
-  }
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
 
 .welcome {
   min-height: 100vh;
@@ -210,4 +210,56 @@ video {
 video::-webkit-media-controls-start-playback-button {
     display: none;
 }
+
+.modal {
+  background: #191c29;
+  width: 90vh;
+  height: 70vh;
+  padding: 3px;
+  position: relative;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.5em;
+  color: rgb(88 199 250 / 0%);
+  font-family: cursive;
+}
+
+.modal::before {
+  content: "";
+  width: 104%;
+  height: 104%;
+  border-radius: 8px;
+  background-image: linear-gradient(
+    var(--rotate)
+    ,#78ffd6 , #19E7AB 43%, #4e00c2);
+    position: absolute;
+    z-index: -1;
+    top: -2%;
+    left: -2%;
+    animation: spin 2.5s linear infinite;
+}
+
+.modal::after {
+  position: absolute;
+  content: "";
+  top: calc(var(--card-height) / 6);
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--card-height) / 6));
+  background-image: linear-gradient(
+    var(--rotate)
+    , #78ffd6 , #19E7AB 43%, #4e00c2);
+    opacity: 1;
+  transition: opacity .5s;
+  animation: spin 2.5s linear infinite;
+}
+
+
 

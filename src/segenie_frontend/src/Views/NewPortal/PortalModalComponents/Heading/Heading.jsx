@@ -5,7 +5,7 @@ const Heading = ({ type = 'primary', children }) => {
   switch (type) {
     case 'primary':
       return (
-        <h1 className="font-poppins text-[#fafafa] mb-3 text-3xl leading-tight font-bold">
+        <h1 className="font-raleway text-[#fafafa] mb-3 text-3xl leading-tight font-bold">
           {children}
         </h1>
       );

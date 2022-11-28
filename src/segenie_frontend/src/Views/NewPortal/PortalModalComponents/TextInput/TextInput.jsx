@@ -11,7 +11,7 @@ const TextInput = ({
 }) => {
   return (
     <input
-      className="py-2 px-4 bg-[#fafafa] rounded font-raleway text-base border-none placeholder:text-[#b1b1b1]"
+      className="py-2 px-4 bg-[#080808] rounded font-raleway text-xl  border-none placeholder:text-[#19E7AB] text-[#19E7AB]"
       type={type}
       value={value}
       name={name}

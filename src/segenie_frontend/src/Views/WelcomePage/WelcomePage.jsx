@@ -18,8 +18,9 @@ const WelcomePage = () => {
               <div className="flex pt-10 space-x-20">
 
                 <div className="flex flex-col ">  
-                  <div class="card">
+                  <div class="card" onClick={portal}>
                     <video  autoplay="autoplay"
+                            loop="loop"
                             muted
                             src="./videos/train.mp4" 
                             alt="train" 
@@ -35,6 +36,7 @@ const WelcomePage = () => {
                 <div className="flex flex-col ">  
                   <div class="card_metaverse">
                     <video  autoplay="autoplay"
+                            loop="loop"
                             muted
                             src="./videos/cyberpunk.mp4" 
                             alt="cyberpunk" 

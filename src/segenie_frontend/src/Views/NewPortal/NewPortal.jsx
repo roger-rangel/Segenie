@@ -59,12 +59,16 @@ const newPortal = () => {
 
   return (
     <>
-      <ModalContainer>{modals[currentModalIndex]}</ModalContainer>
-      {shouldShowLoader && (
-        <Layer>
-          <Loader />
-        </Layer>
-      )}
+      <main className="relative items-center justify-center h-max mb-12">
+        <ModalContainer>{modals[currentModalIndex]}</ModalContainer>
+       
+        {shouldShowLoader && (
+          <Layer>
+            <Loader />
+          </Layer>
+        )}
+      
+      </main>
     </>
   );
 };
