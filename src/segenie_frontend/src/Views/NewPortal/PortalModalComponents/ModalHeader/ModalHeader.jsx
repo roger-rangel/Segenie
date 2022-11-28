@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 
 const ModalHeader = ({ heading, subtitle }) => {
   return (
-    <header className="mb-12">
+    <header className="mt-12 mb-12">
       <Heading type="primary">{heading}</Heading>
-      <p className="font-raleway text-xl text-[#e6e6e6]">{subtitle}</p>
+      <p className="mt-12 mx-6 font-raleway text-xl text-[#e6e6e6]">{subtitle}</p>
     </header>
   );
 };

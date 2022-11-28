@@ -9,8 +9,12 @@ module.exports = {
         'raleway': 'Raleway'
       },
       maxWidth: {
-        '1/2': '300px',       }
+        '1/2': '300px',       
+      },
     },
+    colors: {
+
+    }
   },
   plugins: [],
 }

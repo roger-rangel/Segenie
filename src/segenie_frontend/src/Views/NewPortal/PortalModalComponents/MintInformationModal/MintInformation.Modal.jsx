@@ -22,9 +22,8 @@ const MintInformationModal = ({
 
   const footerButtons = [
     <Button
-      label="Previous"
+      label="Back"
       Icon={LeftArrow}
-      fill="transparent"
       order="reverse"
       onClick={onClickPreviousButton}
     />,

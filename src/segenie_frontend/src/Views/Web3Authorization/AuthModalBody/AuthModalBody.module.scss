@@ -1,22 +1,4 @@
-:root {
-    --primary-font-color: #fafafa;
-    --secondary-font-color: #e6e6e6;
-    --primary-background-color: #18162c;
-    --secondary-background-color: #252041;
-    --accent-color-start: #21d4fd;
-    --accent-color-stop: #b721ff;
-    --accent-color: linear-gradient(
-      90deg,
-      var(--accent-color-start),
-      var(--accent-color-stop)
-    );
-    --placeholder-color: #b1b1b1;
-    --divider-color: #504992;
-  }
-  
-  // TODO: SCSS code has to be moved somewhere else as soon as the project architecture has been properly defined and refactoring of the project has begun
-  
-  // CODE TO BE MOVED START
+  // MOVE TO MAIN.CSS / FIX TAILWIND AND SCSS CONFLICTS AND CSS STRUCTURE OF DAPP
   
   $grid-breakpoints: (
     'xs': 0,

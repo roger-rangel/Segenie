@@ -5,6 +5,7 @@
     justify-content: center;
     border-radius: 0.25rem;
     border: none;
+    min-width: 8em;
   
     &:not(:disabled) {
       cursor: pointer;
