@@ -39,7 +39,6 @@ MintResultModal.propTypes = {
   heading: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
   mintResult: PropTypes.exact(mintResultPropTypes).isRequired,
-  onClickRemixStudioButton: PropTypes.func,
 };
 
 export default MintResultModal;

@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 
 const Button = ({
   label,
-  imgSrc,
   fill = 'opaque',
   order = 'normal',
   isDisabled = false,
@@ -20,14 +19,12 @@ const Button = ({
       onClick={onClick}
     >
       <span className={classnames(styles.label, styles[fill])}>{label}</span>
-      <img src={imgSrc} alt="" />
     </button>
   );
 };
 
 export const propTypes = {
   label: PropTypes.string.isRequired,
-  imgSrc: PropTypes.string.isRequired,
   fill: PropTypes.oneOf(['opaque', 'transparent']),
   order: PropTypes.oneOf(['normal', 'reverse']),
   isDisabled: PropTypes.bool, 
