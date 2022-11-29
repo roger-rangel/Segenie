@@ -5,14 +5,14 @@ import MintResultCard, {
 } from '../MintResultCard/MintResultCard';
 import Heading from '../Heading/Heading';
 import Description from '../Description/Description';
-import { FacebookIcon } from '../../../../../assets/icons/facebook-icon.svg';
+import Facebook from '../../../../../assets/img/facebook.png';
 import { TwitterIcon } from '../../../../../assets/icons/twitter-icon.svg';
 import { InstagramIcon } from '../../../../../assets/icons/instagram-icon.svg';
 
 const MintResultModalBody = ({ mintResult }) => {
   const shareOptions = [
     {
-      Icon: FacebookIcon,
+      Icon: Facebook,
       linkURL: 'https://facebook.com',
     },
     {
@@ -26,32 +26,26 @@ const MintResultModalBody = ({ mintResult }) => {
   ];
 
   return (
-    <div className="flex flex-wrap gap-8">
-      <div className="flex-[2] min-w-[200px] max-w-[300px] my-0 mx-auto">
+    <div className="mx-32 flex justify-between">
+      <div className=" min-w-[150px] max-w-[300px]">
         <MintResultCard mintResult={mintResult} />
       </div>
-      <div className="flex-1 min-w-[200px] text-left">
+      <div>
         <Heading type="tertiary">What's next?</Heading>
         <Description className="mb-1">
           Show it to the world.
         </Description>
-        <div className="flex gap-3">
-          {/* {shareOptions.map(({ Icon, linkURL }, index) => (
-            //TODO: Translate the code below into Tailwind CSS style
-            // .link:not(:disabled) {
-            //     cursor: pointer;
-            //     transition: filter 0.125s ease-in-out;
-              
-            //     &:hover {
-            //       filter: brightness(0.7);
-            //     }
-            //   }
-            <a key={index} className="&:not(disabled)]:cursos-pointer &:not(disabled)]:transition-filter" href={linkURL}>
-              <Icon className="w-[40px] h-[40px]" />
-            </a>
-          ))} */}
+        <div className="flex items-center justify-between mx-4">
+          <div className="flex flex-col items-center mt-10 ">
+            <img src="./img/facebook.png" alt="" className="h-12 w-12 mb-6"/>
+            <img src="./img/instagram.png" alt="" className="h-12 w-12"/>
+          </div>
+          <div className="flex flex-col items-center mt-10 ">
+            <img src="./img/twitter.png" alt="" className="h-12 w-12 mb-6"/>
+            <img src="./img/dscvr.png" alt="" className="h-12 w-12"/>
+          </div>
         </div>
-      </div>
+      </div> 
     </div>
   );
 };

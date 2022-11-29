@@ -9,8 +9,8 @@ import NewPortalFirstModal from './PortalModalComponents/NewPortalFirstModal/New
 const newPortal = () => {
   const [currentModalIndex, setCurrentModalIndex] = useState(0);
   const [portal, setPortal] = useState({
-    name: '',
-    description: '',
+    name: 'Portal X',
+    description: 'Portal X can give you access to X Metaverse',
   });
   useEffect(() => {
     console.log('Portal', portal);
@@ -31,8 +31,9 @@ const newPortal = () => {
   const onClickMintButton = async ({ name, description }) => {
     try {
       let res = await createPortal(name, description, "");
-      alert(res);
+      // alert(res);
       setPortal({name, description});
+      showNextModal();
     } catch (error) {
       console.error(error);
     } finally {
