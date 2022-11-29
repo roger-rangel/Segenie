@@ -5,11 +5,11 @@ import MintResultCard, {
 } from '../MintResultCard/MintResultCard';
 import Heading from '../Heading/Heading';
 import Description from '../Description/Description';
-import { ReactComponent as FacebookIcon } from '../../../../../assets/icons/facebook-icon.svg';
-import { ReactComponent as TwitterIcon } from '../../../../../assets/icons/twitter-icon.svg';
-import { ReactComponent as InstagramIcon } from '../../../../../assets/icons/instagram-icon.svg';
+import { FacebookIcon } from '../../../../../assets/icons/facebook-icon.svg';
+import { TwitterIcon } from '../../../../../assets/icons/twitter-icon.svg';
+import { InstagramIcon } from '../../../../../assets/icons/instagram-icon.svg';
 
-const MintResultModalBody = ({ mintResult, onClickRemixStudioButton }) => {
+const MintResultModalBody = ({ mintResult }) => {
   const shareOptions = [
     {
       Icon: FacebookIcon,
@@ -36,7 +36,7 @@ const MintResultModalBody = ({ mintResult, onClickRemixStudioButton }) => {
           Show it to the world.
         </Description>
         <div className="flex gap-3">
-          {shareOptions.map(({ Icon, linkURL }, index) => (
+          {/* {shareOptions.map(({ Icon, linkURL }, index) => (
             //TODO: Translate the code below into Tailwind CSS style
             // .link:not(:disabled) {
             //     cursor: pointer;
@@ -49,7 +49,7 @@ const MintResultModalBody = ({ mintResult, onClickRemixStudioButton }) => {
             <a key={index} className="&:not(disabled)]:cursos-pointer &:not(disabled)]:transition-filter" href={linkURL}>
               <Icon className="w-[40px] h-[40px]" />
             </a>
-          ))}
+          ))} */}
         </div>
       </div>
     </div>
@@ -57,8 +57,7 @@ const MintResultModalBody = ({ mintResult, onClickRemixStudioButton }) => {
 };
 
 MintResultModalBody.propTypes = {
-  mintResult: PropTypes.exact(mintResultPropTypes).isRequired,
-  onClickRemixStudioButton: PropTypes.func,
+  mintResult: PropTypes.exact(mintResultPropTypes).isRequired
 };
 
 export default MintResultModalBody;

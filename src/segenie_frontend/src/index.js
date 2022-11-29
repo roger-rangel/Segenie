@@ -25,9 +25,7 @@ import NavProvider from "./components/NavProvider";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
  root.render(
-    // <Connect2ICProvider providers={[InternetIdentity]}>
-    //   <Web3AuthProvider>
-    //     <NavProvider>
+
           <Router>
             <Routes>
             <Route path="/" element={<App />}>
@@ -38,7 +36,5 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
               </Route> 
             </Routes>
           </Router>,
-        {/* </NavProvider>
-      </Web3AuthProvider>
-    </Connect2ICProvider> */}
+
 );

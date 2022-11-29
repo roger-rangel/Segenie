@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import useNewPortal from '../../Hooks/useNewPortal';
 import ModalContainer from './PortalModalComponents/ModalContainer/ModalContainer';
@@ -12,6 +12,11 @@ const newPortal = () => {
     name: '',
     description: '',
   });
+
+  useEffect(() => {
+    console.log('Portal', portal);
+  }, [portal])
+
   const [shouldShowLoader, setShouldShowLoader] = useState(false);
 
   const showPreviousModal = () => setCurrentModalIndex(currentModalIndex - 1);
@@ -29,12 +34,8 @@ const newPortal = () => {
       //setShouldShowLoader(true);
       let res = await useNewPortal().createPortal(name, description, "");
       alert(res);
-      //showNextModal();
-      setPortal({
-        ...portal,
-        name,
-        description,
-      });
+      showNextModal();
+      setPortal({name, description});
     } catch (error) {
       console.error(error);
     } finally {
