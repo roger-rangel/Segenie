@@ -7,7 +7,7 @@ import MintInformationModal from './PortalModalComponents/MintInformationModal/M
 import NewPortalFirstModal from './PortalModalComponents/NewPortalFirstModal/NewPortalFirstModal';
 
 const newPortal = () => {
-  const [currentModalIndex, setCurrentModalIndex] = useState(2);
+  const [currentModalIndex, setCurrentModalIndex] = useState(0);
   const [portal, setPortal] = useState({
     name: 'Portal X',
     description: 'Portal X can give you access to X Metaverse',
@@ -31,8 +31,9 @@ const newPortal = () => {
   const onClickMintButton = async ({ name, description }) => {
     try {
       let res = await createPortal(name, description, "");
-      alert(res);
+      // alert(res);
       setPortal({name, description});
+      showNextModal();
     } catch (error) {
       console.error(error);
     } finally {

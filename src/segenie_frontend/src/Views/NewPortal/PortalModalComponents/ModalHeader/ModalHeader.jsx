@@ -13,6 +13,6 @@ const ModalHeader = ({ heading, subtitle }) => {
 
 ModalHeader.propTypes = {
   heading: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
 };
 export default ModalHeader;

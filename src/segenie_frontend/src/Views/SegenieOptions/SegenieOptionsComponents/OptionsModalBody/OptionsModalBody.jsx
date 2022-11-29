@@ -8,7 +8,6 @@ import Link from '../../../NewPortal/PortalModalComponents/Link/Link';
 
 //TODO add Icons as SVG
 import { ReactComponent as StickerIcon } from '../../../../../assets/icons/sticker-icon-white.svg';
-import  Ball  from '../../../../../assets/gifs/ball.gif';
 
 import React from 'react';
 
