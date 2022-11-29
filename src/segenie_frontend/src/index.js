@@ -25,7 +25,6 @@ import NavProvider from "./components/NavProvider";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
  root.render(
-
           <Router>
             <Routes>
             <Route path="/" element={<App />}>
@@ -36,5 +35,4 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
               </Route> 
             </Routes>
           </Router>,
-
 );

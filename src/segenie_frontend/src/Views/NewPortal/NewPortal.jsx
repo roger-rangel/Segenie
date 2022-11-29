@@ -7,10 +7,10 @@ import MintInformationModal from './PortalModalComponents/MintInformationModal/M
 import NewPortalFirstModal from './PortalModalComponents/NewPortalFirstModal/NewPortalFirstModal';
 
 const newPortal = () => {
-  const [currentModalIndex, setCurrentModalIndex] = useState(0);
+  const [currentModalIndex, setCurrentModalIndex] = useState(2);
   const [portal, setPortal] = useState({
-    name: '',
-    description: '',
+    name: 'Portal X',
+    description: 'Portal X can give you access to X Metaverse',
   });
 
   useEffect(() => {

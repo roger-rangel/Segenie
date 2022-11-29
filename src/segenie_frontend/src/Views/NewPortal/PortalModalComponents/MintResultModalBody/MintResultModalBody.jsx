@@ -26,32 +26,14 @@ const MintResultModalBody = ({ mintResult }) => {
   ];
 
   return (
-    <div className="flex flex-wrap gap-8">
-      <div className="flex-[2] min-w-[200px] max-w-[300px] my-0 mx-auto">
+    <div className="mx-auto flex justify-center">
+      <div className=" min-w-[150px] max-w-[300px]">
         <MintResultCard mintResult={mintResult} />
       </div>
-      <div className="flex-1 min-w-[200px] text-left">
-        <Heading type="tertiary">What's next?</Heading>
-        <Description className="mb-1">
-          Show it to the world.
-        </Description>
-        <div className="flex gap-3">
-          {/* {shareOptions.map(({ Icon, linkURL }, index) => (
-            //TODO: Translate the code below into Tailwind CSS style
-            // .link:not(:disabled) {
-            //     cursor: pointer;
-            //     transition: filter 0.125s ease-in-out;
-              
-            //     &:hover {
-            //       filter: brightness(0.7);
-            //     }
-            //   }
-            <a key={index} className="&:not(disabled)]:cursos-pointer &:not(disabled)]:transition-filter" href={linkURL}>
-              <Icon className="w-[40px] h-[40px]" />
-            </a>
-          ))} */}
-        </div>
-      </div>
+      <Heading type="tertiary">What's next?</Heading>
+      <Description className="mb-1">
+        Show it to the world.
+      </Description>
     </div>
   );
 };

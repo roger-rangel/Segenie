@@ -16,8 +16,8 @@ const MintResultModal = ({
   mintResult,
 }) => {
   const footerButtons = [
-    <Link to="/segenie-options">
-      <Button label="MakeAgain" Icon={MakeAgainIcon} fill="transparent" order="reverse" />
+    <Link to="/portal">
+      <Button label="New Portal" Icon={MakeAgainIcon}  order="reverse" />
     </Link>,
     <Link to="/">
       <Button label="Finish" Icon={VerifyIcon} />
@@ -25,7 +25,7 @@ const MintResultModal = ({
   ];
 
   return (
-    <Modal>
+    <Modal className="">
       <ModalHeader heading={heading} subtitle={subtitle} />
       <MintResultModalBody
         mintResult={mintResult}
