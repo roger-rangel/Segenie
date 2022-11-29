@@ -12,7 +12,7 @@ const newPortal = () => {
     name: '',
     description: '',
   });
-  const [shouldShowLoader, setShouldShowLoader] = useState(false);
+  const { createPortal } = useNewPortal();
 
   const showPreviousModal = () => setCurrentModalIndex(currentModalIndex - 1);
   const showNextModal = () => setCurrentModalIndex(currentModalIndex + 1);
@@ -26,10 +26,8 @@ const newPortal = () => {
 
   const onClickMintButton = async ({ name, description }) => {
     try {
-      //setShouldShowLoader(true);
-      let res = await useNewPortal().createPortal(name, description, "");
+      let res = await createPortal(name, description, "");
       alert(res);
-      //showNextModal();
       setPortal({
         ...portal,
         name,
@@ -38,7 +36,6 @@ const newPortal = () => {
     } catch (error) {
       console.error(error);
     } finally {
-      //setShouldShowLoader(false);
     }
   };
 
@@ -60,14 +57,7 @@ const newPortal = () => {
   return (
     <>
       <main className="relative items-center justify-center h-max mb-12">
-        <ModalContainer>{modals[currentModalIndex]}</ModalContainer>
-       
-        {shouldShowLoader && (
-          <Layer>
-            <Loader />
-          </Layer>
-        )}
-      
+        <ModalContainer>{modals[currentModalIndex]}</ModalContainer> 
       </main>
     </>
   );
