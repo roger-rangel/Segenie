@@ -1,12 +1,12 @@
 import React from 'react';
 import AuthModal from './AuthModal/AuthModal';
-import ModalContainer from '../NewPortal/PortalModalComponents/ModalContainer/ModalContainer';
+import MainWrapper from '../../components/MainWrapper/MainWrapper';
 
 const Auth = () => {
   return (
-    <ModalContainer>
+    <MainWrapper>
       <AuthModal />
-    </ModalContainer>
+    </MainWrapper>
   );
 };
 export default Auth;

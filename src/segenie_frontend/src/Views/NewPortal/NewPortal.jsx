@@ -1,13 +1,15 @@
 import React, {useState, useEffect} from 'react';
 
 import useNewPortal from '../../Hooks/useNewPortal';
-import ModalContainer from './PortalModalComponents/ModalContainer/ModalContainer';
-import MintResultModal from './PortalModalComponents/MintResultModal/MintResultModal';
-import MintInformationModal from './PortalModalComponents/MintInformationModal/MintInformation.Modal';
-import NewPortalFirstModal from './PortalModalComponents/NewPortalFirstModal/NewPortalFirstModal';
+
+import FirstPage from './PortalModalComponents/FirstPage/FirstPage';
+import SecondPage from './PortalModalComponents/SecondPage/SecondPage';
+import ThirdPage from './PortalModalComponents/ThirdPage/ThirdPage';
+
+import MainWrapper from '../../components/MainWrapper/MainWrapper';
 
 const newPortal = () => {
-  const [currentModalIndex, setCurrentModalIndex] = useState(0);
+  const [pageIndex, setPageIndex] = useState(0);
   const [portal, setPortal] = useState({
     name: 'Portal X',
     description: 'Portal X can give you access to X Metaverse',
@@ -18,11 +20,11 @@ const newPortal = () => {
 
   const { createPortal } = useNewPortal();
 
-  const showPreviousModal = () => setCurrentModalIndex(currentModalIndex - 1);
-  const showNextModal = () => setCurrentModalIndex(currentModalIndex + 1);
+  const showPreviousPage = () => setPageIndex(pageIndex - 1);
+  const showNextPage = () => setPageIndex(pageIndex + 1);
 
   const onClickNextButton = async (imageDataURL) => {
-    showNextModal();
+    showNextPage();
     setPortal({
       ...portal,
     });
@@ -33,22 +35,22 @@ const newPortal = () => {
       let res = await createPortal(name, description, "");
       // alert(res);
       setPortal({name, description});
-      showNextModal();
+      showNextPage();
     } catch (error) {
       console.error(error);
     } finally {
     }
   };
 
-  const modals = [
-    <NewPortalFirstModal onClickNextButton={onClickNextButton} />,
-    <MintInformationModal
+  const pages = [
+    <FirstPage onClickNextButton={onClickNextButton} />,
+    <SecondPage
       heading="Portal creation"
       subtitle="Create a portal that can give special access to hidden places inside the Metaverse"
-      onClickPreviousButton={showPreviousModal}
+      goBack={showPreviousPage}
       onClickMintButton={onClickMintButton}
     />,
-    <MintResultModal
+    <ThirdPage
       heading="Amazing! A new Portal has been created!"
       subtitle="Time to discover new worlds inside the Metaverse"
       mintResult={portal}
@@ -58,7 +60,7 @@ const newPortal = () => {
   return (
     <>
       <main className="relative items-center justify-center h-max mb-12">
-        <ModalContainer>{modals[currentModalIndex]}</ModalContainer> 
+        <MainWrapper>{pages[pageIndex]}</MainWrapper> 
       </main>
     </>
   );

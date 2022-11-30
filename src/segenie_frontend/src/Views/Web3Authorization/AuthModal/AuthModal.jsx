@@ -5,8 +5,8 @@ import SignInModalBody from '../AuthModalBody/AuthModalBody';
 import Layer from '../../../components/Layer/Layer';
 import Loader from '../../../components/Loader/Loader';
 import useWeb3Identity from '../../../Hooks/useWeb3Identity';
-import Modal from '../../NewPortal/PortalModalComponents/Modal/Modal';
-import ModalHeader from '../../NewPortal/PortalModalComponents/ModalHeader/ModalHeader';
+import Page from '../../../components/Page/Page';
+import PageTitle from '../../NewPortal/PortalModalComponents/PageTitle/PageTitle';
 
 const AuthModal = () => {
   const [signInData, setSignInData] = useState({
@@ -60,8 +60,8 @@ const AuthModal = () => {
 
   return (
     <>
-      <Modal>
-        <ModalHeader
+      <Page>
+        <PageTitle
           heading="Web 3 Authentication"
           subtitle="Enter Web3 to enjoy Segenie"
         />
@@ -72,7 +72,7 @@ const AuthModal = () => {
           onSubmitSignInForm={onSubmitSignInForm}
           onClickConnectWalletButton={onClickConnectWalletButton}
         />
-      </Modal>
+      </Page>
       {shouldShowLoader && (
         <Layer>
           <Loader />

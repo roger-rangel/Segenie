@@ -1,12 +1,12 @@
 import React from 'react';
-import ModalContainer from '../NewPortal/PortalModalComponents/ModalContainer/ModalContainer';
+import MainWrapper from '../../components/MainWrapper/MainWrapper';
 import OptionsModal from './SegenieOptionsComponents/OptionsModal/OptionsModal';
 
 const SegenieOptions = () => {
   return (
-    <ModalContainer>
+    <MainWrapper>
       <OptionsModal />,
-    </ModalContainer>
+    </MainWrapper>
   );
 };
 export default SegenieOptions;

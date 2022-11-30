@@ -8,8 +8,8 @@ import { useProviders } from '@connect2ic/react';
 
 //Components
 import Button from '../../../components/Button/Button';
-import Heading from '../../NewPortal/PortalModalComponents/Heading/Heading';
-import TextInput from '../../NewPortal/PortalModalComponents/TextInput/TextInput';
+import Title from '../../../components/Title/Title';
+import UserInput from '../../NewPortal/PortalModalComponents/UserInput/UserInput';
 import Description from '../../NewPortal/PortalModalComponents/Description/Description';
 
 //Icons
@@ -43,7 +43,7 @@ const AuthModalBody = ({
       case 'sign-in':
         return (
           <>
-            <Heading type="secondary">Sign in</Heading>
+            <Title type="secondary">Sign in</Title>
             <div className={styles.signUpNoteContainer}>
               <Description>
                 No account yet?{' '}
@@ -56,13 +56,13 @@ const AuthModalBody = ({
               </Description>
             </div>
             <form className={styles.form} onSubmit={onSubmitSignInForm}>
-              <TextInput
+              <UserInput
                 placeholder="Username"
                 name="username"
                 isRequired={true}
                 onChange={onChangeInput}
               />
-              <TextInput
+              <UserInput
                 placeholder="Password"
                 name="password"
                 isRequired={true}
@@ -83,7 +83,7 @@ const AuthModalBody = ({
       case 'sign-up':
         return (
           <>
-            <Heading type="secondary">Sign up</Heading>
+            <Title type="secondary">Sign up</Title>
             <div className={styles.signUpNoteContainer}>
               <Description>
                 Already got an account?{' '}
@@ -96,13 +96,13 @@ const AuthModalBody = ({
               </Description>
             </div>
             <form className={styles.form} onSubmit={onSubmitSignUpForm}>
-              <TextInput
+              <UserInput
                 placeholder="Username"
                 name="username"
                 isRequired={true}
                 onChange={onChangeInput}
               />
-              <TextInput
+              <UserInput
                 placeholder="Password"
                 name="password"
                 isRequired={true}
@@ -128,7 +128,7 @@ const AuthModalBody = ({
   return (
     <div className={styles.authModalBody}>
       <div className={styles.walletConnectContainer}>
-        <Heading type="secondary">Connect wallet</Heading>
+        <Title type="secondary">Connect wallet</Title>
         {providers.map(({ id, name }) => (
           <div key={id}>
             <Button

@@ -1,7 +1,7 @@
 import { createActor } from "../../../declarations/segenie_backend/index";
 
 const useNewPortal = () => {
-  const canisterId = "ooyw6-eqaaa-aaaap-qavrq-cai";
+  const canisterId = "rrkah-fqaaa-aaaaa-aaaaq-cai";
   const actor = createActor(canisterId);
 
   const getAllPortals = async () => {

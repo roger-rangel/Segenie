@@ -211,7 +211,7 @@ video::-webkit-media-controls-start-playback-button {
     display: none;
 }
 
-.modal {
+.page {
   background: #191c29;
   width: 90vh;
   height: 70vh;
@@ -226,7 +226,7 @@ video::-webkit-media-controls-start-playback-button {
   font-family: cursive;
 }
 
-.modal::before {
+.page::before {
   content: "";
   width: 104%;
   height: 104%;
@@ -241,7 +241,7 @@ video::-webkit-media-controls-start-playback-button {
     animation: spin 2.5s linear infinite;
 }
 
-.modal::after {
+.page::after {
   position: absolute;
   content: "";
   top: calc(var(--card-height) / 6);

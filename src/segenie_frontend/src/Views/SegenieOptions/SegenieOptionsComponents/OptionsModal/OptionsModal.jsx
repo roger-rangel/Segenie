@@ -1,19 +1,19 @@
 import React from 'react';
 
 // Modal Components
+import Page from '../../../../components/Page/Page';
 import OptionsModalBody from '../OptionsModalBody/OptionsModalBody';
-import Modal from '../../../NewPortal/PortalModalComponents/Modal/Modal';
-import ModalHeader from '../../../NewPortal/PortalModalComponents/ModalHeader/ModalHeader';
+import PageTitle from '../../../NewPortal/PortalModalComponents/PageTitle/PageTitle';
 
 const OptionsModal = () => {
   return (
-    <Modal>
-      <ModalHeader
+    <Page>
+      <PageTitle
         heading="Discover the Metaverse through Portals, Communities, and More"
         subtitle="Are you ready to discover new Virtual Worlds?"
       />
       <OptionsModalBody />
-    </Modal>
+    </Page>
   );
 };
 

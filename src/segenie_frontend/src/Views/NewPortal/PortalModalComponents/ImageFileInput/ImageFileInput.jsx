@@ -1,9 +1,9 @@
 import React from 'react';
+import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import AspectRatio from '../AspectRatio/AspectRatio';
 import { ReactComponent as CloseIcon } from '../../../../../assets/icons/close-icon.svg';
 import { ReactComponent as ImageIcon } from '../../../../../assets/icons/image-icon.svg';
-import { useRef } from 'react';
 
 const ImageFileInput = ({ imageDataURL, setImageDataURL }) => {
   const fileInputRef = useRef(null);
