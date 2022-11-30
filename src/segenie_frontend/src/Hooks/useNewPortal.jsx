@@ -1,7 +1,7 @@
 import { createActor } from "../../../declarations/segenie_backend/index";
 
 const useNewPortal = () => {
-  const canisterId = "rrkah-fqaaa-aaaaa-aaaaq-cai";
+  const canisterId = "ooyw6-eqaaa-aaaap-qavrq-cai";
   const actor = createActor(canisterId);
 
   const getAllPortals = async () => {
@@ -15,7 +15,7 @@ const useNewPortal = () => {
     }
   };
 
-  const createPortal = async (name, description, imageDataURL) => {
+  const createPortal = async ( name, description, imageDataURL ) => {
     console.log("Creating a portal.")
     try {
       if(imageDataURL)

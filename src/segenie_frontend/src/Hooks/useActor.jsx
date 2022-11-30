@@ -1,7 +1,4 @@
 import { useState } from 'react';
-//with Motoko, you import these from declarations, I am not quire sure how to do it in Rust...
-// import { createActor as createActorDev } from '../declarations/ClientApiDev';
-// import { createActor as createActorProd } from '../declarations/ClientApiProd';
 
 const useActor = () => {
   const defaultActor = createActor();
