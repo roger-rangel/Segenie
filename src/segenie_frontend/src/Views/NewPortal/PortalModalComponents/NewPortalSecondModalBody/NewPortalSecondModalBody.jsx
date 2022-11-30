@@ -14,14 +14,9 @@ const NewPortalSecondModalBody = ({ mintInformation, setMintInformation }) => {
   return (
     <div>
       <Heading type="secondary"></Heading>
-      {/* TODO: ADD THIS CSS BELOW */}
-      {/* grid-template-areas:
-        'textInput1 textInput2'
-        'textArea textArea'; */}
       <div className="grid grid-cols-1 gap-2 mx-10">
         <TextInput className="" placeholder="Name" name="name" onChange={onChangeInput} />
         <textarea
-        //TODO: ADD THIS BELOW WITH TAILWIND CSS ===>  grid-area: textArea;
           className="py-2 px-4 bg-[#080808] rounded font-raleway text-xl 
                     border-none resize-none placeholder:text-[#19E7AB] text-[#19E7AB]"
           rows="5"

@@ -1,29 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import MintResultCard, {
   mintResultPropTypes,
 } from '../MintResultCard/MintResultCard';
+
 import Heading from '../Heading/Heading';
 import Description from '../Description/Description';
-import Facebook from '../../../../../assets/img/facebook.png';
-import { TwitterIcon } from '../../../../../assets/icons/twitter-icon.svg';
-import { InstagramIcon } from '../../../../../assets/icons/instagram-icon.svg';
 
 const MintResultModalBody = ({ mintResult }) => {
-  const shareOptions = [
-    {
-      Icon: Facebook,
-      linkURL: 'https://facebook.com',
-    },
-    {
-      Icon: InstagramIcon,
-      linkURL: 'https://instagram.com',
-    },
-    {
-      Icon: TwitterIcon,
-      linkURL: 'https://twitter.com',
-    },
-  ];
 
   return (
     <div className="mx-32 flex justify-between">
