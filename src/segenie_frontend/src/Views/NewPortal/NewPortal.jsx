@@ -2,9 +2,9 @@ import React, {useState, useEffect} from 'react';
 
 import useNewPortal from '../../Hooks/useNewPortal';
 
-import FirstPage from './PortalModalComponents/FirstPage/FirstPage';
-import SecondPage from './PortalModalComponents/SecondPage/SecondPage';
-import ThirdPage from './PortalModalComponents/ThirdPage/ThirdPage';
+import FirstPage from './PortalComponents/FirstPage/FirstPage';
+import SecondPage from './PortalComponents/SecondPage/SecondPage';
+import ThirdPage from './PortalComponents/ThirdPage/ThirdPage';
 
 import MainWrapper from '../../components/MainWrapper/MainWrapper';
 

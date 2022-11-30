@@ -3,7 +3,7 @@ import React from 'react';
 // Modal Components
 import Page from '../../../../components/Page/Page';
 import OptionsModalBody from '../OptionsModalBody/OptionsModalBody';
-import PageTitle from '../../../NewPortal/PortalModalComponents/PageTitle/PageTitle';
+import PageTitle from '../../../NewPortal/PortalComponents/PageTitle/PageTitle';
 
 const OptionsModal = () => {
   return (

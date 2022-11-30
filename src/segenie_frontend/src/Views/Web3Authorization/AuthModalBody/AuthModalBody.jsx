@@ -9,8 +9,8 @@ import { useProviders } from '@connect2ic/react';
 //Components
 import Button from '../../../components/Button/Button';
 import Title from '../../../components/Title/Title';
-import UserInput from '../../NewPortal/PortalModalComponents/UserInput/UserInput';
-import Description from '../../NewPortal/PortalModalComponents/Description/Description';
+import UserInput from '../../NewPortal/PortalComponents/UserInput/UserInput';
+import Description from '../../NewPortal/PortalComponents/Description/Description';
 
 //Icons
 import { ReactComponent as SignInIcon } from '../../../../assets/icons/sign-in-icon.svg';

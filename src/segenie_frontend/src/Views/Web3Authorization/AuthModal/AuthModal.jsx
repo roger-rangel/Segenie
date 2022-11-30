@@ -6,7 +6,7 @@ import Layer from '../../../components/Layer/Layer';
 import Loader from '../../../components/Loader/Loader';
 import useWeb3Identity from '../../../Hooks/useWeb3Identity';
 import Page from '../../../components/Page/Page';
-import PageTitle from '../../NewPortal/PortalModalComponents/PageTitle/PageTitle';
+import PageTitle from '../../NewPortal/PortalComponents/PageTitle/PageTitle';
 
 const AuthModal = () => {
   const [signInData, setSignInData] = useState({

@@ -2,8 +2,8 @@
 import Button from '../../../../components/Button/Button';
 import Separator from '../../../../components/Separator/Separator';
 
-import Description from '../../../NewPortal/PortalModalComponents/Description/Description';
-import Link from '../../../NewPortal/PortalModalComponents/Link/Link';
+import Description from '../../../NewPortal/PortalComponents/Description/Description';
+import Link from '../../../NewPortal/PortalComponents/Link/Link';
 
 import React from 'react';
 
