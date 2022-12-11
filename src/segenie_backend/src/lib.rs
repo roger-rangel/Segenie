@@ -21,7 +21,9 @@ fn update_portal_metadata(
     description: String,
     image_url: Option<String>,
 ) -> String {
-    match portals::do_update_metadata(id, name, description, image_url) {
+    let caller = ic_cdk::api::caller();
+
+    match portals::do_update_metadata(caller, id, name, description, image_url) {
         Ok(_) => format!("Metadata updated successfully."),
         Err(e) => format!("Error while updating metadata: {:?}", e),
     }
@@ -56,4 +58,13 @@ fn get_portals_of_creator(creator: Principal) -> Vec<Portal> {
 fn get_portals_of_caller() -> Vec<Portal> {
     let caller = ic_cdk::api::caller();
     portals::do_get_portals_of_creator(caller)
+}
+
+#[update]
+fn mint_portal(portal: PortalId, receiver: Principal) -> String {
+    let caller = ic_cdk::api::caller();
+    match portals::do_mint_portal(caller, portal, receiver) {
+        Ok(_) => format!("Portal minted successfully."),
+        Err(e) => format!("Error while minting portal: {:?}", e),
+    }
 }
