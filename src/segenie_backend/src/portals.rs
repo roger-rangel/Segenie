@@ -271,18 +271,40 @@ mod tests {
 
     #[test]
     fn updating_portal_metadata_fails_when_not_called_by_creator() {
-        let caller = Principal::default();
-        let new_name = String::from("New name");
-        let new_desc = String::from("New description");
-        let new_image_url = Some(String::from("https::/domain.com/image.jpg"));
+        let creator = get_creator();
+        let portal_name = String::from("portal1");
+        let portal_desc = String::from("A basic portal.");
+        let image_url = None;
+
+        do_create_portal(
+            creator,
+            portal_name.clone(),
+            portal_desc.clone(),
+            image_url.clone(),
+        );
 
         assert_eq!(
+            do_get_portal(Nat::from(0)),
+            Some(Portal {
+                id: Nat::from(0),
+                creator: creator.clone(),
+                name: portal_name,
+                description: portal_desc,
+                image_url,
+            })
+        );
+
+        let new_name = String::from("New name");
+        let new_desc = String::from("New description");
+        let new_image_url = Some(String::from("https://domain.com/image.jpg"));
+        assert_eq!(
             do_update_metadata(
-                caller,
+                // the default principal is not allowed to make this call.
+                get_default_principal(),
                 Nat::from(0),
                 new_name.clone(),
                 new_desc.clone(),
-                new_image_url
+                new_image_url.clone()
             ),
             Err(Error::NotAllowed)
         );
@@ -322,5 +344,9 @@ mod tests {
     fn get_creator() -> Principal {
         Principal::from_text("arlij-g2zpo-epfot-36ufg-vm4gj-3j4tj-rsjjt-fsv2m-sp4z7-nnk6b-lqe")
             .unwrap()
+    }
+
+    fn get_default_principal() -> Principal {
+        Principal::from_text("2vxsx-fae").unwrap()
     }
 }
