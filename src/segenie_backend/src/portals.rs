@@ -31,7 +31,9 @@ pub struct Portal {
 
 /// Maps `PortalId` to the specific Portal.
 type PortalStore = BTreeMap<PortalId, Portal>;
+/// Maps the creators to their portals.
 type CreatorPortalsStore = BTreeMap<Principal, Vec<PortalId>>;
+/// Maps users to their owned instances of portals.
 type PortalsOfStore = BTreeMap<Principal, Vec<PortalId>>;
 
 thread_local! {
@@ -78,6 +80,8 @@ pub fn do_create_portal(
 }
 
 /// Updates the metadata of the given portal.
+///
+/// This call is only allowed for the creator of the specified portal.
 pub fn do_update_metadata(
     caller: Principal,
     id: PortalId,
@@ -126,6 +130,7 @@ pub fn do_get_portal(id: PortalId) -> Option<Portal> {
     })
 }
 
+/// Get all the portals that were created by the specified creator.
 pub fn do_get_portals_of_creator(creator: Principal) -> Vec<Portal> {
     let mut portal_ids: Vec<PortalId> = vec![];
 
@@ -144,6 +149,9 @@ pub fn do_get_portals_of_creator(creator: Principal) -> Vec<Portal> {
     portals
 }
 
+/// Mints a new instance of a created portal
+///
+/// This call is only allowed for the creator of the specified portal.
 pub fn do_mint_portal(
     caller: Principal,
     portal: PortalId,
