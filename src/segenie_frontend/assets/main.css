@@ -13,7 +13,7 @@ body {
   --secondary-font-color: #e6e6e6;
   --primary-background-color: #18162c;
   --secondary-background-color: #252041;
-  --accent-color-start: #38ef7d ;
+  --accent-color-start: #38ef7d;
   --accent-color-stop: #11998e;
   --accent-color: linear-gradient(
     90deg,
@@ -25,7 +25,7 @@ body {
 }
 
 @property --rotate {
-  syntax: "<angle>";
+  syntax: '<angle>';
   initial-value: 132deg;
   inherits: false;
 }
@@ -75,31 +75,37 @@ body {
   display: flex;
   pointer-events: none;
 }
-.card:hover:before, .card:hover:after {
+.card:hover:before,
+.card:hover:after {
   background-image: linear-gradient(
-    var(--rotate)
-    , #fc6767, #ec008c 43%, #FBD3E9);
+    var(--rotate),
+    #fc6767,
+    #ec008c 43%,
+    #fbd3e9
+  );
 }
 
 .card::before {
-  content: "";
+  content: '';
   width: 104%;
   height: 102%;
   border-radius: 8px;
   background-image: linear-gradient(
-    var(--rotate)
-    , #5ddcff, #3c67e3 43%, #4e00c2);
-    position: absolute;
-    z-index: -1;
-    top: -1%;
-    left: -2%;
-    animation: spin 2.5s linear infinite;
-
+    var(--rotate),
+    #5ddcff,
+    #3c67e3 43%,
+    #4e00c2
+  );
+  position: absolute;
+  z-index: -1;
+  top: -1%;
+  left: -2%;
+  animation: spin 2.5s linear infinite;
 }
 
 .card::after {
   position: absolute;
-  content: "";
+  content: '';
   top: calc(var(--card-height) / 6);
   left: 0;
   right: 0;
@@ -110,10 +116,13 @@ body {
   transform: scale(0.8);
   filter: blur(calc(var(--card-height) / 6));
   background-image: linear-gradient(
-    var(--rotate)
-    , #5ddcff, #3c67e3 43%, #4e00c2);
-    opacity: 1;
-  transition: opacity .5s;
+    var(--rotate),
+    #5ddcff,
+    #3c67e3 43%,
+    #4e00c2
+  );
+  opacity: 1;
+  transition: opacity 0.5s;
   animation: spin 2.5s linear infinite;
 }
 
@@ -138,30 +147,37 @@ body {
   display: flex;
   pointer-events: none;
 }
-.card_metaverse:hover:before, .card_metaverse:hover:after {
+.card_metaverse:hover:before,
+.card_metaverse:hover:after {
   background-image: linear-gradient(
-    var(--rotate)
-    , #ec38bc, #7303c0 43%, #fdeff9);
+    var(--rotate),
+    #ec38bc,
+    #7303c0 43%,
+    #fdeff9
+  );
 }
 
 .card_metaverse::before {
-  content: "";
+  content: '';
   width: 104%;
   height: 102%;
   border-radius: 8px;
   background-image: linear-gradient(
-    var(--rotate)
-    , #DA1919, #FF4B2E 43%, #F7B132);
-    position: absolute;
-    z-index: -1;
-    top: -1%;
-    left: -2%;
-    animation: spin 2.5s linear infinite;
+    var(--rotate),
+    #da1919,
+    #ff4b2e 43%,
+    #f7b132
+  );
+  position: absolute;
+  z-index: -1;
+  top: -1%;
+  left: -2%;
+  animation: spin 2.5s linear infinite;
 }
 
 .card_metaverse::after {
   position: absolute;
-  content: "";
+  content: '';
   top: calc(var(--card-height) / 6);
   left: 0;
   right: 0;
@@ -172,10 +188,13 @@ body {
   transform: scale(0.8);
   filter: blur(calc(var(--card-height) / 6));
   background-image: linear-gradient(
-    var(--rotate)
-    , #DA1919,  #FF4B2E 43%,#F7B132);
-    opacity: 1;
-  transition: opacity .5s;
+    var(--rotate),
+    #da1919,
+    #ff4b2e 43%,
+    #f7b132
+  );
+  opacity: 1;
+  transition: opacity 0.5s;
   animation: spin 2.5s linear infinite;
 }
 
@@ -193,22 +212,27 @@ video::-webkit-media-controls {
 }
 
 /* Could Use thise as well for Individual Controls */
-video::-webkit-media-controls-play-button {}
+video::-webkit-media-controls-play-button {
+}
 
-video::-webkit-media-controls-volume-slider {}
+video::-webkit-media-controls-volume-slider {
+}
 
-video::-webkit-media-controls-mute-button {}
+video::-webkit-media-controls-mute-button {
+}
 
-video::-webkit-media-controls-timeline {}
+video::-webkit-media-controls-timeline {
+}
 
-video::-webkit-media-controls-current-time-display {}
+video::-webkit-media-controls-current-time-display {
+}
 
 video {
   pointer-events: none;
 }
 
 video::-webkit-media-controls-start-playback-button {
-    display: none;
+  display: none;
 }
 
 .page {
@@ -227,23 +251,26 @@ video::-webkit-media-controls-start-playback-button {
 }
 
 .page::before {
-  content: "";
+  content: '';
   width: 104%;
   height: 104%;
   border-radius: 8px;
   background-image: linear-gradient(
-    var(--rotate)
-    ,#78ffd6 , #19E7AB 43%, #4e00c2);
-    position: absolute;
-    z-index: -1;
-    top: -2%;
-    left: -2%;
-    animation: spin 2.5s linear infinite;
+    var(--rotate),
+    #78ffd6,
+    #19e7ab 43%,
+    #4e00c2
+  );
+  position: absolute;
+  z-index: -1;
+  top: -2%;
+  left: -2%;
+  animation: spin 2.5s linear infinite;
 }
 
 .page::after {
   position: absolute;
-  content: "";
+  content: '';
   top: calc(var(--card-height) / 6);
   left: 0;
   right: 0;
@@ -254,10 +281,13 @@ video::-webkit-media-controls-start-playback-button {
   transform: scale(0.8);
   filter: blur(calc(var(--card-height) / 6));
   background-image: linear-gradient(
-    var(--rotate)
-    , #78ffd6 , #19E7AB 43%, #4e00c2);
-    opacity: 1;
-  transition: opacity .5s;
+    var(--rotate),
+    #78ffd6,
+    #19e7ab 43%,
+    #4e00c2
+  );
+  opacity: 1;
+  transition: opacity 0.5s;
   animation: spin 2.5s linear infinite;
 }
 
@@ -271,12 +301,9 @@ select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   border: 1px solid #253341;
-  -webkit-text-fill-color: #19E7AB;
+  -webkit-text-fill-color: #19e7ab;
   -webkit-box-shadow: 0 0 0px 1000px #253341 inset;
   box-shadow: 0 0 0px 1000px black inset;
   transition: background-color 5000s ease-in-out 0s;
-  color: #19E7AB;
+  color: #19e7ab;
 }
-
-
-

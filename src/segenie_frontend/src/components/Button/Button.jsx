@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Button.module.scss';
-import {classnames} from 'tailwindcss-classnames';
+import { classnames } from 'tailwindcss-classnames';
 import PropTypes from 'prop-types';
 
 const Button = ({
@@ -27,7 +27,7 @@ export const propTypes = {
   label: PropTypes.string.isRequired,
   fill: PropTypes.oneOf(['opaque', 'transparent']),
   order: PropTypes.oneOf(['normal', 'reverse']),
-  isDisabled: PropTypes.bool, 
+  isDisabled: PropTypes.bool,
   type: PropTypes.oneOf(['button', 'submit']),
   onClick: PropTypes.func,
 };

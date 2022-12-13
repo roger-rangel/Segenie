@@ -5,7 +5,10 @@ const PageFooter = ({ buttons }) => {
   return (
     <footer className="flex justify-center mt-12 gap-4">
       {buttons.map((button, index) => (
-        <div key={index} className="flex-1 first:justify-end first:flex last:justify-start last:flex">
+        <div
+          key={index}
+          className="flex-1 first:justify-end first:flex last:justify-start last:flex"
+        >
           {button}
         </div>
       ))}

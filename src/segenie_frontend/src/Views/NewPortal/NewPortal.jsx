@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 import useNewPortal from '../../Hooks/useNewPortal';
 
@@ -16,7 +16,7 @@ const newPortal = () => {
   });
   useEffect(() => {
     console.log('Portal', portal);
-  }, [portal])
+  }, [portal]);
 
   const { createPortal } = useNewPortal();
 
@@ -32,9 +32,9 @@ const newPortal = () => {
 
   const onClickMintButton = async ({ name, description }) => {
     try {
-      let res = await createPortal(name, description, "");
+      let res = await createPortal(name, description, '');
       // alert(res);
-      setPortal({name, description});
+      setPortal({ name, description });
       showNextPage();
     } catch (error) {
       console.error(error);
@@ -54,13 +54,13 @@ const newPortal = () => {
       heading="Amazing! A new Portal has been created!"
       subtitle="Time to discover new worlds inside the Metaverse"
       mintResult={portal}
-    />
+    />,
   ];
 
   return (
     <>
       <main className="relative items-center justify-center h-max mb-12">
-        <MainWrapper>{pages[pageIndex]}</MainWrapper> 
+        <MainWrapper>{pages[pageIndex]}</MainWrapper>
       </main>
     </>
   );

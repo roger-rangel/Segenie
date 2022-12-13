@@ -9,31 +9,19 @@ import SecondPageContent from '../SecondPageContent/SecondPageContent';
 import Page from '../../../../components/Page/Page';
 import Button from '../../../../components/Button/Button';
 
-const SecondPage = ({
-  heading,
-  subtitle,
-  goBack,
-  onClickMintButton,
-}) => {
+const SecondPage = ({ heading, subtitle, goBack, onClickMintButton }) => {
   const [mintInformation, setMintInformation] = useState({
     name: '',
     description: '',
   });
 
   const footerButtons = [
-    <Button
-      label="Back"
-      order="reverse"
-      onClick={goBack}
-    />,
+    <Button label="Back" order="reverse" onClick={goBack} />,
     <Button
       label="Create"
-      // TODO: This is terrible form validation. If some of the input fields is not filled 
+      // TODO: This is terrible form validation. If some of the input fields is not filled
       // and the user tries to continue nothing happens, there is no note or anything saying which fields are required etc.
-      isDisabled={
-        !mintInformation.name ||
-        !mintInformation.description
-      }
+      isDisabled={!mintInformation.name || !mintInformation.description}
       onClick={() => onClickMintButton(mintInformation)}
     />,
   ];

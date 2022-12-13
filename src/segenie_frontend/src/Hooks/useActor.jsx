@@ -41,9 +41,7 @@ const useActor = () => {
   };
 
   const registerNewWeb3User = async (callObject) => {
-    return await actor.registerNewWeb3User(
-      ...changeAccordingToEnv(callObject)
-    );
+    return await actor.registerNewWeb3User(...changeAccordingToEnv(callObject));
   };
 
   const authenticateWeb3User = async (callObject) => {

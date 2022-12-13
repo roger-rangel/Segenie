@@ -1,28 +1,27 @@
-import { createActor } from "../../../declarations/segenie_backend/index";
+import { createActor } from '../../../declarations/segenie_backend/index';
 
 const useNewPortal = () => {
-  const canisterId = "ooyw6-eqaaa-aaaap-qavrq-cai";
+  const canisterId = 'ooyw6-eqaaa-aaaap-qavrq-cai';
   const actor = createActor(canisterId);
 
   const getAllPortals = async () => {
-    console.log("Getting all portals of the user.")
+    console.log('Getting all portals of the user.');
     try {
       const response = await actor.get_portals_of_caller();
       console.log(response);
-    }catch(e) {
+    } catch (e) {
       console.error(e);
       throw e;
     }
   };
 
-  const createPortal = async ( name, description, imageDataURL ) => {
-    console.log("Creating a portal.")
+  const createPortal = async (name, description, imageDataURL) => {
+    console.log('Creating a portal.');
     try {
-      if(imageDataURL)
+      if (imageDataURL)
         return await actor.create_portal(name, description, imageDataURL);
-      else 
-        return await actor.create_portal(name, description);
-    }catch(e) {
+      else return await actor.create_portal(name, description);
+    } catch (e) {
       console.error(e);
       throw e;
     }
