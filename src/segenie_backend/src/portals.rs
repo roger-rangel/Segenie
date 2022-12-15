@@ -49,7 +49,7 @@ pub fn do_create_portal(
     name: String,
     description: String,
     image_url: Option<String>,
-) {
+) -> PortalId {
     let mut id = Nat::from(0);
     PORTAL_COUNT.with(|count| {
         id = (count.borrow()).clone();
@@ -70,13 +70,14 @@ pub fn do_create_portal(
     CREATOR_PORTALS.with(|portals_by_creator| {
         let mut creator_portals = portals_by_creator.borrow_mut();
         if let Some(portals) = creator_portals.get_mut(&creator) {
-            (*portals).push(id);
+            (*portals).push(id.clone());
         } else {
-            creator_portals.insert(creator, vec![id]);
+            creator_portals.insert(creator, vec![id.clone()]);
         }
     });
 
     PORTAL_COUNT.with(|counter| *counter.borrow_mut() += 1);
+    id
 }
 
 /// Updates the metadata of the given portal.
@@ -154,10 +155,10 @@ pub fn do_get_portals_of_creator(creator: Principal) -> Vec<Portal> {
 /// This call is only allowed for the creator of the specified portal.
 pub fn do_mint_portal(
     caller: Principal,
-    portal: PortalId,
     receiver: Principal,
+    portal: PortalId,
 ) -> Result<(), Error> {
-    let maybe_portal = do_get_portal(portal);
+    let maybe_portal = do_get_portal(portal.clone());
     if let Some(portal) = maybe_portal {
         if portal.creator != caller {
             return Err(Error::NotAllowed);
@@ -165,16 +166,35 @@ pub fn do_mint_portal(
     } else {
         return Err(Error::PortalNotFound);
     }
-    /*PORTALS_OF.with(|portals_of| {
-        let mut portals = portals_by_creator.borrow_mut();
-        if let Some(portals) = creator_portals.get_mut(&creator) {
-            (*portals).push(id);
+
+    PORTALS_OF.with(|portals_of| {
+        let mut portals_of = portals_of.borrow_mut();
+        if let Some(portals) = portals_of.get_mut(&receiver) {
+            (*portals).push(portal);
         } else {
-            creator_portals.insert(creator, vec![id]);
+            portals_of.insert(receiver, vec![portal]);
         }
-    });*/
+    });
 
     Ok(())
+}
+
+pub fn do_get_portals_of_user(user: Principal) -> Vec<Portal> {
+    let mut portal_ids: Vec<PortalId> = vec![];
+
+    PORTALS_OF.with(|portals_of| {
+        if let Some(portals) = portals_of.borrow().get(&user) {
+            portal_ids = portals.clone();
+        }
+    });
+
+    let mut portals = vec![];
+    for id in portal_ids {
+        if let Some(portal) = do_get_portal(id) {
+            portals.push(portal);
+        }
+    }
+    portals
 }
 
 #[cfg(test)]
@@ -347,6 +367,41 @@ mod tests {
                 description,
             }]
         );
+    }
+
+    #[test]
+    fn minting_portals_works() {
+        let creator = get_creator();
+
+        let portal1 = create_portal(creator, format!("Portal1"));
+        let portal2 = create_portal(creator, format!("Portal2"));
+
+        let alice = get_default_principal();
+
+        assert_eq!(do_mint_portal(creator, alice, portal1.clone().id), Ok(()));
+        assert_eq!(do_mint_portal(creator, alice, portal2.clone().id), Ok(()));
+
+        assert_eq!(do_get_portals_of_user(alice), vec![portal1, portal2])
+    }
+
+    fn create_portal(creator: Principal, name: String) -> Portal {
+        let description = format!("Description of: {}", name);
+        let image_url = None;
+
+        let id = do_create_portal(
+            creator,
+            name.clone(),
+            description.clone(),
+            image_url.clone(),
+        );
+
+        Portal {
+            id,
+            creator,
+            name,
+            description,
+            image_url,
+        }
     }
 
     fn get_creator() -> Principal {

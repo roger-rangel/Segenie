@@ -63,7 +63,7 @@ fn get_portals_of_caller() -> Vec<Portal> {
 #[update]
 fn mint_portal(portal: PortalId, receiver: Principal) -> String {
     let caller = ic_cdk::api::caller();
-    match portals::do_mint_portal(caller, portal, receiver) {
+    match portals::do_mint_portal(caller, receiver, portal) {
         Ok(_) => format!("Portal minted successfully."),
         Err(e) => format!("Error while minting portal: {:?}", e),
     }
