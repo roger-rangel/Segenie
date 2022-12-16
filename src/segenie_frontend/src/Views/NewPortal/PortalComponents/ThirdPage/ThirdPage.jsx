@@ -8,23 +8,20 @@ import Button from '../../../../components/Button/Button';
 import Link from '../Link/Link';
 import { portalPropTypes } from '../MintedPortal/MintedPortal';
 
-const ThirdPage = ({
-  heading,
-  mintResult,
-}) => {
+const ThirdPage = ({ heading, mintResult }) => {
   const footerButtons = [
     <Link to="/">
-      <Button label="New Portal" order="reverse"/>
+      <Button label="New Portal" order="reverse" />
     </Link>,
     <Link to="/">
-      <Button label="Finish"/>
+      <Button label="Finish" />
     </Link>,
   ];
 
   return (
     <Page className="">
       <PageTitle heading={heading} />
-      <ThirdPageContent mintResult={mintResult}/>
+      <ThirdPageContent mintResult={mintResult} />
       <PageFooter buttons={footerButtons} />
     </Page>
   );

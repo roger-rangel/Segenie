@@ -17,9 +17,9 @@ const FirstPage = ({ onClickNextButton }) => {
 
   const footerButtons = [
     <Link to="/">
-      <Button label="Back" order="reverse"/>
+      <Button label="Back" order="reverse" />
     </Link>,
-    <Button label="Next" onClick={() => onClickNextButton(imageDataURL)}/>,
+    <Button label="Next" onClick={() => onClickNextButton(imageDataURL)} />,
   ];
 
   return (
