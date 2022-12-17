@@ -1,3 +1,4 @@
+### DEPRECATED - USE THE UI
 ### How to create a portal?
 ```
 dfx canister call segenie_backend create_portal '("name", "description")'
