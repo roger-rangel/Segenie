@@ -68,3 +68,8 @@ fn mint_portal(portal: PortalId, receiver: Principal) -> String {
         Err(e) => format!("Error while minting portal: {:?}", e),
     }
 }
+
+#[ic_cdk_macros::query]
+fn get_portals_of_user(user: Principal) -> Vec<Portal> {
+    portals::do_get_portals_of_user(user)
+}
