@@ -14,13 +14,14 @@ import Web3Authorization from './Views/Web3Authorization/Web3Authorization';
 import '../assets/main.css';
 import '@connect2ic/core/style.css';
 
-// WALLET AND AUTHORimport AuthProvider from './components/AuthProvider/AuthProvider';
-import * as counter from "canisters/counter"
-import { createClient } from "@connect2ic/core"
+
+// import * as counter from "canisters/counter"
+// import { createClient } from "@connect2ic/core"
 import { Connect2ICProvider } from '@connect2ic/react';
 import { InternetIdentity } from '@connect2ic/core/providers';
 import NavProvider from './components/NavProvider/NavProvider';
 import Web3AuthProvider from './components/Web3AuthProvider/Web3AuthProvider';
+import RequireWeb3Auth from './Views/Web3Authorization/RequireWeb3Auth/RequireWeb3Auth'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -32,9 +33,16 @@ root.render(
           <Routes>
             <Route path="/" element={<App />}>
               <Route path="/" exact element={<WelcomePage />} />
-              <Route path="/portal" exact element={<NewPortal />} />
+              <Route 
+                  path="/portal" 
+                  exact element={
+                    <RequireWeb3Auth>
+                      <NewPortal />
+                    </RequireWeb3Auth>
+                } 
+              />
               <Route path="/options" element={<SegenieOptions />} />
-              <Route path="/web3authorization" element={<Web3Authorization />} />
+              <Route path="/auth" element={<Web3Authorization />} />
             </Route>
           </Routes>
         </Router>
