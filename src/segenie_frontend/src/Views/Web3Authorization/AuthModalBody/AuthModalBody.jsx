@@ -33,12 +33,10 @@ const AuthModalBody = ({
 
   const { isConnected, principal, activeProvider, connect, disconnect } = useConnect({
     onConnect: () => {
-      console.log("Signed in.")
-      // Signed in
+      console.log("Signed in.");
     },
     onDisconnect: () => {
       console.log("Signed out.")
-      // Signed out
     }
   })
 
@@ -145,10 +143,7 @@ const AuthModalBody = ({
             <Button
               label={wallet.meta.name}
               Icon={providerIcons[wallet.meta.id]}
-              onClick={() => {
-                console.log("alloo");
-                connect(wallet.meta.id)
-              }}
+              onClick={() => connect(wallet.meta.id)}
             />
           </div>
         ))}
