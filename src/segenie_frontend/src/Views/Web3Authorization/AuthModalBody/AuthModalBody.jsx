@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 // CSS
 import styles from './AuthModalBody.module.scss';
 
-import { useProviders } from '@connect2ic/react';
+import { useProviders, useConnect } from '@connect2ic/react';
 
 //Components
 import Button from '../../../components/Button/Button';
@@ -30,6 +30,17 @@ const AuthModalBody = ({
   const providerIcons = {
     ii: DfinityIcon,
   };
+
+  const { isConnected, principal, activeProvider, connect, disconnect } = useConnect({
+    onConnect: () => {
+      console.log("Signed in.")
+      // Signed in
+    },
+    onDisconnect: () => {
+      console.log("Signed out.")
+      // Signed out
+    }
+  })
 
   const onChangeInput = (event) => {
     setSignInData({
@@ -129,12 +140,15 @@ const AuthModalBody = ({
     <div className={styles.authModalBody}>
       <div className={styles.walletConnectContainer}>
         <Title type="secondary">Connect wallet</Title>
-        {providers.map(({ id, name }) => (
-          <div key={id}>
+        {providers.map(wallet => (
+          <div key={wallet.meta.id}>
             <Button
-              label={name}
-              Icon={providerIcons[id]}
-              onClick={() => onClickConnectWalletButton(id)}
+              label={wallet.meta.name}
+              Icon={providerIcons[wallet.meta.id]}
+              onClick={() => {
+                console.log("alloo");
+                connect(wallet.meta.id)
+              }}
             />
           </div>
         ))}
