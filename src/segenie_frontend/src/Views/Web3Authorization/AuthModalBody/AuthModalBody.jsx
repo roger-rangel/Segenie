@@ -32,8 +32,11 @@ const AuthModalBody = ({
   };
 
   const { isConnected, principal, activeProvider, connect, disconnect } = useConnect({
-    onConnect: () => {
+    onConnect: (data) => {
       console.log("Signed in.");
+      console.log(data);
+      onClickConnectWalletButton(data);
+      window.localStorage.setItem("provider", JSON.stringify(data));
     },
     onDisconnect: () => {
       console.log("Signed out.")

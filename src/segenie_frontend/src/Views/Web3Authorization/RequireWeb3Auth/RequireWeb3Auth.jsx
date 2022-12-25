@@ -1,17 +1,27 @@
-import React from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
-import useWeb3Identity from '../../../Hooks/useWeb3Identity';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
+import AuthModal from '../AuthModal/AuthModal';
 
 const RequireWeb3Auth = ({ children }) => {
-  const { authToken } = useWeb3Identity();
-  const location = useLocation();
+  const [provider, setProvider] = useState(null);
 
-  if (!authToken) {
-    return <Navigate to="/auth" state={{ from: location }} replace />;
+  const onConnect = (activeProvider) => {
+    console.log(activeProvider);
+    setProvider(activeProvider);
   }
 
-  return <div>{children}</div>;
+  if (provider == null) {
+    return <AuthModal onConnect={onConnect}/>
+  }
+
+  const childrenWithProps = React.Children.map(children, child => {
+    if(React.isValidElement(child)) {
+      return React.cloneElement(child, { provider });
+    }
+    return child;
+  });
+
+  return <div>{childrenWithProps}</div>
 };
 
 RequireWeb3Auth.propTypes = {

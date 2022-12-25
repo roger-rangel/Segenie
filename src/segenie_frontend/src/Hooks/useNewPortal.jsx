@@ -1,7 +1,8 @@
 import { createActor } from '../../../declarations/segenie_backend/index';
+import { idlFactory } from '../../../declarations/segenie_backend/segenie_backend.did.js';
 
 const useNewPortal = () => {
-  const canisterId = 'ooyw6-eqaaa-aaaap-qavrq-cai';
+  const canisterId = 'r7inp-6aaaa-aaaaa-aaabq-cai';
   const actor = createActor(canisterId);
 
   const getAllPortals = async () => {
@@ -15,16 +16,21 @@ const useNewPortal = () => {
     }
   };
 
-  const createPortal = async (name, description, imageDataURL) => {
+  const createPortal = async (provider, name, description, imageDataURL) => {
     console.log('Creating a portal.');
-    try {
+    const res = await provider.activeProvider.connect();
+    console.log(res);
+    const customActor = (await provider.activeProvider.createActor(canisterId, idlFactory)).value;
+    console.log(customActor);
+    /*try {
       if (imageDataURL)
-        return await actor.create_portal(name, description, imageDataURL);
-      else return await actor.create_portal(name, description);
+        return await customActor.create_portal(name, description, imageDataURL);
+      else return await customActor.create_portal(name, description);
     } catch (e) {
       console.error(e);
       throw e;
     }
+    */
   };
 
   return { createPortal, getAllPortals };

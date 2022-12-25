@@ -8,7 +8,7 @@ import useWeb3Identity from '../../../Hooks/useWeb3Identity';
 import Page from '../../../components/Page/Page';
 import PageTitle from '../../NewPortal/PortalComponents/PageTitle/PageTitle';
 
-const AuthModal = () => {
+const AuthModal = ({onConnect}) => {
   const [signInData, setSignInData] = useState({
     username: '',
     password: '',
@@ -70,7 +70,8 @@ const AuthModal = () => {
           setSignInData={setSignInData}
           onSubmitSignUpForm={onSubmitSignUpForm}
           onSubmitSignInForm={onSubmitSignInForm}
-          onClickConnectWalletButton={onClickConnectWalletButton}
+          //onClickConnectWalletButton={onClickConnectWalletButton}
+          onClickConnectWalletButton={onConnect}
         />
       </Page>
       {shouldShowLoader && (
@@ -81,4 +82,5 @@ const AuthModal = () => {
     </>
   );
 };
+
 export default AuthModal;
