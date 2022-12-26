@@ -15,6 +15,7 @@ import '@connect2ic/core/style.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
+//adding Main UI
 root.render(
   <Router>
     <Routes>
