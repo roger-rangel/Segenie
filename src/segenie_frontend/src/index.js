@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Views
 import App from './App';
+import Dashboard from './Views/Dashboard/Dashboard';
 import NewPortal from './Views/NewPortal/NewPortal';
 import WelcomePage from './Views/WelcomePage/WelcomePage';
 import SegenieOptions from './Views/SegenieOptions/SegenieOptions';
@@ -15,12 +16,12 @@ import '@connect2ic/core/style.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-//adding Main UI
 root.render(
   <Router>
     <Routes>
       <Route path="/" element={<App />}>
         <Route path="/" exact element={<WelcomePage />} />
+        <Route path="/dashboard" exact element={<Dashboard />} />
         <Route path="/portal" exact element={<NewPortal />} />
         <Route path="/options" element={<SegenieOptions />} />
         <Route path="/web3authorization" element={<Web3Authorization />} />
