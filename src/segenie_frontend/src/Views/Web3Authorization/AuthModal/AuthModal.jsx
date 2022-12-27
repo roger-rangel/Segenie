@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import SignInModalBody from '../AuthModalBody/AuthModalBody';
@@ -8,14 +8,14 @@ import useWeb3Identity from '../../../Hooks/useWeb3Identity';
 import Page from '../../../components/Page/Page';
 import PageTitle from '../../NewPortal/PortalComponents/PageTitle/PageTitle';
 
-const AuthModal = () => {
+const AuthModal = ({onConnect}) => {
   const [signInData, setSignInData] = useState({
     username: '',
     password: '',
   });
   const [shouldShowLoader, setShouldShowLoader] = useState(false);
 
-  const { signUp, signIn, connectWallet } = useWeb3Identity();
+  const { signUp, signIn } = useWeb3Identity();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -47,17 +47,6 @@ const AuthModal = () => {
     }
   };
 
-  const onClickConnectWalletButton = async (providerId) => {
-    try {
-      setShouldShowLoader(true);
-      await connectWallet(providerId);
-      navigate(from, { replace: true });
-    } catch (error) {
-      console.error(error);
-      setShouldShowLoader(false);
-    }
-  };
-
   return (
     <>
       <Page>
@@ -70,7 +59,7 @@ const AuthModal = () => {
           setSignInData={setSignInData}
           onSubmitSignUpForm={onSubmitSignUpForm}
           onSubmitSignInForm={onSubmitSignInForm}
-          onClickConnectWalletButton={onClickConnectWalletButton}
+          onClickConnectWalletButton={onConnect}
         />
       </Page>
       {shouldShowLoader && (
@@ -81,4 +70,5 @@ const AuthModal = () => {
     </>
   );
 };
+
 export default AuthModal;
