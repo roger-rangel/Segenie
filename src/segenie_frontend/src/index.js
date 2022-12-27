@@ -14,7 +14,6 @@ import { createClient } from "@connect2ic/core"
 import { Connect2ICProvider } from "@connect2ic/react"
 import "@connect2ic/core/style.css"
 import RequireWeb3Auth from './Views/Web3Authorization/RequireWeb3Auth/RequireWeb3Auth';
-//import * as counter from "canisters/counter"
 
 // CSS
 import '../assets/main.css';
