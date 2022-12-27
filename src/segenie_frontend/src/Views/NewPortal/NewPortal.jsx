@@ -8,7 +8,7 @@ import ThirdPage from './PortalComponents/ThirdPage/ThirdPage';
 
 import MainWrapper from '../../components/MainWrapper/MainWrapper';
 
-const newPortal = () => {
+const newPortal = ({provider}) => {
   const [pageIndex, setPageIndex] = useState(0);
   const [portal, setPortal] = useState({
     name: 'Portal X',
@@ -16,6 +16,8 @@ const newPortal = () => {
   });
   useEffect(() => {
     console.log('Portal', portal);
+    console.log("Provider: ");
+    console.log(provider);
   }, [portal]);
 
   const { createPortal } = useNewPortal();
@@ -32,7 +34,7 @@ const newPortal = () => {
 
   const onClickMintButton = async ({ name, description }) => {
     try {
-      let res = await createPortal(name, description, '');
+      let res = await createPortal(provider, name, description, '');
       // alert(res);
       setPortal({ name, description });
       showNextPage();
