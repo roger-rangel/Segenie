@@ -1,8 +1,7 @@
-import { createActor } from '../../../declarations/segenie_backend/index';
+import { createActor, canisterId } from '../../../declarations/segenie_backend/index';
 import { idlFactory } from '../../../declarations/segenie_backend/segenie_backend.did.js';
 
 const useNewPortal = () => {
-  const canisterId = 'rrkah-fqaaa-aaaaa-aaaaq-cai';
   const actor = createActor(canisterId);
 
   const getAllPortals = async () => {
