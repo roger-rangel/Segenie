@@ -15,7 +15,7 @@ const AuthModal = ({onConnect}) => {
   });
   const [shouldShowLoader, setShouldShowLoader] = useState(false);
 
-  const { signUp, signIn, connectWallet } = useWeb3Identity();
+  const { signUp, signIn } = useWeb3Identity();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -47,17 +47,6 @@ const AuthModal = ({onConnect}) => {
     }
   };
 
-  const onClickConnectWalletButton = async (providerId) => {
-    try {
-      setShouldShowLoader(true);
-      await connectWallet(providerId);
-      navigate(from, { replace: true });
-    } catch (error) {
-      console.error(error);
-      setShouldShowLoader(false);
-    }
-  };
-
   return (
     <>
       <Page>
@@ -70,7 +59,6 @@ const AuthModal = ({onConnect}) => {
           setSignInData={setSignInData}
           onSubmitSignUpForm={onSubmitSignUpForm}
           onSubmitSignInForm={onSubmitSignInForm}
-          //onClickConnectWalletButton={onClickConnectWalletButton}
           onClickConnectWalletButton={onConnect}
         />
       </Page>

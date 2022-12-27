@@ -36,7 +36,6 @@ const AuthModalBody = ({
       console.log("Signed in.");
       console.log(data);
       onClickConnectWalletButton(data);
-      window.localStorage.setItem("provider", JSON.stringify(data));
     },
     onDisconnect: () => {
       console.log("Signed out.")
