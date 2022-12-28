@@ -29,7 +29,6 @@ const Menu = () => {
         <Icon icon={Icon4} />
         <Icon icon={Icon5} />
       </ul>
-
     </menu>
   );
 }

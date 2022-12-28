@@ -32,6 +32,7 @@ root.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="/" exact element={<WelcomePage />} />
+          <Route path="/dashboard" exact element={<Dashboard />} />
           <Route path="/portal" exact element={
             <RequireWeb3Auth>
               <NewPortal />
