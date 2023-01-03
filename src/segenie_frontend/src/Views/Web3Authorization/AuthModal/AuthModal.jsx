@@ -50,10 +50,13 @@ const AuthModal = ({onConnect}) => {
   return (
     <>
       <Page>
-        <PageTitle
-          heading="Web 3 Authentication"
+        {/* <PageTitle
+          heading="Login"
           subtitle="Enter Web3 to enjoy Segenie"
-        />
+        /> */}
+        <div className="text-[white] font-[Raleway] mt-6 mb-12">
+          <h1>Please Login to Continue</h1>
+        </div>
         <SignInModalBody
           signInData={signInData}
           setSignInData={setSignInData}

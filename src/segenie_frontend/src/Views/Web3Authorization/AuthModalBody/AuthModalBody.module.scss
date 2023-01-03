@@ -74,12 +74,14 @@ $container-widths: (
 
 .signUpNoteContainer {
   margin-bottom: 0.75rem;
+  display: flex;
+  justify-content: center;
 }
 
 .signUpButton {
   color: transparent;
   background-image: var(--accent-color);
-  background-clip: text;
+  // background-clip: text;
   font-family: Raleway;
   font-weight: 700;
   border: none;
