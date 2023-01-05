@@ -16,9 +16,7 @@ service : {
     "update_portal_metadata": (nat, text, text, opt text) -> (text);
     "get_portal": (nat) -> (opt Portal);
     "set_creator_metadata": (text) -> (text);
-    "mint_portal": (nat, principal) -> (text);
     "get_creator_metadata": () -> (opt Creator);
     "get_portals_of_creator": (principal) -> (vec Portal);
     "get_portals_of_caller": () -> (vec Portal);
-    "get_portals_of_user": (principal) -> (vec Portal);
 }

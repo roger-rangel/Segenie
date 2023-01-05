@@ -15,8 +15,8 @@ const useNewPortal = () => {
     }
   };
 
-  const createPortal = async (provider, name, description, imageDataURL) => {
-    console.log('Creating a portal.');
+  const createPortalBlueprint = async (provider, name, description, imageDataURL) => {
+    console.log('Creating a portal blueprint.');
     const customActor = (await provider.activeProvider.createActor(canisterId, idlFactory)).value;
     console.log(customActor);
     try {
@@ -29,6 +29,17 @@ const useNewPortal = () => {
     }
   };
 
-  return { createPortal, getAllPortals };
+  const mintPortal = async (provider, portalId, receiver) => {
+    console.log('Minting a portal.');
+    const customActor = (await provider.activeProvider.createActor(canisterId, idlFactory)).value;
+    try {
+      return await customActor.mint_portal(portalId, receiver);
+    } catch (e) {
+      console.error(e);
+      throw e;
+    }
+  }
+
+  return { createPortalBlueprint, getAllPortals, mintPortal };
 };
 export default useNewPortal;

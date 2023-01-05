@@ -20,7 +20,7 @@ const newPortal = ({provider}) => {
     console.log(provider);
   }, [portal]);
 
-  const { createPortal } = useNewPortal();
+  const { createPortalBlueprint } = useNewPortal();
 
   const showPreviousPage = () => setPageIndex(pageIndex - 1);
   const showNextPage = () => setPageIndex(pageIndex + 1);
@@ -34,7 +34,7 @@ const newPortal = ({provider}) => {
 
   const onClickMintButton = async ({ name, description }) => {
     try {
-      let res = await createPortal(provider, name, description, '');
+      let res = await createPortalBlueprint(provider, name, description, '');
       // alert(res);
       setPortal({ name, description });
       showNextPage();
