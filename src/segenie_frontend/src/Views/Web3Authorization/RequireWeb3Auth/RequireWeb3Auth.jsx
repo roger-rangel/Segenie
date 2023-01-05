@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import AuthModal from '../AuthModal/AuthModal';
-import MainWrapper from '../../../components/MainWrapper/MainWrapper';
 
 const RequireWeb3Auth = ({ children }) => {
   const [provider, setProvider] = useState(null);
@@ -19,9 +18,9 @@ const RequireWeb3Auth = ({ children }) => {
 
   if (provider == null) {
     return (
-      <MainWrapper>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <AuthModal onConnect={onConnect}/>
-      </MainWrapper>
+      </div>
     )
   }
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Modal from 'react-modal';
+import useNewPortal from '../../../Hooks/useNewPortal';
 
 const customStyles = {
     content: {
