@@ -1,9 +1,15 @@
 import React, { useEffect } from "react";
+import { IconContext } from "react-icons";
+import { useNavigate } from 'react-router-dom';
 import { HiFingerPrint, HiBell, HiOutlineChatBubbleOvalLeft, HiOutlineCog6Tooth } from "react-icons/hi2";
 
-import { IconContext } from "react-icons";
-
 const UserMenu = () => {
+
+  const navigate = useNavigate();
+  const userSettings = () => {
+    navigate('/usersettings');
+  };
+
   useEffect(() => {
     const mainMenuLi = document
       .getElementById("mainMenu")
@@ -21,17 +27,17 @@ const UserMenu = () => {
     <menu className="h-screen bg-[#19162c] flex flex-col items-center shadow-xl sticky top-0">
         <IconContext.Provider value={{ color: "#475569", className: "global-class-name" }}>
             <div className="container flex justify-between pt-6 px-4 pb-[26px] border-b-[1px] border-[#475569]">
-                <i className="profileIcon" >
-                <HiFingerPrint />
+                <i className="fingerprint" >
+                  <HiFingerPrint />
                 </i>
-                <i className="profileIcon">
-                <HiBell />
+                <i className="notifications">
+                  <HiBell />
                 </i>
-                <i className="profileIcon">
-                <HiOutlineChatBubbleOvalLeft />
+                <i className="chat">
+                < HiOutlineChatBubbleOvalLeft />
                 </i>
-                <i className="profileIcon">
-                <HiOutlineCog6Tooth />
+                <i id="usersettings" className="cursor-pointer" onClick={userSettings}>
+                  <HiOutlineCog6Tooth />
                 </i>
             </div>
         </IconContext.Provider>

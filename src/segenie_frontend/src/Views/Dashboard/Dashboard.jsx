@@ -11,9 +11,9 @@ const Dashboard = () => {
   return (
     <div className="w-full h-screen bg-[#121026] flex overflow-hidden scrollbar-hide max-[525px]:overflow-x-hidden max-[525px]:overflow-y-scroll">
       <Menu setModal={setModal} />
-      <RequireWeb3Auth>
+      {/* <RequireWeb3Auth> */}
         <MintModal modal={modal} setModal={setModal} />
-      </RequireWeb3Auth>
+      {/* </RequireWeb3Auth> */}
       <Container />
       <UserMenu />
     </div>
