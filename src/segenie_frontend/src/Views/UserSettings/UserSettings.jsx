@@ -2,7 +2,7 @@
 import React from 'react'
 import Nav from './nav/Nav'
 import About from './components/about/About'
-import Badges from './components/badges/Badges'
+import Portals from './components/portals/Portals'
 import Communities from './components/communities/Communities'
 import NFTs from './components/nfts/NFTs'
 import Rewards from './components/rewards/Rewards'
@@ -14,7 +14,7 @@ const UserSettings = () => {
     <>
         <Nav />
         {/* <About />
-        <Badges />
+        <Portals />
         <Communities />
         <NFTs />
         <Rewards />
