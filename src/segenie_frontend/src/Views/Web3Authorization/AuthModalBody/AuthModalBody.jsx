@@ -54,12 +54,13 @@ const AuthModalBody = ({
       case 'sign-in':
         return (
           <>
-            <Title type="secondary">Sign in</Title>
+          <div className="flex flex-col mr-10">
+            <Title className="flex justify-center" type="secondary">Sign in</Title>
             <div className={styles.signUpNoteContainer}>
               <Description>
                 No account yet?{' '}
                 <button
-                  className={styles.signUpButton}
+                  className={`ml-2`}
                   onClick={() => setTab('sign-up')}
                 >
                   Sign up
@@ -84,11 +85,12 @@ const AuthModalBody = ({
                 <Button
                   label="Sign in"
                   Icon={SignInIcon}
-                  fill="transparent"
+                 
                   type="submit"
                 />
               </div>
             </form>
+            </div>
           </>
         );
       case 'sign-up':
@@ -137,11 +139,12 @@ const AuthModalBody = ({
   };
 
   return (
+    <div className="ml-8">
     <div className={styles.authModalBody}>
       <div className={styles.walletConnectContainer}>
         <Title type="secondary">Connect wallet</Title>
         {providers.map(wallet => (
-          <div key={wallet.meta.id}>
+          <div className="mb-2" key={wallet.meta.id}>
             <Button
               label={wallet.meta.name}
               Icon={providerIcons[wallet.meta.id]}
@@ -156,6 +159,7 @@ const AuthModalBody = ({
         <div className={styles.line} />
       </div>
       <div className={styles.signInContainer}>{renderTab()}</div>
+    </div>
     </div>
   );
 };

@@ -4,10 +4,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Views
 import App from './App';
+import Dashboard from './Views/Dashboard/Dashboard';
 import NewPortal from './Views/NewPortal/NewPortal';
 import WelcomePage from './Views/WelcomePage/WelcomePage';
 import SegenieOptions from './Views/SegenieOptions/SegenieOptions';
 import Web3Authorization from './Views/Web3Authorization/Web3Authorization';
+import Documentation from './Views/Documentation/Documentation';
 
 import { defaultProviders } from "@connect2ic/core/providers"
 import { createClient } from "@connect2ic/core"
@@ -31,6 +33,7 @@ root.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="/" exact element={<WelcomePage />} />
+          <Route path="/dashboard" exact element={<Dashboard />} />
           <Route path="/portal" exact element={
             <RequireWeb3Auth>
               <NewPortal />
@@ -38,6 +41,7 @@ root.render(
           } />
           <Route path="/options" element={<SegenieOptions />} />
           <Route path="/auth" element={<Web3Authorization />} />
+          <Route path="/documentation" element={<Documentation />} />
         </Route>
       </Routes>
     </Router>
