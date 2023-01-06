@@ -7,7 +7,7 @@ import {BiMessageSquareDetail} from 'react-icons/bi'
 import {useState} from 'react'
 
 const Nav = () => {
-  const [activeNav, setActiveNav] = useState('#')
+  const [activeNav, setActiveNav] = useState('#home')
   return (
     <nav className="bg-[#000000] bg-opacity-25 max-w-max flex py-3 px-7 z-[2] fixed left-1/2 -translate-x-2/4 bottom-8 gap-3 rounded-3xl backdrop-blur-lg">
         <div className="">
