@@ -9,6 +9,7 @@ import NewPortal from './Views/NewPortal/NewPortal';
 import WelcomePage from './Views/WelcomePage/WelcomePage';
 import SegenieOptions from './Views/SegenieOptions/SegenieOptions';
 import Web3Authorization from './Views/Web3Authorization/Web3Authorization';
+import Documentation from './Views/Documentation/Documentation';
 
 import { defaultProviders } from "@connect2ic/core/providers"
 import { createClient } from "@connect2ic/core"
@@ -40,6 +41,7 @@ root.render(
           } />
           <Route path="/options" element={<SegenieOptions />} />
           <Route path="/auth" element={<Web3Authorization />} />
+          <Route path="/documentation" element={<Documentation />} />
         </Route>
       </Routes>
     </Router>
