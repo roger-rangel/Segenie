@@ -1,5 +1,6 @@
 import { createActor, canisterId } from '../../../declarations/segenie_backend/index';
 import { idlFactory } from '../../../declarations/segenie_backend/segenie_backend.did.js';
+import {Principal} from "@dfinity/principal";
 
 const useNewPortal = () => {
   const actor = createActor(canisterId);
@@ -33,7 +34,8 @@ const useNewPortal = () => {
     console.log('Minting a portal.');
     const customActor = (await provider.activeProvider.createActor(canisterId, idlFactory)).value;
     try {
-      return await customActor.mint_portal(portalId, receiver);
+      const principal = Principal.from(receiver)
+      return await customActor.mint_portal(Number(portalId), principal);
     } catch (e) {
       console.error(e);
       throw e;

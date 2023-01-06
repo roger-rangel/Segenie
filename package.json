@@ -19,7 +19,7 @@
   "devDependencies": {
     "@dfinity/agent": "0.14.0",
     "@dfinity/candid": "0.14.0",
-    "@dfinity/principal": "0.14.0",
+    "@dfinity/principal": "^0.14.0",
     "assert": "2.0.0",
     "autoprefixer": "^10.4.13",
     "buffer": "6.0.3",
