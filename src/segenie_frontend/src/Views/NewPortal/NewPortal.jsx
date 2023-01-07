@@ -32,10 +32,9 @@ const newPortal = ({provider}) => {
     });
   };
 
-  const onClickMintButton = async ({ name, description }) => {
+  const onClickMintButton = async ({ name, description, limit }) => {
     try {
-      let res = await createPortalBlueprint(provider, name, description, '');
-      // alert(res);
+      await createPortalBlueprint(provider, name, description, limit, '');
       setPortal({ name, description });
       showNextPage();
     } catch (error) {
@@ -47,7 +46,7 @@ const newPortal = ({provider}) => {
   const pages = [
     <FirstPage onClickNextButton={onClickNextButton} />,
     <SecondPage
-      heading="Portal creation"
+      heading="Portal blueprint creation"
       subtitle="Create a portal that can give special access to hidden places inside the Metaverse"
       goBack={showPreviousPage}
       onClickMintButton={onClickMintButton}
