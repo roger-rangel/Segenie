@@ -9,6 +9,8 @@ pub enum Error {
     PortalNotFound,
     /// The caller is not allowed to do the specific activity.
     NotAllowed,
+    /// The minting limit has been reached.
+    LimitReached,
 }
 
 /// The type used to represent an Portals id.
@@ -25,6 +27,10 @@ pub struct Portal {
     description: String,
     /// The url of the image for the portal.
     image_url: Option<String>,
+    /// The limit of how many portal instances can be minted.
+    limit: Option<Nat>,
+    /// The number of portals minted.
+    minted: Nat,
     /// The creator of the portal.
     creator: Principal,
 }
@@ -44,10 +50,11 @@ thread_local! {
 }
 
 /// Creates a new portal and increases the `PORTAL_COUNT`.
-pub fn do_create_portal(
+pub fn do_create_portal_blueprint(
     creator: Principal,
     name: String,
     description: String,
+    limit: Option<Nat>,
     image_url: Option<String>,
 ) -> PortalId {
     let mut id = Nat::from(0);
@@ -58,6 +65,8 @@ pub fn do_create_portal(
             name,
             description,
             image_url,
+            limit,
+            minted: Nat::from(0),
             creator,
         };
 
@@ -109,6 +118,8 @@ pub fn do_update_metadata(
                     name,
                     description,
                     image_url,
+                    limit: portal.clone().limit,
+                    minted: portal.clone().minted,
                     creator: portal.creator,
                 },
             );
@@ -156,12 +167,15 @@ pub fn do_get_portals_of_creator(creator: Principal) -> Vec<Portal> {
 pub fn do_mint_portal(
     caller: Principal,
     receiver: Principal,
-    portal: PortalId,
+    portal_id: PortalId,
 ) -> Result<(), Error> {
-    let maybe_portal = do_get_portal(portal.clone());
-    if let Some(portal) = maybe_portal {
+    let maybe_portal = do_get_portal(portal_id.clone());
+    if let Some(portal) = maybe_portal.clone() {
         if portal.creator != caller {
             return Err(Error::NotAllowed);
+        }
+        if portal.limit.is_some() && portal.minted >= portal.limit.unwrap() {
+            return Err(Error::LimitReached);
         }
     } else {
         return Err(Error::PortalNotFound);
@@ -170,10 +184,18 @@ pub fn do_mint_portal(
     PORTALS_OF.with(|portals_of| {
         let mut portals_of = portals_of.borrow_mut();
         if let Some(portals) = portals_of.get_mut(&receiver) {
-            (*portals).push(portal);
+            (*portals).push(portal_id.clone());
         } else {
-            portals_of.insert(receiver, vec![portal]);
+            portals_of.insert(receiver, vec![portal_id.clone()]);
         }
+    });
+
+    let mut portal = maybe_portal.unwrap();
+    portal.minted += 1;
+
+    PORTALS.with(|portals| {
+        let mut portals = portals.borrow_mut();
+        portals.insert(portal_id, portal);
     });
 
     Ok(())
@@ -206,12 +228,14 @@ mod tests {
         let creator = get_creator();
         let portal_name = String::from("portal1");
         let portal_desc = String::from("A basic portal.");
+        let limit = None;
         let image_url = None;
 
-        do_create_portal(
+        do_create_portal_blueprint(
             creator,
             portal_name.clone(),
             portal_desc.clone(),
+            limit.clone(),
             image_url.clone(),
         );
 
@@ -221,8 +245,10 @@ mod tests {
                 id: Nat::from(0),
                 creator,
                 name: portal_name,
-                image_url,
                 description: portal_desc,
+                image_url,
+                limit,
+                minted: Nat::from(0),
             })
         );
     }
@@ -233,11 +259,13 @@ mod tests {
         let portal_name = String::from("portal1");
         let portal_desc = String::from("A basic portal.");
         let image_url = None;
+        let limit = None;
 
-        do_create_portal(
+        do_create_portal_blueprint(
             creator,
             portal_name.clone(),
             portal_desc.clone(),
+            limit.clone(),
             image_url.clone(),
         );
 
@@ -249,6 +277,8 @@ mod tests {
                 name: portal_name,
                 description: portal_desc,
                 image_url,
+                limit: limit.clone(),
+                minted: Nat::from(0),
             })
         );
 
@@ -272,8 +302,10 @@ mod tests {
                 id: Nat::from(0),
                 creator,
                 name: new_name,
-                image_url: new_image_url,
                 description: new_desc,
+                image_url: new_image_url,
+                limit,
+                minted: Nat::from(0),
             })
         );
     }
@@ -303,11 +335,13 @@ mod tests {
         let portal_name = String::from("portal1");
         let portal_desc = String::from("A basic portal.");
         let image_url = None;
+        let limit = None;
 
-        do_create_portal(
+        do_create_portal_blueprint(
             creator,
             portal_name.clone(),
             portal_desc.clone(),
+            limit.clone(),
             image_url.clone(),
         );
 
@@ -319,6 +353,8 @@ mod tests {
                 name: portal_name,
                 description: portal_desc,
                 image_url,
+                limit,
+                minted: Nat::from(0),
             })
         );
 
@@ -349,11 +385,13 @@ mod tests {
         let name = String::from("portal1");
         let description = String::from("A basic portal.");
         let image_url = None;
+        let limit: Option<Nat> = None;
 
-        do_create_portal(
+        do_create_portal_blueprint(
             creator,
             name.clone(),
             description.clone(),
+            limit.clone(),
             image_url.clone(),
         );
 
@@ -363,8 +401,10 @@ mod tests {
                 id: Nat::from(0),
                 creator,
                 name,
-                image_url,
                 description,
+                image_url,
+                limit,
+                minted: Nat::from(0),
             }]
         );
     }
@@ -373,25 +413,55 @@ mod tests {
     fn minting_portals_works() {
         let creator = get_creator();
 
-        let portal1 = create_portal(creator, format!("Portal1"));
-        let portal2 = create_portal(creator, format!("Portal2"));
+        let mut portal1 = create_portal_blueprint(creator, format!("Portal1"));
+        let mut portal2 = create_portal_blueprint(creator, format!("Portal2"));
 
         let alice = get_default_principal();
 
         assert_eq!(do_mint_portal(creator, alice, portal1.clone().id), Ok(()));
         assert_eq!(do_mint_portal(creator, alice, portal2.clone().id), Ok(()));
 
+        portal1.minted = Nat::from(1);
+        portal2.minted = Nat::from(1);
+
         assert_eq!(do_get_portals_of_user(alice), vec![portal1, portal2])
     }
 
-    fn create_portal(creator: Principal, name: String) -> Portal {
-        let description = format!("Description of: {}", name);
+    #[test]
+    fn minting_limit_works() {
+        let creator = get_creator();
+        let name = String::from("portal");
+        let description = String::from("A basic portal.");
         let image_url = None;
+        let limit: Option<Nat> = Some(Nat::from(2));
 
-        let id = do_create_portal(
+        let _ = do_create_portal_blueprint(
             creator,
             name.clone(),
             description.clone(),
+            limit.clone(),
+            image_url.clone(),
+        );
+
+        let alice = get_default_principal();
+
+        // Note that in theory we wouldn't mint multiple portals for the same user.
+        // We may support this kind of functionality in the future though.
+        assert_eq!(do_mint_portal(creator, alice, Nat::from(0)), Ok(()));
+        assert_eq!(do_mint_portal(creator, alice, Nat::from(0)), Ok(()));
+        assert_eq!(do_mint_portal(creator, alice, Nat::from(0)), Err(Error::LimitReached));
+    }
+
+    fn create_portal_blueprint(creator: Principal, name: String) -> Portal {
+        let description = format!("Description of: {}", name);
+        let image_url = None;
+        let limit: Option<Nat> = None;
+
+        let id = do_create_portal_blueprint(
+            creator,
+            name.clone(),
+            description.clone(),
+            limit.clone(),
             image_url.clone(),
         );
 
@@ -401,6 +471,8 @@ mod tests {
             name,
             description,
             image_url,
+            limit,
+            minted: Nat::from(0),
         }
     }
 

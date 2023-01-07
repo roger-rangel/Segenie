@@ -3,7 +3,7 @@ import { idlFactory } from '../../../declarations/segenie_backend/segenie_backen
 import {Principal} from "@dfinity/principal";
 
 const useNewPortal = () => {
-  const actor = createActor(canisterId);
+  var actor = createActor(canisterId);
 
   const getAllPortals = async () => {
     console.log('Getting all portals of the user.');
@@ -16,14 +16,20 @@ const useNewPortal = () => {
     }
   };
 
-  const createPortalBlueprint = async (provider, name, description, imageDataURL) => {
+  const createPortalBlueprint = async (provider, name, description, limit, imageDataURL) => {
     console.log('Creating a portal blueprint.');
     const customActor = (await provider.activeProvider.createActor(canisterId, idlFactory)).value;
     console.log(customActor);
     try {
-      if (imageDataURL)
-        return await customActor.create_portal(name, description, imageDataURL);
-      else return await customActor.create_portal(name, description);
+      if (imageDataURL) {
+        return await customActor.create_portal_blueprint(name, description, [], [imageDataURL]);
+      }
+      else if(Number(limit) != NaN) {
+        await customActor.create_portal_blueprint(name, description, [Number(limit)]);
+      }
+      else {
+        return await customActor.create_portal_blueprint(name, description);
+      }
     } catch (e) {
       console.error(e);
       throw e;

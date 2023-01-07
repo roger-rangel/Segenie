@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const PageFooter = ({ buttons }) => {
   return (
-    <footer className="flex justify-center mt-12 gap-4">
+    <footer className="flex justify-center mt-8 gap-4">
       {buttons.map((button, index) => (
         <div
           key={index}
