@@ -1,21 +1,23 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import Nav from './nav/Nav'
-import About from './components/about/About'
-import Portals from './components/portals/Portals'
-import Communities from './components/communities/Communities'
+import About from './about/About'
 import NFTs from './components/nfts/NFTs'
-import Rewards from './components/rewards/Rewards'
-import Contact from './components/contact/Contact'
 import Info from './components/info/Info'
+import Contact from './components/contact/Contact'
+import Rewards from './components/rewards/Rewards'
+import Portals from './portals/Portals'
+import Communities from './components/communities/Communities'
+
+import './UserSettings.module.scss'
 
 const UserSettings = () => {
   return (
     <>
         <Nav />
-        {/* <About />
+        <About />
         <Portals />
-        <Communities />
+        {/* <Communities />
         <NFTs />
         <Rewards />
         <Info />

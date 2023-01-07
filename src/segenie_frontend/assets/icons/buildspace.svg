@@ -1,0 +1,22 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+ "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="2000" height="1877" viewBox="0 0 280.000000 280.000000"
+ preserveAspectRatio="xMidYMid meet">
+<linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+    </linearGradient>
+<g transform="translate(0.000000,280.000000) scale(0.100000,-0.100000)"
+fill="url(#grad1)" stroke="none">
+<path d="M1365 2169 c-37 -11 -40 -14 -147 -126 -64 -65 -88 -97 -88 -116 0
+-30 36 -63 126 -115 l64 -36 0 -144 0 -144 -32 20 c-18 11 -76 44 -128 73 -52
+29 -117 65 -145 81 -27 15 -63 28 -78 28 -73 0 -129 -71 -108 -140 14 -48 35
+-65 171 -140 63 -34 161 -90 218 -122 l102 -60 0 -145 0 -144 -77 42 c-43 23
+-95 53 -115 66 -21 13 -62 36 -90 52 -29 16 -136 77 -238 135 -102 58 -193
+106 -202 106 -52 0 -108 -67 -108 -129 0 -64 29 -99 125 -155 370 -217 740
+-423 769 -430 15 -4 44 -1 64 5 62 21 805 449 838 483 41 43 50 93 27 145 -11
+24 -152 183 -353 398 -483 516 -465 498 -509 511 -43 14 -45 14 -86 1z"/>
+</g>
+</svg>
