@@ -26,7 +26,7 @@ const UserMenu = () => {
   return (
     <menu className="h-screen bg-[#19162c] flex flex-col items-center shadow-xl sticky top-0">
         <IconContext.Provider value={{ color: "#475569", className: "global-class-name" }}>
-            <div className="container flex justify-between pt-6 px-4 pb-[26px] border-b-[1px] border-[#475569]">
+            <div className="container flex justify-between pt-[1rem] px-4 pb-[26px] border-b-[1px] border-[#475569]">
                 <i className="fingerprint" >
                   <HiFingerPrint />
                 </i>

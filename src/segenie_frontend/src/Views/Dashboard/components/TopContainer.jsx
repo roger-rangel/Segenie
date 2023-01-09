@@ -3,7 +3,7 @@ import React from "react";
 const TopContainer = () => {
 
   return (
-    <div className="flex justify-center items-center border-b-[1px] border-[#475569] pb-4">
+    <div className="flex justify-center items-center border-b-[1px] border-[#475569] pt-3 pb-3">
         <form className="w-[50%]">   
             <label htmlFor="default-search" className="mb-2 text-sm font-medium sr-only dark:text-white">Search</label>
             <div className="relative">

@@ -16,7 +16,7 @@ const Menu = ({setModal}) => {
   };
 
   return (
-    <menu className="h-screen bg-[#19162c] flex flex-col items-center shadow-xl sticky top-0">
+    <menu className="h-screen bg-[#19162c] flex flex-col items-center shadow-xl sticky top-0 z-10">
       <img src="./img/logo.png" alt="" className="w-12 pt-4 pb-4"/>
       <ul id="mainMenu" className="w-full pt-5 flex flex-col items-center">
         <div className="flex relative cursor-pointer" onMouseEnter={() => setIsShown(1)} onMouseLeave={() => setIsShown(6)} >
