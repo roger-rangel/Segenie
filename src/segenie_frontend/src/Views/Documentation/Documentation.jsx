@@ -29,9 +29,9 @@ const Documentation = () => {
   different content that is according to the portal.";
 
   const nws2 = "For the N&W S2 we decided to showcase the functionality of Segeni by creating group portals. \
-  Depending on the group you are part of you can claim the associated portal for free. This portal will allow \
-  you to communicate with other builders that are also members of your group. This will be possible because of our \
-  collaboration with a great project, ";
+  Depending on the group you are part of you can claim the associated portal for free. We are looking to collaborate \
+  with a great project so that we can showcase one of the endless posibilites of the portals. More details will be shared \
+  about this once the collaboration is official.";
 
   return (
     <div className="absolute left-1/2 transform -translate-x-1/2">
@@ -87,7 +87,6 @@ const Documentation = () => {
           </p>
           <p className="mt-3 mb-12 text-left font-raleway text-base text-[#e6e6e6]">
             {nws2}
-            <a className="text-[#275bd6]" href="https://thinkdivergent.com/">Think Divergent</a>
           </p>
         </div>
     </div>
