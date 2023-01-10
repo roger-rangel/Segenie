@@ -2,6 +2,8 @@ type Portal = record {
     "id": nat;
     "name": text;
     "description": text;
+    "limit": opt nat;
+    "minted": nat;
     "image_url": opt text;
     "creator": principal;
 };
@@ -12,7 +14,7 @@ type Creator = record {
 };
 
 service : {
-    "create_portal": (text, text) -> (text);
+    "create_portal_blueprint": (text, text, opt nat) -> (text);
     "update_portal_metadata": (nat, text, text, opt text) -> (text);
     "get_portal": (nat) -> (opt Portal);
     "set_creator_metadata": (text) -> (text);

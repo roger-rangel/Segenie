@@ -21,10 +21,16 @@ const SecondPageContent = ({ mintInformation, setMintInformation }) => {
           name="name"
           onChange={onChangeInput}
         />
+        <UserInput
+          className=""
+          placeholder="Limit: [Leave empty if you don't want to set a limit.]"
+          name="limit"
+          onChange={onChangeInput}
+        />
         <textarea
-          className="py-2 px-4 bg-[#080808] rounded font-raleway text-xl 
+          className="py-2 px-4 bg-[#080808] rounded font-raleway text-xl
                     border-none resize-none placeholder:text-[#19E7AB] text-[#19E7AB]"
-          rows="5"
+          rows="4"
           placeholder="Description"
           name="description"
           onChange={onChangeInput}

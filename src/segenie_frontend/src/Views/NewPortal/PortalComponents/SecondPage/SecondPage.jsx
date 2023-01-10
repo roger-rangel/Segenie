@@ -12,6 +12,7 @@ const SecondPage = ({ heading, subtitle, goBack, onClickMintButton }) => {
   const [mintInformation, setMintInformation] = useState({
     name: '',
     description: '',
+    limit: NaN,
   });
 
   const footerButtons = [
