@@ -11,14 +11,14 @@ const MintedPortal = ({ mintResult }) => {
       <AspectRatio ratio="fourByThree">
         <img
           className="container h-full object-cover"
-          src="./gifs/minted_portal.gif"
+          src="./img/portal.png"
           alt=""
         />
       </AspectRatio>
       <div className="p-4 h-[23rem] bg-contain w-60">
         <Title type="secondary">{mintResult.name}</Title>
         <img
-          src="./gifs/minted_portal.gif"
+          src="./img/portal.png"
           alt=""
           className="rounded mb-4 bg-contain "
         />

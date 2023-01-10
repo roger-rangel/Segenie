@@ -30,23 +30,17 @@ const client = createClient({
 })
 
 root.render(
-  // Commentig this off for Testing Purposes Only
   // <Connect2ICProvider client={client}>
     <Router>
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="/" exact element={<Dashboard />} />
-          <Route path="/portal" exact element={
-            // <RequireWeb3Auth>
-              <NewPortal />
-            // </RequireWeb3Auth>
-          } />
           <Route path="/usersettings" element={<UserSettings />} />
           <Route path="/options" element={<SegenieOptions />} />
-          <Route path="/auth" element={<Web3Authorization />} />
+          {/* <Route path="/auth" element={<Web3Authorization />} /> */}
           <Route path="/documentation" element={<Documentation />} />
         </Route>
       </Routes>
     </Router>
-  // </Connect2ICProvider>
+   ,{/* </Connect2ICProvider> */}
 );

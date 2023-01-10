@@ -7,7 +7,7 @@ import menu4 from '../../../../assets/gifs/menu-4.gif';
 import Add1 from '../../../../assets/icons/add-1.svg';
 import Add2 from '../../../../assets/gifs/add2.gif';
 
-const Menu = ({setModal}) => {
+const Menu = ({setModal, setPortal}) => {
   const [isShown, setIsShown] = useState(6);
 
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ const Menu = ({setModal}) => {
 
         <div className="flex relative cursor-pointer" onMouseEnter={() => setIsShown(2)} onMouseLeave={() => setIsShown(6)} >
           {isShown === 2 ? <span className='absolute py-5 px-1 -left-2 rounded-r-lg bg-gradient-to-r from-[#4ade80] to-[#3b82f6]'></span> : ''}
-          <li onClick={portal} className="list-none mx-5 my-0 relative items-center pb-6">
+          <li onClick={() => setPortal(prevModal => !prevModal)} className="list-none mx-5 my-0 relative items-center pb-6">
             {isShown === 2 ? <img className={`rounded-full h-10 w-10 cursor-pointer`} src='./gifs/portal.gif' alt={portal}/> : <img className={`rounded-full h-10 w-10`} src={Add1} alt={Add1}/>}
           </li>
           {isShown === 2 ? <span className='absolute left-20 whitespace-nowrap py-2 px-4 rounded-lg bg-gradient-to-r from-[#4ade80] to-[#3b82f6]'>Portal Demo</span> : ''}

@@ -2,21 +2,15 @@
 import React from "react";
 import Banner from "../../../../assets/img/nw2.png";
 import Segenie from "../../../../assets/img/seg3.png";
-import CardMain from "./CardMain";
-import Card1 from "../../../../assets/gifs/minted_portal.gif";
-import Card2 from "../../../../assets/gifs/minted_portal.gif";
-import IMG1 from '../../../../assets/icons/buildspace.svg'
 
 import { HiOutlineFire, HiAcademicCap, HiMusicalNote, HiCube, HiChatBubbleOvalLeftEllipsis, HiQrCode, HiOutlinePuzzlePiece, HiGlobeAlt, HiOutlineSparkles } from "react-icons/hi2";
 import { IconContext } from "react-icons";
+import Countdown from './Countdown'
 
 import styles from './MainContainer.module.scss'
 import { classnames } from 'tailwindcss-classnames';
 
 import TopContainer from "./TopContainer";
-
-import MainRightTopCard from "./MainRightTopCard";
-import MainRightBottomCard from "./MainRightBottomCard";
 
 function MainContainer() {
   return (
@@ -72,10 +66,10 @@ function MainContainer() {
 
      
       <div className={classnames(styles.left)}>
-        <TopContainer />
-        <div className="px-4 py-2">
-        <div
-          className="rounded-lg h-44"
+        {/* <TopContainer /> */}
+        <div className="px-4 ">
+        {/* <div
+          className="rounded-lg h-22"
           style={{
             background: `url(${Segenie})`,
             backgroundRepeat: "no-repeat",
@@ -83,7 +77,7 @@ function MainContainer() {
             backgroundPosition: "center",
           }}>
           <h1 className={classnames(styles.segenie)}>Build Your Community</h1>
-        </div>
+        </div> */}
 
         <div className={classnames(styles.cards)}>
           <div className={classnames(styles.filters)}>
@@ -132,16 +126,76 @@ function MainContainer() {
             <p>Stay Tuned for New Updates!</p>
             <div className={classnames(styles.bid)}>
               <a href="/" className={classnames(styles.button)}>
-                Enter on January 24-28th
+                Enter on January 17
               </a>
-              <p>
-                Ending In <span>2d:15h:20m</span>
-              </p>
+              <div className="flex flex-col items-center">
+                Starting In <span> <Countdown /></span>
+              </div>
             </div>
-          </div>
-
-          
+          </div>         
         </div>
+
+        <div className={classnames(styles. portfolio__container)}>
+            <article key={'create'} className={classnames(styles. portfolio__item)}>
+                <div className="relative rounded-full bg-[#ff006e] py-1 px-2 text-center">Coming Soon!</div>
+                <div className={classnames(styles. portfolio__item_image)}>
+                    <img class="rounded-t-lg" src='./img/blueteam.png' alt={'title'} />
+                </div>
+                <div>
+                <h3>N&W2 Portal</h3>
+                <h3 className="text-xl text-[#3b82f6]">Blue Team</h3>
+                <h3>Claim on:</h3>
+                <div className={classnames(styles. portfolio__item_cta)}>
+                <a href="#about" className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6] '>Jan. 17th</a>
+                </div>
+              </div>
+            </article>
+            <article key={'create'} className={classnames(styles. portfolio__item)}>
+                <div className="relative rounded-full bg-[#ff006e] py-1 px-2 text-center">Coming Soon!</div>
+                <div className={classnames(styles. portfolio__item_image)}>
+                    <img class="rounded-t-lg" src='./img/yellowteam.png' alt={'title'} />
+                </div>
+                <div>
+                <h3>N&W2 Portal</h3>
+                <h3 className="text-xl text-[#f77f00]">Yellow Team</h3>
+                <h3>Claim on:</h3>
+                <div className={classnames(styles. portfolio__item_cta)}>
+                <a href="#about" className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6] '>Jan. 17th</a>
+                </div>
+              </div>
+            </article>
+            <article key={'create'} className={classnames(styles. portfolio__item)}>
+                <div className="relative rounded-full bg-[#ff006e] py-1 px-2 text-center">Coming Soon!</div>
+                <div className={classnames(styles. portfolio__item_image)}>
+                    <img class="rounded-t-lg" src='./img/greemteam.png' alt={'title'} />
+                </div>
+                <div>
+                <h3>N&W2 Portal</h3>
+                <h3 className="text-xl text-[#4ade80]">Green Team</h3>
+                <h3>Claim on:</h3>
+                <div className={classnames(styles. portfolio__item_cta)}>
+                <a href="#about" className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6] '>Jan. 17th</a>
+                </div>
+              </div>
+            </article>
+            <article key={'create'} className={classnames(styles. portfolio__item)}>
+                <div className="relative rounded-full bg-[#ff006e] py-1 px-2 text-center">Coming Soon!</div>
+                <div className={classnames(styles. portfolio__item_image)}>
+                    <img class="rounded-t-lg" src='./img/redteam.png' alt={'title'} />
+                </div>
+                <div>
+                <h3>N&W2 Portal</h3>
+                <h3 className="text-xl text-[#d90429]">Red Team</h3>
+                <h3>Claim on:</h3>
+                <div className={classnames(styles. portfolio__item_cta)}>
+                <a href="#about" className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6] '>Jan. 17th</a>
+                </div>
+              </div>
+            </article>
+      
+          
+      </div>
+
         </div>
       </div>
       

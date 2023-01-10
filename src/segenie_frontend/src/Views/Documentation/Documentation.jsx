@@ -3,8 +3,10 @@ import Page from '../../components/Page/Page';
 import Title from '../../components/Title/Title';
 
 const Documentation = () => {
+  // const whatIsSegenie = "Segenie is a project built on the Internet Computer. \
+  // All of the functionality of Segenie is based around portals.";
   const whatIsSegenie = "Segenie is a project built on the Internet Computer. \
-  All of the functionality of Segenie is based around portals.";
+  Our first Web3 tool are Portals. There are two types: soulbound and non-fungible tokens";
 
   const whatArePortals = "Portals are the main component of Segenie. In essence they are Soulbound Tokens(SBTs). \
   They cannot be bought or traded. The only way to obtain portals is if the portal issuer mints one for you."

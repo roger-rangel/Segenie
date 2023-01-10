@@ -41,10 +41,10 @@ const UserMenu = () => {
                 </i>
             </div>
         </IconContext.Provider>
-        <img src="./icons/Avatar.svg" alt="" className="w-60"/>
-        <p className="text-[#e6e6e6] -mt-6 text-sm">Nati Kowalska</p>
-        <p className="text-[#504992] mt-1 text-xs">@natikowalska</p>
-        
+        <img src="./icons/Avatar.svg" alt="" className="w-40 mt-4 mb-2 mx-10"/>
+        <p className="text-[#e6e6e6] -mt-6 text-lg">Alexander</p>
+        <p className="text-[#3b82f6] mt-2 text-sm">Blue Team</p>
+        <p className="text-[#504992] mt-1 text-xs">@alexander</p>   
     </menu>
   );
 }

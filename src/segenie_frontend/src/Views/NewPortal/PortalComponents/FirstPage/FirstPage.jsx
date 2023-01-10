@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Link from '../Link/Link';
 import Page from '../../../../components/Page/Page';
 import PageTitle from '../PageTitle/PageTitle';
-import PageFooter from '../PageFooter/PageFooter';
+import PageFooter from '../PageTitle/PageFooter/PageFooter';
 import FirstPageContent from '../FirstPageContent/FirstPageContent';
 
 //Main Components
@@ -25,7 +25,7 @@ const FirstPage = ({ onClickNextButton }) => {
     <Page>
       <PageTitle
         heading="New Portal"
-        subtitle="Create a portal that can give special access to hidden places inside the Metaverse"
+        subtitle="Portal holders will be able to access your special content, community, web app, or anything imaginable in the Metaverse"
       />
       <FirstPageContent
         imageDataURL={imageDataURL}

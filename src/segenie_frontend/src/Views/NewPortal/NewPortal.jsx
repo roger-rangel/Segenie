@@ -47,13 +47,13 @@ const newPortal = ({provider}) => {
     <FirstPage onClickNextButton={onClickNextButton} />,
     <SecondPage
       heading="Portal blueprint creation"
-      subtitle="Create a portal that can give special access to hidden places inside the Metaverse"
+      subtitle="Portal holders will be able to access your special content, community, web app, or anything imaginable in the Metaverse"
       goBack={showPreviousPage}
       onClickMintButton={onClickMintButton}
     />,
     <ThirdPage
       heading="Amazing! A new Portal has been created!"
-      subtitle="Time to discover new worlds inside the Metaverse"
+      subtitle="Time for humans to discover new worlds with your new Portal"
       mintResult={portal}
     />,
   ];

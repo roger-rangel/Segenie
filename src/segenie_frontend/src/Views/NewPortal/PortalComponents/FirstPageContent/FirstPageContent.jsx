@@ -8,9 +8,9 @@ const FirstPageContent = () => {
       <div className="flex-1">
         <div className="flex justify-center items-center ">
           <img
-            src="gifs/minted_portal.gif"
+            src="img/portal.png"
             alt="portal_photo"
-            className="h-[15rem] rounded-xl -mt-4"
+            className="h-60 w-80 rounded-xl -mt-4"
           />
         </div>
       </div>
