@@ -18,9 +18,9 @@ function MainContainer() {
       <div className={classnames(styles.right, 'max-[1100px]:hidden')}>
         <menu className="h-screen bg-[#19162c] flex flex-col items-center shadow-xl sticky top-0">
         
-        <div className=" rounded-full bg-[#ff006e] py-1 px-3 mt-4">Demo Mode</div>
+       
         <IconContext.Provider value={{ color: "#f1faee", className: "global-class-name" }}>
-          <ul id="mainMenu" className="w-full pt-5 flex flex-col items-left ">
+          <ul id="mainMenu" className="w-full pt-5 flex flex-col items-left">
             <div className="flex relative cursor-pointer flex-col">
               <li className="flex list-none mx-2 my-0 relative items-center py-2 rounded-lg hover:bg-[#231942] text-[#f1faee] hover:text-[white]">
                 <HiOutlineFire className="ml-4" />
@@ -40,15 +40,11 @@ function MainContainer() {
               </li>
               <li className="flex list-none mx-2 my-0 relative items-center py-2 rounded-lg hover:bg-[#231942]  text-[#f1faee] hover:text-[white]">
                 <HiQrCode className="ml-4" />
-                <h1 className="ml-4">Tech & Blockchain</h1>
+                <h1 className="ml-4">Crypto</h1>
               </li>
               <li className="flex list-none mx-2 my-0 relative items-center py-2 rounded-lg hover:bg-[#231942]  text-[#f1faee] hover:text-[white]">
                 <HiCube className="ml-4" />
-                <h1 className="ml-4">New on Web3</h1>
-              </li>
-              <li className="flex list-none mx-2 my-0 relative items-center py-2 rounded-lg hover:bg-[#231942]  text-[#f1faee] hover:text-[white]">
-                <HiAcademicCap className="ml-4" />
-                <h1 className="ml-4">Student Hubs</h1>
+                <h1 className="ml-4">Web3</h1>
               </li>
               <li className="flex list-none mx-2 my-0 relative items-center py-2 rounded-lg hover:bg-[#231942]  text-[#f1faee] hover:text-[white]">
                 <HiChatBubbleOvalLeftEllipsis className="ml-4" />
@@ -56,7 +52,7 @@ function MainContainer() {
               </li>
               <li className="flex list-none mx-2 my-0 relative items-center py-2 rounded-lg hover:bg-[#231942]  text-[#f1faee] hover:text-[white]">
                 <HiOutlineSparkles className="ml-4" />
-                <h1 className="ml-4">Virtual Reality</h1>
+                <h1 className="ml-4">VR / AR</h1>
               </li>
             </div>
           </ul>
@@ -126,7 +122,7 @@ function MainContainer() {
             <p>Stay Tuned for New Updates!</p>
             <div className={classnames(styles.bid)}>
               <a href="/" className={classnames(styles.button)}>
-                Enter on January 17
+                Enter on January 24
               </a>
               <div className="flex flex-col items-center">
                 Starting In <span> <Countdown /></span>
@@ -139,56 +135,56 @@ function MainContainer() {
             <article key={'create'} className={classnames(styles. portfolio__item)}>
                 <div className="relative rounded-full bg-[#ff006e] py-1 px-2 text-center">Coming Soon!</div>
                 <div className={classnames(styles. portfolio__item_image)}>
-                    <img class="rounded-t-lg" src='./img/blueteam.png' alt={'title'} />
+                    <img className="rounded-t-lg" src='./img/blueportal.png' alt={'title'} />
                 </div>
                 <div>
                 <h3>N&W2 Portal</h3>
-                <h3 className="text-xl text-[#3b82f6]">Blue Team</h3>
+                <h3 className="text-xl text-[#3b82f6]">Blue Portal</h3>
                 <h3>Claim on:</h3>
                 <div className={classnames(styles. portfolio__item_cta)}>
-                <a href="#about" className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6] '>Jan. 17th</a>
+                <a href="#about" className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6] '>Jan. 24th</a>
                 </div>
               </div>
             </article>
-            <article key={'create'} className={classnames(styles. portfolio__item)}>
+            <article key={'create2'} className={classnames(styles. portfolio__item)}>
                 <div className="relative rounded-full bg-[#ff006e] py-1 px-2 text-center">Coming Soon!</div>
                 <div className={classnames(styles. portfolio__item_image)}>
-                    <img class="rounded-t-lg" src='./img/yellowteam.png' alt={'title'} />
+                    <img className="rounded-t-lg" src='./img/yellowportal.png' alt={'title'} />
                 </div>
                 <div>
                 <h3>N&W2 Portal</h3>
-                <h3 className="text-xl text-[#f77f00]">Yellow Team</h3>
+                <h3 className="text-xl text-[#f77f00]">Yellow Portal</h3>
                 <h3>Claim on:</h3>
                 <div className={classnames(styles. portfolio__item_cta)}>
-                <a href="#about" className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6] '>Jan. 17th</a>
+                <a href="#about" className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6] '>Jan. 24th</a>
                 </div>
               </div>
             </article>
-            <article key={'create'} className={classnames(styles. portfolio__item)}>
+            <article key={'create3'} className={classnames(styles. portfolio__item)}>
                 <div className="relative rounded-full bg-[#ff006e] py-1 px-2 text-center">Coming Soon!</div>
                 <div className={classnames(styles. portfolio__item_image)}>
-                    <img class="rounded-t-lg" src='./img/greemteam.png' alt={'title'} />
+                    <img className="rounded-t-lg" src='./img/greenportal.png' alt={'title'} />
                 </div>
                 <div>
                 <h3>N&W2 Portal</h3>
-                <h3 className="text-xl text-[#4ade80]">Green Team</h3>
+                <h3 className="text-xl text-[#4ade80]">Green Portal</h3>
                 <h3>Claim on:</h3>
                 <div className={classnames(styles. portfolio__item_cta)}>
-                <a href="#about" className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6] '>Jan. 17th</a>
+                <a href="#about" className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6] '>Jan. 24th</a>
                 </div>
               </div>
             </article>
-            <article key={'create'} className={classnames(styles. portfolio__item)}>
+            <article key={'create4'} className={classnames(styles. portfolio__item)}>
                 <div className="relative rounded-full bg-[#ff006e] py-1 px-2 text-center">Coming Soon!</div>
                 <div className={classnames(styles. portfolio__item_image)}>
-                    <img class="rounded-t-lg" src='./img/redteam.png' alt={'title'} />
+                    <img className="rounded-t-lg" src='./img/redportal.png' alt={'title'} />
                 </div>
                 <div>
                 <h3>N&W2 Portal</h3>
-                <h3 className="text-xl text-[#d90429]">Red Team</h3>
+                <h3 className="text-xl text-[#d90429]">Red Portal</h3>
                 <h3>Claim on:</h3>
                 <div className={classnames(styles. portfolio__item_cta)}>
-                <a href="#about" className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6] '>Jan. 17th</a>
+                <a href="#about" className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6] '>Jan. 24th</a>
                 </div>
               </div>
             </article>

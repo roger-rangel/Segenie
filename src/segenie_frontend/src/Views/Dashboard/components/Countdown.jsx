@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 function Countdown() {
   const calculateTimeLeft = () => {
     let year = new Date().getFullYear();
-    let difference = +new Date(`01/17/${year}`) - +new Date();
+    let difference = +new Date(`01/25/${year}`) - +new Date();
     let timeLeft = {};
 
     if (difference > 0) {
@@ -30,6 +30,8 @@ function Countdown() {
     <span className="flex">
       {timeLeft.hours || timeLeft.minutes || timeLeft.seconds ? (
         <>
+          <span>{timeLeft.days}</span>
+          <span>:</span>
           <span>{timeLeft.hours}</span>
           <span>:</span>
           <span>{timeLeft.minutes}</span>

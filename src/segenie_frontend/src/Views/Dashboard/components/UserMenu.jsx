@@ -24,7 +24,7 @@ const UserMenu = () => {
   }, []);
 
   return (
-    <menu className="h-screen bg-[#19162c] flex flex-col items-center shadow-xl sticky top-0">
+    <menu className="h-screen bg-[#19162c] max-[768px]:hidden flex flex-col items-center shadow-xl sticky top-0">
         <IconContext.Provider value={{ color: "#475569", className: "global-class-name" }}>
             <div className="container flex justify-between pt-[1rem] px-4 pb-[26px] border-b-[1px] border-[#475569]">
                 <i className="fingerprint" >
@@ -37,7 +37,7 @@ const UserMenu = () => {
                 < HiOutlineChatBubbleOvalLeft />
                 </i>
                 <i id="usersettings" className="cursor-pointer" onClick={userSettings}>
-                  <HiOutlineCog6Tooth />
+                  <HiOutlineCog6Tooth color="#2ebf91" />
                 </i>
             </div>
         </IconContext.Provider>

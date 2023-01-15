@@ -16,8 +16,7 @@ const Menu = ({setModal, setPortal}) => {
   };
 
   return (
-    <menu className="h-screen bg-[#19162c] flex flex-col items-center shadow-xl sticky top-0 z-10">
-      <img src="./img/logo.png" alt="" className="w-12 pt-4 pb-4"/>
+    <menu className="h-screen flex max-[768px]:hidden bg-[#19162c] flex-col items-center shadow-xl sticky top-0 z-10">
       <ul id="mainMenu" className="w-full pt-5 flex flex-col items-center">
         <div className="flex relative cursor-pointer" onMouseEnter={() => setIsShown(1)} onMouseLeave={() => setIsShown(6)} >
           {isShown === 1 ? <span className='absolute py-5 px-1 -left-2 rounded-r-lg bg-gradient-to-r from-[#8A2387] via-[#E94057] to-[#F27121]'></span> : ''}
