@@ -64,16 +64,7 @@ function MainContainer() {
       <div className={classnames(styles.left)}>
         {/* <TopContainer /> */}
         <div className="px-4 ">
-        {/* <div
-          className="rounded-lg h-22"
-          style={{
-            background: `url(${Segenie})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}>
-          <h1 className={classnames(styles.segenie)}>Build Your Community</h1>
-        </div> */}
+
 
         <div className={classnames(styles.cards)}>
           <div className={classnames(styles.filters)}>
@@ -102,7 +93,6 @@ function MainContainer() {
           <main>  
             {/* <CardMain imgSrc={Card1} title={"Cubic Thunder"} hearts={"65"} />
             <CardMain imgSrc={Card2} title={"Pokemon Ball"} hearts={"65"} /> */}
-
           </main>
         </div>
       
