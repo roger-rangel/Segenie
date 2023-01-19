@@ -48,8 +48,8 @@ const Portals = () => {
       <div className={classnames(styles. portfolio__container)}>
         {portals !== [] &&
           portals.map((portal) => {
-            return (<article key={portal.id} className={classnames(styles. portfolio__item)}>
-                <div className="absolute rounded-full bg-[#ff006e] py-1 px-2">Coming Soon!</div>
+            return (
+            <article key={portal.id} className={classnames(styles. portfolio__item)}>
                 <div className={classnames(styles. portfolio__item_image)}>
                     <img className="rounded-t-lg" src={IMG2} alt={'title'} />
                 </div>
