@@ -6,13 +6,13 @@ const RequireWeb3Auth = ({ children }) => {
   const [provider, setProvider] = useState(null);
 
   useEffect(() => {
-    window.localStorage.clear();
     window.sessionStorage.clear();
     window.indexedDB.deleteDatabase("auth-client-db");
   });
 
   const onConnect = (activeProvider) => {
     console.log(activeProvider);
+    window.localStorage.setItem("principal", activeProvider.principal);
     setProvider(activeProvider);
   }
 

@@ -5,11 +5,11 @@ import {Principal} from "@dfinity/principal";
 const useNewPortal = () => {
   var actor = createActor(canisterId);
 
-  const getAllPortals = async () => {
+  const getAllPortals = async (rawPrincipal) => {
     console.log('Getting all portals of the user.');
     try {
-      const response = await actor.get_portals_of_caller();
-      console.log(response);
+      const principal = Principal.from(rawPrincipal)
+      return await actor.get_portals_of_user(principal);
     } catch (e) {
       console.error(e);
       throw e;

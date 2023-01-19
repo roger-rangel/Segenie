@@ -35,7 +35,7 @@ const MintPortal = ({portal, setPortal, provider}) => {
         style={customStyles}
         contentLabel="Example Portal"
       >
-        <Portal />
+        <Portal provider={provider}/>
       </Modal>
     </div>
   );

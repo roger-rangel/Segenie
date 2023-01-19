@@ -15,7 +15,6 @@ const Dashboard = () => {
   console.log(modal);
   return (
     <div>
-      
       <div className="text-[white] bg-gradient-to-r from-[#fc00ff] via-[#2ebf91] to-[#4BC0C8] z-15 mx-auto text-center py-2"> 
         <a href="/documentation" className="">
           Read our quick documentation to learn more about Segenie. New updates coming soon! 
@@ -27,10 +26,9 @@ const Dashboard = () => {
     
       <Menu setModal={setModal} setPortal={setPortal}/>
       <RequireWeb3Auth>
-      {/* <RequireWeb3Auth> */}
         <MintModal modal={modal} setModal={setModal} />
-      {/* </RequireWeb3Auth> 
-      <RequireWeb3Auth> */}
+      </RequireWeb3Auth> 
+      <RequireWeb3Auth>
         <MintPortal portal={portal} setPortal={setPortal} />
       </RequireWeb3Auth> 
       <Container />
