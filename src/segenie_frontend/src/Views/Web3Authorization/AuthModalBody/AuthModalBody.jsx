@@ -101,7 +101,7 @@ const AuthModalBody = ({
               <Description>
                 Already got an account?{' '}
                 <button
-                  className={styles.signUpButton}
+                   className={`ml-2`}
                   onClick={() => setTab('sign-in')}
                 >
                   Sign in
@@ -126,7 +126,7 @@ const AuthModalBody = ({
                 <Button
                   label="Sign up"
                   Icon={SignInIcon}
-                  fill="transparent"
+                 
                   type="submit"
                 />
               </div>

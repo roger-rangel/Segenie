@@ -31,7 +31,7 @@ const client = createClient({
 })
 
 root.render(
-  // <Connect2ICProvider client={client}>
+  <Connect2ICProvider client={client}>
     <Router>
       <Routes>
         <Route path="/" element={<App />}>
@@ -40,10 +40,10 @@ root.render(
           <Route path="/options" element={<SegenieOptions />} />
           <Route path="/portals" element={<WelcomePage />} />
           {/* <Route path="/nft_collection" element={<NFTCollection />} /> */}
-          {/* <Route path="/auth" element={<Web3Authorization />} /> */}
+          <Route path="/auth" element={<Web3Authorization />} />
           <Route path="/documentation" element={<Documentation />} />
         </Route>
       </Routes>
     </Router>
-  //  {/* </Connect2ICProvider> */}
+  </Connect2ICProvider>
 );

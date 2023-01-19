@@ -4,7 +4,7 @@ import Wrapper from '../Wrapper/Wrapper';
 
 const MainWrapper = ({ children }) => {
   return (
-    <main className="h-screen overflow-visible">
+    <main className="h-screen overflow-visible z-20">
       <div className="py-16 px-0 min-h-screen flex flex-col justify-center">
         <Wrapper>{children}</Wrapper>
 
