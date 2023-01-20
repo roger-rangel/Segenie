@@ -4,18 +4,10 @@ import Wrapper from '../Wrapper/Wrapper';
 
 const MainWrapper = ({ children }) => {
   return (
-    <main className="h-screen overflow-visible">
+    <main className="h-screen overflow-visible z-20">
       <div className="py-16 px-0 min-h-screen flex flex-col justify-center">
         <Wrapper>{children}</Wrapper>
-        <video
-          autoPlay
-          loop="loop"
-          muted
-          className="-z-3 w-auto min-w-full min-h-full max-w-none absolute"
-        >
-          <source src="./videos/background.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+
       </div>
     </main>
   );

@@ -40,8 +40,10 @@ body {
 }
 
 :root {
-  --card-height: 65vh;
-  --card-width: calc(var(--card-height) / 1.5);
+  /* --card-height: 65vh;
+  --card-width: calc(var(--card-height) / 1.5); */
+  --card-height: 55vh;
+  --card-width: calc(var(--card-height) / 1);
 }
 
 .card {
@@ -75,6 +77,21 @@ body {
   display: flex;
   pointer-events: none;
 }
+
+.gif2 {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  max-width:100%;
+  max-height:100%;
+  overflow: hidden;
+  /* object-fit: cover; */
+}
+.card:hover .gif2 {
+  display: flex;
+  pointer-events: none;
+}
 .card:hover:before,
 .card:hover:after {
   background-image: linear-gradient(
@@ -88,7 +105,7 @@ body {
 .card::before {
   content: '';
   width: 104%;
-  height: 102%;
+  height: 103%;
   border-radius: 8px;
   background-image: linear-gradient(
     var(--rotate),
@@ -98,7 +115,7 @@ body {
   );
   position: absolute;
   z-index: -1;
-  top: -1%;
+  /* top: -1%; */
   left: -2%;
   animation: spin 2.5s linear infinite;
 }
@@ -143,7 +160,7 @@ body {
   font-family: cursive;
 }
 
-.card_metaverse:hover .gif {
+.card_metaverse:hover .gif2 {
   display: flex;
   pointer-events: none;
 }
@@ -160,7 +177,7 @@ body {
 .card_metaverse::before {
   content: '';
   width: 104%;
-  height: 102%;
+  height: 103%;
   border-radius: 8px;
   background-image: linear-gradient(
     var(--rotate),
@@ -170,7 +187,7 @@ body {
   );
   position: absolute;
   z-index: -1;
-  top: -1%;
+  /* top: -1%; */
   left: -2%;
   animation: spin 2.5s linear infinite;
 }

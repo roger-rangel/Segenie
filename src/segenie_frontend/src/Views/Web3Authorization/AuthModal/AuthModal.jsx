@@ -6,7 +6,7 @@ import Layer from '../../../components/Layer/Layer';
 import Loader from '../../../components/Loader/Loader';
 import useWeb3Identity from '../../../Hooks/useWeb3Identity';
 import Page from '../../../components/Page/Page';
-import PageTitle from '../../NewPortal/PortalComponents/PageTitle/PageTitle';
+import Modal from 'react-modal';
 
 const AuthModal = ({onConnect}) => {
   const [signInData, setSignInData] = useState({
@@ -46,14 +46,33 @@ const AuthModal = ({onConnect}) => {
       setShouldShowLoader(false);
     }
   };
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      backgroundColor: 'transparent',
+      border: 'none',
+      transform: 'translate(-50%, -50%)',
+    },
+    overlay: {
+        background: 'rgba(255, 255, 255, 0.20)',
+    }
+  };
 
   return (
     <>
+    <Modal
+        isOpen={true}
+        // onRequestClose={closePortal}
+        style={customStyles}
+        contentLabel="Login Modal"
+      >
+       
+     
       <Page>
-        {/* <PageTitle
-          heading="Login"
-          subtitle="Enter Web3 to enjoy Segenie"
-        /> */}
         <div className="text-[white] font-[Raleway] mt-6 mb-12">
           <h1>Please Login to Continue</h1>
         </div>
@@ -70,6 +89,7 @@ const AuthModal = ({onConnect}) => {
           <Loader />
         </Layer>
       )}
+       </Modal>
     </>
   );
 };

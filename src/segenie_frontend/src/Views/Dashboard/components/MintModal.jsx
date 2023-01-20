@@ -44,7 +44,7 @@ const MintModal = ({modal, setModal, provider}) => {
         contentLabel="Example Modal"
       >
         <form className=''>
-          <img className=" w-80 rounded" src={'/img/cryptocard.jpeg'} alt={''}/>
+          <img className=" w-80 rounded" src={'/img/portalmint.png'} alt={''}/>
           <div className="flex flex-col mt-4">
             <div>
                 <input 
@@ -53,6 +53,10 @@ const MintModal = ({modal, setModal, provider}) => {
                   value={portalId} 
                   onChange={(e) => setPortalId(e.target.value)}
                 />
+                <span
+                  className='bg-gradient-to-r from-[#0F2027] via-[#203A43] to-[#4BC0C8] rounded placeholder-[#475569] mb-4 ml-2 align-middle text-center px-6 py-1 border-[#8A2387] border-2'>
+                    Portal ID
+                </span>
             </div>
             <div>
                 <input 
@@ -61,6 +65,10 @@ const MintModal = ({modal, setModal, provider}) => {
                   value={receiver} 
                   onChange={(e) => setReceiver(e.target.value)}
                 />
+                <span
+                  className='bg-gradient-to-r from-[#0F2027] via-[#203A43] to-[#4BC0C8] rounded placeholder-[#475569] mb-4 ml-2 align-middle text-center px-8 py-1 border-[#8A2387] border-2'>
+                    Wallet
+                </span>
             </div>
           </div>
         </form>

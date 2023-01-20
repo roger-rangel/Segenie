@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -7,14 +8,16 @@ import App from './App';
 import Dashboard from './Views/Dashboard/Dashboard';
 import NewPortal from './Views/NewPortal/NewPortal';
 import WelcomePage from './Views/WelcomePage/WelcomePage';
+// import NFTCollection from './Views/NFT_Collection/NFT_Collection';
+import UserSettings from './Views/UserSettings/UserSettings';
+import Documentation from './Views/Documentation/Documentation';
 import SegenieOptions from './Views/SegenieOptions/SegenieOptions';
 import Web3Authorization from './Views/Web3Authorization/Web3Authorization';
-import Documentation from './Views/Documentation/Documentation';
 
-import { defaultProviders } from "@connect2ic/core/providers"
+import "@connect2ic/core/style.css"
 import { createClient } from "@connect2ic/core"
 import { Connect2ICProvider } from "@connect2ic/react"
-import "@connect2ic/core/style.css"
+import { defaultProviders } from "@connect2ic/core/providers"
 import RequireWeb3Auth from './Views/Web3Authorization/RequireWeb3Auth/RequireWeb3Auth';
 
 // CSS
@@ -32,14 +35,11 @@ root.render(
     <Router>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route path="/" exact element={<WelcomePage />} />
-          <Route path="/dashboard" exact element={<Dashboard />} />
-          <Route path="/portal" exact element={
-            <RequireWeb3Auth>
-              <NewPortal />
-            </RequireWeb3Auth>
-          } />
+          <Route path="/" exact element={<Dashboard />} />
+          <Route path="/usersettings" element={<UserSettings />} />
           <Route path="/options" element={<SegenieOptions />} />
+          <Route path="/portals" element={<WelcomePage />} />
+          {/* <Route path="/nft_collection" element={<NFTCollection />} /> */}
           <Route path="/auth" element={<Web3Authorization />} />
           <Route path="/documentation" element={<Documentation />} />
         </Route>
