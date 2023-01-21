@@ -10,9 +10,9 @@
     "Canister"
   ],
   "scripts": {
-    "build": "webpack",
+    "build": "env-cmd webpack",
     "prebuild": "npm run copy:types",
-    "start": "webpack serve --mode development --env development",
+    "start": "env-cmd webpack serve --mode development",
     "prestart": "npm run copy:types",
     "copy:types": "rsync -avr .dfx/$(echo ${DFX_NETWORK:-'**'})/canisters/** --exclude='assets/' --exclude='idl/' --exclude='*.wasm' --exclude='*.most' --delete src/declarations"
   },
@@ -64,7 +64,9 @@
     "@dfinity/identity": "^0.15.1",
     "bcryptjs": "^2.4.3",
     "css-loader": "^6.7.1",
+    "env-cmd": "^10.1.0",
     "eslint-config-react-app": "^7.0.1",
+    "mixpanel-browser": "^2.45.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-countdown": "^2.3.5",

@@ -1,6 +1,9 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Modal from 'react-modal';
 import Portal from '../../NewPortal/NewPortal'
+import mixpanel from "mixpanel-browser";
+
+mixpanel.init(process.env.MIXPANEL);
 
 const customStyles = {
     content: {
@@ -21,11 +24,13 @@ const customStyles = {
 Modal.setAppElement(document.getElementById('root'));
 
 const MintPortal = ({portal, setPortal, provider}) => {
+  useEffect(() => {
+    mixpanel.track("Mint Portal Opened");
+  }, []);
 
   function closePortal() {
     setPortal(false);
   }
-
 
   return (
     <div className="bg-opacity-50">

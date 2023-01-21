@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from 'react-modal';
 import useNewPortal from '../../../Hooks/useNewPortal';
+import mixpanel from "mixpanel-browser";
+
+mixpanel.init(process.env.MIXPANEL);
 
 const customStyles = {
     content: {
@@ -21,6 +24,10 @@ const customStyles = {
 Modal.setAppElement(document.getElementById('root'));
 
 const MintModal = ({modal, setModal, provider}) => {
+  useEffect(() => {
+    mixpanel.track("Mint Modal Opened");
+  }, [])
+
   const [portalId, setPortalId] = useState(0);
   const [receiver, setReceiver] = useState("");
 

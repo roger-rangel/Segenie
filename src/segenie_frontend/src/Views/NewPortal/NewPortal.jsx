@@ -7,8 +7,16 @@ import SecondPage from './PortalComponents/SecondPage/SecondPage';
 import ThirdPage from './PortalComponents/ThirdPage/ThirdPage';
 
 import MainWrapper from '../../components/MainWrapper/MainWrapper';
+import mixpanel from "mixpanel-browser";
+
+mixpanel.init(process.env.MIXPANEL);
 
 const newPortal = ({provider}) => {
+
+  useEffect(() => {
+    mixpanel.track("Portal Blueprint Creation visited");
+  }, []);
+
   const [pageIndex, setPageIndex] = useState(0);
   const [portal, setPortal] = useState({
     name: 'Portal X',

@@ -1,10 +1,13 @@
-import React from 'react';
-import Page from '../../components/Page/Page';
+import React, {useEffect} from 'react';
 import Title from '../../components/Title/Title';
+import mixpanel from "mixpanel-browser";
+mixpanel.init(process.env.MIXPANEL);
 
 const Documentation = () => {
-  // const whatIsSegenie = "Segenie is a project built on the Internet Computer. \
-  // All of the functionality of Segenie is based around portals.";
+  useEffect(() => {
+    mixpanel.track("Docuemntation visited");
+  }, []);
+
   const whatIsSegenie = "Segenie is a project built on the Internet Computer. \
   At the moment Segenie is based around portals. We will be adding more \
   interesting features in the near future.";
