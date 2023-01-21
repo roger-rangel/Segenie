@@ -1,6 +1,10 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Modal from 'react-modal';
 import Portal from '../../NewPortal/NewPortal'
+import mixpanel from "mixpanel-browser";
+import RequireWeb3Auth from '../../Web3Authorization/RequireWeb3Auth/RequireWeb3Auth';
+
+mixpanel.init(process.env.MIXPANEL);
 
 const customStyles = {
     content: {
@@ -20,12 +24,14 @@ const customStyles = {
 
 Modal.setAppElement(document.getElementById('root'));
 
-const MintPortal = ({portal, setPortal, provider}) => {
+const MintPortal = ({portal, setPortal}) => {
+  useEffect(() => {
+    mixpanel.track("Mint Portal Opened");
+  }, []);
 
   function closePortal() {
     setPortal(false);
   }
-
 
   return (
     <div className="bg-opacity-50">
@@ -35,7 +41,9 @@ const MintPortal = ({portal, setPortal, provider}) => {
         style={customStyles}
         contentLabel="Example Portal"
       >
-        <Portal provider={provider}/>
+        <RequireWeb3Auth>
+          <Portal/>
+        </RequireWeb3Auth>
       </Modal>
     </div>
   );

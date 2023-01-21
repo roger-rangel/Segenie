@@ -118,6 +118,7 @@ module.exports = {
     }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: "development",
+      MIXPANEL: process.env.MIXPANEL,
       ...canisterEnvVariables,
     }),
     new webpack.ProvidePlugin({

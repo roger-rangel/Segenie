@@ -18,7 +18,7 @@ import "@connect2ic/core/style.css"
 import { createClient } from "@connect2ic/core"
 import { Connect2ICProvider } from "@connect2ic/react"
 import { defaultProviders } from "@connect2ic/core/providers"
-import RequireWeb3Auth from './Views/Web3Authorization/RequireWeb3Auth/RequireWeb3Auth';
+import mixpanel from "mixpanel-browser";
 
 // CSS
 import '../assets/main.css';
@@ -29,6 +29,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 const client = createClient({
   providers: defaultProviders,
 })
+
+mixpanel.init(process.env.MIXPANEL);
+mixpanel.track("Website Visited");
 
 root.render(
   <Connect2ICProvider client={client}>
