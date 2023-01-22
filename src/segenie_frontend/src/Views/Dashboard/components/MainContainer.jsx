@@ -4,9 +4,11 @@ import { IconContext } from "react-icons";
 import styles from './MainContainer.module.scss'
 import { classnames } from 'tailwindcss-classnames';
 
-import React from "react";
+import React, {useState} from "react";
 import Banner from "../../../../assets/img/nw2.png";
 import SecondMenu  from '../components/SecondMenu'
+
+import ClaimPortal from './ClaimPortal'
 
 import Countdown from './Countdown'
 import RedPortal from '../Buildspace/RedPortal'
@@ -16,6 +18,9 @@ import YellowPortal from '../Buildspace/YellowPortal'
 import PurplePortal from '../Buildspace/PurplePortal'
 
 function MainContainer() {
+  const [claim, setClaim] = useState(false);
+  const [color, setColor] = useState('');
+  console.log(color)
   return (
     <div className={classnames(styles.maincontainer)}>
       <div className={classnames(styles.right, 'max-[1100px]:hidden')}>
@@ -82,13 +87,14 @@ function MainContainer() {
         </div>
 
         <div className={classnames(styles. portfolio__container)}>
-            <BluePortal />
-            <YellowPortal />
-            <GreenPortal />
-            <RedPortal />
+            <BluePortal setClaim={setClaim} setColor={setColor} />
+            <YellowPortal setClaim={setClaim} setColor={setColor} />
+            <GreenPortal setClaim={setClaim} setColor={setColor} />
+            <RedPortal setClaim={setClaim} setColor={setColor} />
         </div>
         </div>
-      </div>    
+      </div>   
+      <ClaimPortal claim={claim} setClaim={setClaim} color={color} /> 
     </div>
   );
 }

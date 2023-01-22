@@ -11,6 +11,7 @@ import MobileMenu from "./components/MobileMenu";
 const Dashboard = () => {
   const [modal, setModal] = useState(false);
   const [portal, setPortal] = useState(false);
+
   console.log(modal);
   return (
     <div>
@@ -27,6 +28,7 @@ const Dashboard = () => {
 
       <MintModal modal={modal} setModal={setModal} />
       <MintPortal portal={portal} setPortal={setPortal} />
+   
 
       <Container />
       <UserMenu />
