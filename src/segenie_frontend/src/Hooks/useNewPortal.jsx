@@ -24,11 +24,8 @@ const useNewPortal = () => {
       if (imageDataURL) {
         return await customActor.create_portal_blueprint(name, description, [], [imageDataURL]);
       }
-      else if(Number(limit) != NaN) {
-        await customActor.create_portal_blueprint(name, description, [Number(limit)]);
-      }
       else {
-        return await customActor.create_portal_blueprint(name, description);
+        await customActor.create_portal_blueprint(name, description, [Number(limit)]);
       }
     } catch (e) {
       console.error(e);
