@@ -48,6 +48,31 @@ const useNewPortal = () => {
     }
   }
 
-  return { createPortalBlueprint, getAllPortals, mintPortal };
+  const claimPortal = async (provider, color) => {
+    let portalId;
+    switch(color) {
+      case "blue":
+        portalId = 0;
+        break;
+      case "yellow":
+        portalId = 1; 
+        break;
+      case "green":
+        portalId = 2;
+        break;
+      case "red":
+        portalId = 3;
+        break;
+      default:
+        // purple
+        portalId = 4;
+    }
+
+    const receiver = provider.principal;
+    console.log(receiver);
+    return await mintPortal(provider, portalId, receiver);
+  }
+
+  return { createPortalBlueprint, getAllPortals, mintPortal, claimPortal };
 };
 export default useNewPortal;

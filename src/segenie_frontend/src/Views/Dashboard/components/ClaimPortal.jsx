@@ -48,26 +48,40 @@ const ClaimPortal = ({color, claim, setClaim}) => {
         style={customStyles}
         contentLabel="Example Claim"
       >
-        <RequireWeb3Auth>
         <div className="bg-gradient-to-r from-[#C0F449] via-[#7EF188] to-[#00EBFF] scale-75 rounded-[2.25rem] p-2">
         <div class=" h-full w-full bg-[#293241] rounded-[2rem]">
         {(() => {
         switch (color) {
           case 'blue':
-            return <BluePortal />
+            return (
+            <RequireWeb3Auth>
+              <BluePortal />
+            </RequireWeb3Auth>
+            )
           case 'yellow':
-            return <YellowPortal />
+            return (
+            <RequireWeb3Auth>
+              <YellowPortal />
+            </RequireWeb3Auth>
+            )
           case 'red':
-            return <RedPortal />
+            return (
+            <RequireWeb3Auth>
+              <RedPortal />
+            </RequireWeb3Auth>
+            )
           case 'green':
-            return <GreenPortal />
+            return (
+            <RequireWeb3Auth>
+              <GreenPortal />
+            </RequireWeb3Auth>
+            )
           default:
             return null
         }
         })()}
         </div>
         </div>
-        </RequireWeb3Auth>
       </Modal>
     </div>
   );

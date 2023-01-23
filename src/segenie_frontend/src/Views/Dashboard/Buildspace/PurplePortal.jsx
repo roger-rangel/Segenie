@@ -1,12 +1,22 @@
 import React from "react";
 import styles from '../components/MainContainer.module.scss'
 import { classnames } from 'tailwindcss-classnames';
+import useNewPortal from "../../../Hooks/useNewPortal";
 
-const PurplePortal = ({setClaim, setColor}) => {
-  const handleClick = () => {
-    setColor('purple')
-    setClaim(prevClaim => !prevClaim)
-}
+const PurplePortal = ({setClaim, setColor, provider}) => {
+  const {claimPortal} = useNewPortal();
+
+  const handleClick = async () => {
+    if(setColor) {
+      setColor('purple')
+      setClaim(prevClaim => !prevClaim)
+    }else {
+      console.log("claiming the portal.");
+      const res = await claimPortal(provider, 'purple');
+      alert(res);
+    }
+  }
+
   return (
     <article key={'create3'} className={classnames(styles. portfolio__item)}>
         <div className="relative rounded-full bg-[#ff006e] py-1 px-2 text-center">Coming Soon!</div>
