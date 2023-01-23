@@ -1,9 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { IconContext } from "react-icons";
 import { useNavigate } from 'react-router-dom';
 import { HiFingerPrint, HiBell, HiOutlineChatBubbleOvalLeft, HiOutlineCog6Tooth } from "react-icons/hi2";
+import useNewPortal from "../../../Hooks/useNewPortal";
 
-const UserMenu = () => {
+const UserMenu = ({principal}) => {
+  const [color, setColor] = useState("purple");
+
+  const {getAllPortals} = useNewPortal();
 
   const navigate = useNavigate();
   const userSettings = () => {
@@ -21,7 +25,41 @@ const UserMenu = () => {
     }
 
     mainMenuLi.forEach((n) => n.addEventListener("click", changeActive));
+
+    getAllPortals(principal).then((portals) => {
+      console.log(portals);
+      // go through all of the colors.
+      for(let i = 0; i < 5; i++) {
+        if(portals.includes(i)) {
+          setColor(toColor(i));
+          break;
+        }
+      }
+    });
   }, []);
+
+  function toColor(id) {
+    switch(id) {
+      case 0:
+        setColor("blue");
+        break;
+      case 1:
+        setColor("yellow");
+        break;
+      case 2:
+        setColor("green");
+        break;
+      case 3:
+        setColor("red");
+        break;
+      default: 
+        setColor("purple");
+    }
+  }
+
+  function redirectToChat() {
+    window.location.replace(`https://thinkdivergent.com/?theme=segenie_${color}`);
+  }
 
   return (
     <menu className="h-screen bg-[#19162c] max-[768px]:hidden flex flex-col items-center shadow-xl sticky top-0">
@@ -33,8 +71,8 @@ const UserMenu = () => {
                 <i className="notifications">
                   <HiBell />
                 </i>
-                <i className="chat">
-                < HiOutlineChatBubbleOvalLeft />
+                <i className="chat cursor-pointer">
+                < HiOutlineChatBubbleOvalLeft onClick={redirectToChat}/>
                 </i>
                 <i id="usersettings" className="cursor-pointer" onClick={userSettings}>
                   <HiOutlineCog6Tooth color="#2ebf91" />
