@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import Modal from 'react-modal';
 
 import mixpanel from "mixpanel-browser";
@@ -10,30 +10,57 @@ import GreenPortal from '../Buildspace/GreenPortal'
 import YellowPortal from '../Buildspace/YellowPortal'
 import PurplePortal from '../Buildspace/PurplePortal'
 
+import useNewPortal from "../../../Hooks/useNewPortal";
+
 mixpanel.init(process.env.MIXPANEL);
 
 const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      backgroundColor: 'transparent',
-      border: 'none',
-      transform: 'translate(-50%, -50%)',
-    
-    },
-    overlay: {
-        background: 'rgba(255, 255, 255, 0.20)',
-    }
-  };
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    backgroundColor: 'transparent',
+    border: 'none',
+    transform: 'translate(-50%, -50%)',
+  
+  },
+  overlay: {
+      background: 'rgba(255, 255, 255, 0.20)',
+  }
+};
 
 Modal.setAppElement(document.getElementById('root'));
 
-const ClaimPortal = ({color, claim, setClaim}) => {
+const ClaimPortalWrapper = ({color, claim, setClaim}) => {
+  const principal = localStorage.getItem("principal");
+  if(principal) {
+    return <ClaimPortal  color={color} claim={claim} setClaim={setClaim} principal={principal}/>
+  }else {
+    return (
+      <RequireWeb3Auth>
+        <ClaimPortal color={color} claim={claim} setClaim={setClaim} principal={localStorage.getItem("principal")}/>
+      </RequireWeb3Auth>
+    )
+  }
+}
+
+const ClaimPortal = ({color, claim, setClaim, principal}) => {
+  const {getAllPortals} = useNewPortal();
+  const [canClaim, setCanClaim] = useState(true);
+
   useEffect(() => {
-    mixpanel.track("Claim claimed");
+    getAllPortals(principal).then((portals) => {
+      console.log(portals);
+      if(portals.includes(0) || portals.includes(1) || portals.includes(2) || portals.includes(3)) {
+        console.log("contains")
+        setCanClaim(false);
+      }else {
+        setCanClaim(true);
+      }
+    });
+    mixpanel.track("Loaded the portal claiming modal");
   }, []);
 
   function closeClaim() {
@@ -49,31 +76,31 @@ const ClaimPortal = ({color, claim, setClaim}) => {
         contentLabel="Example Claim"
       >
         <div className="bg-gradient-to-r from-[#C0F449] via-[#7EF188] to-[#00EBFF] scale-75 rounded-[2.25rem] p-2">
-        <div class=" h-full w-full bg-[#293241] rounded-[2rem]">
+        <div className=" h-full w-full bg-[#293241] rounded-[2rem]">
         {(() => {
         switch (color) {
           case 'blue':
             return (
             <RequireWeb3Auth>
-              <BluePortal />
+              <BluePortal canClaim={canClaim}/>
             </RequireWeb3Auth>
             )
           case 'yellow':
             return (
             <RequireWeb3Auth>
-              <YellowPortal />
+              <YellowPortal canClaim={canClaim}/>
             </RequireWeb3Auth>
             )
           case 'red':
             return (
             <RequireWeb3Auth>
-              <RedPortal />
+              <RedPortal canClaim={canClaim}/>
             </RequireWeb3Auth>
             )
           case 'green':
             return (
             <RequireWeb3Auth>
-              <GreenPortal />
+              <GreenPortal canClaim={canClaim}/>
             </RequireWeb3Auth>
             )
           default:
@@ -87,4 +114,4 @@ const ClaimPortal = ({color, claim, setClaim}) => {
   );
 }
 
-export default ClaimPortal;
+export default ClaimPortalWrapper;

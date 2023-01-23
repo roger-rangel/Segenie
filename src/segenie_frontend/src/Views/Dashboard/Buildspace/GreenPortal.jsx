@@ -3,7 +3,7 @@ import styles from '../components/MainContainer.module.scss'
 import { classnames } from 'tailwindcss-classnames';
 import useNewPortal from "../../../Hooks/useNewPortal";
 
-const GreenPortal = ({setClaim, setColor, provider}) => {
+const GreenPortal = ({setClaim, setColor, provider, canClaim}) => {
   const {claimPortal} = useNewPortal();
 
   const handleClick = async () => {
@@ -28,7 +28,9 @@ const GreenPortal = ({setClaim, setColor, provider}) => {
         <h3 className="text-xl text-[#4ade80]">Green Portal</h3>
         <h3>Claim on:</h3>
         <div className={classnames(styles. portfolio__item_cta)}>
-        <a onClick={() => handleClick()} href="#about" className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6] '>Jan. 24th</a>
+        {canClaim&&
+          <a onClick={() => handleClick()}  href="#about" className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6] '>Jan. 24th</a>
+        }
         </div>
         </div>
     </article>
