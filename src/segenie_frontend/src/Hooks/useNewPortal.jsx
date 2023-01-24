@@ -54,25 +54,33 @@ const useNewPortal = () => {
     let portalId;
     switch(color) {
       case "blue":
-        portalId = 3;
+        portalId = 8;
         break;
       case "yellow":
-        portalId = 4; 
+        portalId = 9; 
         break;
       case "green":
-        portalId = 5;
+        portalId = 10;
         break;
       case "red":
-        portalId = 6;
+        portalId = 11;
         break;
       default:
         // purple
-        portalId = 7;
+        portalId = 12;
     }
 
     const receiver = provider.principal;
     console.log(receiver);
-    return await mintPortal(provider, portalId, receiver);
+    
+    try {
+      const principal = Principal.from(receiver)
+      return await actor.mint_portal(Number(portalId), principal);
+    } catch (e) {
+      console.error(e);
+      throw e;
+    }
+    
   }
 
   return { createPortalBlueprint, getAllPortals, mintPortal, claimPortal };

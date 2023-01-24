@@ -43,16 +43,16 @@ const UserMenu = ({principal}) => {
 
   function toColor(id) {
     switch(id) {
-      case 3:
+      case 8:
         setColor("blue");
         break;
-      case 4:
+      case 9:
         setColor("yellow");
         break;
-      case 5:
+      case 10:
         setColor("green");
         break;
-      case 6:
+      case 11:
         setColor("red");
         break;
       default: 

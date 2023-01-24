@@ -29,7 +29,7 @@ function MainContainer() {
   useEffect(() => {
     getAllPortals(principal).then((portals) => {
       console.log(portals);
-      if(portals.includes(3) || portals.includes(4) || portals.includes(5) || portals.includes(6) || portals.includes(7)) {
+      if(portals.includes(8) || portals.includes(9) || portals.includes(10) || portals.includes(11) || portals.includes(12)) {
         console.log("contains")
         setCanClaim(false);
       }else {
