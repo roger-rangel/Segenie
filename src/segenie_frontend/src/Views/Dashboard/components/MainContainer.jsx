@@ -21,7 +21,7 @@ import PurplePortal from '../Buildspace/PurplePortal'
 function MainContainer() {
   const [claim, setClaim] = useState(false);
   const [color, setColor] = useState('');
-  const [canClaim, setCanClaim] = useState(false);
+  const [canClaim, setCanClaim] = useState(true);
   const principal = localStorage.getItem("principal");
 
   const {getAllPortals} = useNewPortal();
@@ -29,7 +29,7 @@ function MainContainer() {
   useEffect(() => {
     getAllPortals(principal).then((portals) => {
       console.log(portals);
-      if(portals.includes(0) || portals.includes(1) || portals.includes(2) || portals.includes(3)) {
+      if(portals.includes(3) || portals.includes(4) || portals.includes(5) || portals.includes(6) || portals.includes(7)) {
         console.log("contains")
         setCanClaim(false);
       }else {

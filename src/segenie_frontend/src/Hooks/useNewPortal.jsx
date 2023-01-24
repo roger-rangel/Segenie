@@ -54,20 +54,20 @@ const useNewPortal = () => {
     let portalId;
     switch(color) {
       case "blue":
-        portalId = 0;
+        portalId = 3;
         break;
       case "yellow":
-        portalId = 1; 
+        portalId = 4; 
         break;
       case "green":
-        portalId = 2;
+        portalId = 5;
         break;
       case "red":
-        portalId = 3;
+        portalId = 6;
         break;
       default:
         // purple
-        portalId = 4;
+        portalId = 7;
     }
 
     const receiver = provider.principal;
