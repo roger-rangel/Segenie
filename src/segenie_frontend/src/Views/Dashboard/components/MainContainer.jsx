@@ -4,11 +4,12 @@ import { IconContext } from "react-icons";
 import styles from './MainContainer.module.scss'
 import { classnames } from 'tailwindcss-classnames';
 
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Banner from "../../../../assets/img/nw2.png";
 import SecondMenu  from '../components/SecondMenu'
 
 import ClaimPortal from './ClaimPortal'
+import useNewPortal from "../../../Hooks/useNewPortal";
 
 import Countdown from './Countdown'
 import RedPortal from '../Buildspace/RedPortal'
@@ -20,7 +21,25 @@ import PurplePortal from '../Buildspace/PurplePortal'
 function MainContainer() {
   const [claim, setClaim] = useState(false);
   const [color, setColor] = useState('');
+  const [canClaim, setCanClaim] = useState(true);
+  const principal = localStorage.getItem("principal");
+
+  const {getAllPortals} = useNewPortal();
+
+  useEffect(() => {
+    getAllPortals(principal).then((portals) => {
+      console.log(portals);
+      if(portals.includes(0) || portals.includes(1) || portals.includes(2) || portals.includes(3)) {
+        console.log("contains")
+        setCanClaim(false);
+      }else {
+        setCanClaim(true);
+      }
+    });
+  }, [getAllPortals, principal, setCanClaim]);
+
   console.log(color)
+  console.log(canClaim)
   return (
     <div className={classnames(styles.maincontainer)}>
       <div className={classnames(styles.right, 'max-[1100px]:hidden')}>
@@ -77,7 +96,7 @@ function MainContainer() {
             <p>Stay Tuned for New Updates!</p>
             <div className={classnames(styles.bid)}>
               <a href="/" className={classnames(styles.button)}>
-                Enter on January 24
+                Enter Now!
               </a>
               <div className="flex flex-col items-center">
                 Starting In <span> <Countdown /></span>
@@ -87,14 +106,14 @@ function MainContainer() {
         </div>
 
         <div className={classnames(styles. portfolio__container)}>
-            <BluePortal setClaim={setClaim} setColor={setColor} />
+            <BluePortal setClaim={setClaim} setColor={setColor} canClaim={canClaim} />
             <YellowPortal setClaim={setClaim} setColor={setColor} />
             <GreenPortal setClaim={setClaim} setColor={setColor} />
             <RedPortal setClaim={setClaim} setColor={setColor} />
         </div>
         </div>
       </div>   
-      <ClaimPortal claim={claim} setClaim={setClaim} color={color} /> 
+      <ClaimPortal claim={claim} setClaim={setClaim} color={color} canClaim={canClaim} /> 
     </div>
   );
 }

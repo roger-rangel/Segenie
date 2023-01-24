@@ -1,3 +1,5 @@
+/* eslint-disable use-isnan */
+/* eslint-disable eqeqeq */
 import { createActor, canisterId } from '../../../declarations/segenie_backend/index';
 import { idlFactory } from '../../../declarations/segenie_backend/segenie_backend.did.js';
 import {Principal} from "@dfinity/principal";

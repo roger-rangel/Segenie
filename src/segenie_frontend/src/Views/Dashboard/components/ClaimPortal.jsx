@@ -33,33 +33,9 @@ const customStyles = {
 
 Modal.setAppElement(document.getElementById('root'));
 
-const ClaimPortalWrapper = ({color, claim, setClaim}) => {
-  const principal = localStorage.getItem("principal");
-  if(principal) {
-    return <ClaimPortal  color={color} claim={claim} setClaim={setClaim} principal={principal}/>
-  }else {
-    return (
-      <RequireWeb3Auth>
-        <ClaimPortal color={color} claim={claim} setClaim={setClaim} principal={localStorage.getItem("principal")}/>
-      </RequireWeb3Auth>
-    )
-  }
-}
-
-const ClaimPortal = ({color, claim, setClaim, principal}) => {
-  const {getAllPortals} = useNewPortal();
-  const [canClaim, setCanClaim] = useState(true);
+const ClaimPortal = ({color, claim, setClaim, canClaim}) => {
 
   useEffect(() => {
-    getAllPortals(principal).then((portals) => {
-      console.log(portals);
-      if(portals.includes(0) || portals.includes(1) || portals.includes(2) || portals.includes(3)) {
-        console.log("contains")
-        setCanClaim(false);
-      }else {
-        setCanClaim(true);
-      }
-    });
     mixpanel.track("Loaded the portal claiming modal");
   }, []);
 
@@ -82,7 +58,7 @@ const ClaimPortal = ({color, claim, setClaim, principal}) => {
           case 'blue':
             return (
             <RequireWeb3Auth>
-              <BluePortal canClaim={canClaim}/>
+              <BluePortal />
             </RequireWeb3Auth>
             )
           case 'yellow':
@@ -114,4 +90,17 @@ const ClaimPortal = ({color, claim, setClaim, principal}) => {
   );
 }
 
-export default ClaimPortalWrapper;
+// const ClaimPortalWrapper = ({color, claim, setClaim}) => {
+//   const principal = localStorage.getItem("principal");
+//   if(principal) {
+//     return <ClaimPortal color={color} claim={claim} setClaim={setClaim} principal={principal}/>
+//   }else {
+//     return (
+//       <RequireWeb3Auth>
+//         <ClaimPortal color={color} claim={claim} setClaim={setClaim} principal={localStorage.getItem("principal")}/>
+//       </RequireWeb3Auth>
+//     )
+//   }
+// }
+
+export default ClaimPortal;
