@@ -19,7 +19,6 @@ const BluePortal = ({setClaim, setColor, provider, canClaim}) => {
 
   return (
     <article key={'create'} className={classnames(styles. portfolio__item)}>
-      {/* <div className="relative rounded-full bg-[#ff006e] py-1 px-2 text-center">Coming Soon!</div> */}
        <div className="relative rounded-full bg-[#3b82f6] py-1 px-2 text-center">Blue Team</div>
         <div className={classnames(styles. portfolio__item_image)}>
               <img className="rounded-t-lg" src='./img/blueportal.png' alt={'title'} />

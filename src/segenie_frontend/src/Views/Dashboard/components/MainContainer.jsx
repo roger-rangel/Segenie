@@ -21,7 +21,7 @@ import PurplePortal from '../Buildspace/PurplePortal'
 function MainContainer() {
   const [claim, setClaim] = useState(false);
   const [color, setColor] = useState('');
-  const [canClaim, setCanClaim] = useState(true);
+  const [canClaim, setCanClaim] = useState(false);
   const principal = localStorage.getItem("principal");
 
   const {getAllPortals} = useNewPortal();
@@ -93,23 +93,24 @@ function MainContainer() {
           <div className={classnames(styles.textContainer)}>
             <h1>N&W S2</h1>
             <h2 className="-mt-2 mb-6">Buildspace</h2>
-            <p>Stay Tuned for New Updates!</p>
+            <p className="mb-4">Stay Tuned for New Updates!</p>
             <div className={classnames(styles.bid)}>
               <a href="/" className={classnames(styles.button)}>
                 Enter Now!
               </a>
-              <div className="flex flex-col items-center">
+              {/* <div className="flex flex-col items-center">
                 Starting In <span> <Countdown /></span>
-              </div>
+              </div> */}
             </div>
           </div>         
         </div>
 
         <div className={classnames(styles. portfolio__container)}>
             <BluePortal setClaim={setClaim} setColor={setColor} canClaim={canClaim} />
-            <YellowPortal setClaim={setClaim} setColor={setColor} />
-            <GreenPortal setClaim={setClaim} setColor={setColor} />
-            <RedPortal setClaim={setClaim} setColor={setColor} />
+            <YellowPortal setClaim={setClaim} setColor={setColor} canClaim={canClaim} />
+            <GreenPortal setClaim={setClaim} setColor={setColor} canClaim={canClaim} />
+            <RedPortal setClaim={setClaim} setColor={setColor} canClaim={canClaim} />
+            <PurplePortal setClaim={setClaim} setColor={setColor} canClaim={canClaim} />
         </div>
         </div>
       </div>   

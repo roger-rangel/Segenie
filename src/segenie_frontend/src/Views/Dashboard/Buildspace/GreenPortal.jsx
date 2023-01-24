@@ -19,7 +19,7 @@ const GreenPortal = ({setClaim, setColor, provider, canClaim}) => {
 
   return (
     <article key={'create3'} className={classnames(styles. portfolio__item)}>
-        <div className="relative rounded-full bg-[#ff006e] py-1 px-2 text-center">Coming Soon!</div>
+        <div className="relative rounded-full bg-[#4ade80] py-1 px-2 text-center">Green Team</div>
         <div className={classnames(styles. portfolio__item_image)}>
             <img className="rounded-t-lg" src='./img/greenportal.png' alt={'title'} />
         </div>
@@ -29,7 +29,10 @@ const GreenPortal = ({setClaim, setColor, provider, canClaim}) => {
         <h3>Claim on:</h3>
         <div className={classnames(styles. portfolio__item_cta)}>
         {canClaim &&
-          <a onClick={() => handleClick()}  href="#about" className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6] '>Jan. 24th</a>
+            <a onClick={() => handleClick()}  href="#about" className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6] '>Claim Now</a>
+          }
+        {!canClaim &&
+          <a href="#about" className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6] '>Claimed!</a>
         }
         </div>
         </div>

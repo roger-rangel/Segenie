@@ -7,6 +7,8 @@ import MintModal from "./components/MintModal";
 import MintPortal from "./components/MintPortal";
 import Container from "./components/Container";
 import MobileMenu from "./components/MobileMenu";
+import RequireWeb3Auth from '../Web3Authorization/RequireWeb3Auth/RequireWeb3Auth';
+import ClaimPortal from './components/ClaimPortal'
 
 const DashboardWrapper = () => {
   const principal = localStorage.getItem("principal");
