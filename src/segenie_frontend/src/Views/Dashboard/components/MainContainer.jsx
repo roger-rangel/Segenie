@@ -18,15 +18,29 @@ import GreenPortal from '../Buildspace/GreenPortal'
 import YellowPortal from '../Buildspace/YellowPortal'
 import PurplePortal from '../Buildspace/PurplePortal'
 
-function MainContainer() {
+import RequireWeb3Auth from '../../Web3Authorization/RequireWeb3Auth/RequireWeb3Auth';
+
+const MainContainerWrapper = () => {
+  const principal = localStorage.getItem("principal");
+  if(principal) {
+    return <MainContainer principal={principal}/>
+  }else {
+    return (
+      <RequireWeb3Auth>
+        <MainContainer principal={localStorage.getItem("principal")}/>
+      </RequireWeb3Auth>
+    )
+  }
+}
+
+function MainContainer({principal}) {
   const [claim, setClaim] = useState(false);
   const [color, setColor] = useState('');
   const [canClaim, setCanClaim] = useState(true);
-  const principal = localStorage.getItem("principal");
 
   const {getAllPortals} = useNewPortal();
 
-  useEffect(() => {
+  useEffect(() => { 
     getAllPortals(principal).then((portals) => {
       console.log(portals);
       if(portals.includes(8) || portals.includes(9) || portals.includes(10) || portals.includes(11) || portals.includes(12)) {
@@ -119,4 +133,4 @@ function MainContainer() {
   );
 }
 
-export default MainContainer;
+export default MainContainerWrapper;

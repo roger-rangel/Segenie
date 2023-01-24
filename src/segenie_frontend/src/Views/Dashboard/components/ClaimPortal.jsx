@@ -90,17 +90,4 @@ const ClaimPortal = ({color, claim, setClaim, canClaim}) => {
   );
 }
 
-// const ClaimPortalWrapper = ({color, claim, setClaim}) => {
-//   const principal = localStorage.getItem("principal");
-//   if(principal) {
-//     return <ClaimPortal color={color} claim={claim} setClaim={setClaim} principal={principal}/>
-//   }else {
-//     return (
-//       <RequireWeb3Auth>
-//         <ClaimPortal color={color} claim={claim} setClaim={setClaim} principal={localStorage.getItem("principal")}/>
-//       </RequireWeb3Auth>
-//     )
-//   }
-// }
-
 export default ClaimPortal;
