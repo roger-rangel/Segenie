@@ -3,6 +3,9 @@ import { IconContext } from "react-icons";
 import { useNavigate } from 'react-router-dom';
 import { HiFingerPrint, HiBell, HiOutlineChatBubbleOvalLeft, HiOutlineCog6Tooth } from "react-icons/hi2";
 import useNewPortal from "../../../Hooks/useNewPortal";
+import mixpanel from "mixpanel-browser";
+
+mixpanel.init(process.env.MIXPANEL);
 
 const UserMenu = ({principal}) => {
   const [color, setColor] = useState("purple");
@@ -58,6 +61,7 @@ const UserMenu = ({principal}) => {
   }
 
   function redirectToChat() {
+    mixpanel.track("Redirecting to Think Divergent");
     window.location.replace(`https://thinkdivergent.com/?theme=segenie_${color}`);
   }
 
