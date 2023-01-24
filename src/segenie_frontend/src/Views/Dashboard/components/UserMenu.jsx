@@ -32,7 +32,7 @@ const UserMenu = ({principal}) => {
     getAllPortals(principal).then((portals) => {
       console.log(portals);
       // go through all of the colors.
-      for(let i = 0; i < 8; i++) {
+      for(let i = 8; i < 13; i++) {
         if(portals.includes(i)) {
           setColor(toColor(i));
           break;

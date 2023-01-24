@@ -58,7 +58,7 @@ const ClaimPortal = ({color, claim, setClaim, canClaim}) => {
           case 'blue':
             return (
             <RequireWeb3Auth>
-              <BluePortal />
+              <BluePortal canClaim={canClaim}/>
             </RequireWeb3Auth>
             )
           case 'yellow':
