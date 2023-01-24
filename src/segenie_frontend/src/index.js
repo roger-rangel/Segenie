@@ -23,6 +23,8 @@ import mixpanel from "mixpanel-browser";
 // CSS
 import '../assets/main.css';
 import '@connect2ic/core/style.css';
+import MainContainer from './Views/Dashboard/components/MainContainer';
+import MusicContainer from './Views/Dashboard/components/MusicContainer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -38,11 +40,32 @@ root.render(
     <Router>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route path="/" exact element={<Dashboard />} />
+          {/* <Route path="/" exact element={<Dashboard />} /> */}
           <Route path="/usersettings" element={<UserSettings />} />
           <Route path="/options" element={<SegenieOptions />} />
           <Route path="/portals" element={<WelcomePage />} />
-          {/* <Route path="/nft_collection" element={<NFTCollection />} /> */}
+
+          <Route path="/" element={<Dashboard />}>
+                  {
+                    // This will be the main Dashboard
+                  }
+                  <Route
+                    path="/"
+                    element={
+                        <MainContainer />   
+                    }
+                  />
+                  <Route
+                    path="/music"
+                    element={
+                        <MusicContainer />
+                    }
+                  />
+      
+                  <Route path="*" element={<main>NOT FOUND</main>} />
+          </Route>
+          {/* end of Marketplace route */}
+          
           <Route path="/auth" element={<Web3Authorization />} />
           <Route path="/documentation" element={<Documentation />} />
         </Route>

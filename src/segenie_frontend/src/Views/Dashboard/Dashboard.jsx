@@ -9,6 +9,7 @@ import Container from "./components/Container";
 import MobileMenu from "./components/MobileMenu";
 import RequireWeb3Auth from '../Web3Authorization/RequireWeb3Auth/RequireWeb3Auth';
 import ClaimPortal from './components/ClaimPortal'
+import { Outlet } from 'react-router-dom';
 
 const DashboardWrapper = () => {
   const principal = localStorage.getItem("principal");
@@ -23,7 +24,7 @@ const DashboardWrapper = () => {
   }
 }
 
-const Dashboard = ({principal}) => {
+const Dashboard = ({principal, children}) => {
   const [modal, setModal] = useState(false);
   const [portal, setPortal] = useState(false);
 
@@ -43,7 +44,9 @@ const Dashboard = ({principal}) => {
         <MintModal modal={modal} setModal={setModal} />
         <MintPortal portal={portal} setPortal={setPortal} />
 
-        <Container />
+        <Container>
+          <Outlet />
+        </Container>
         <UserMenu principal={principal}/>
       </div>
     </div>
