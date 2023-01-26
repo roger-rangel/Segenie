@@ -5,15 +5,15 @@ import styles from '../components/MainContainer.module.scss'
 import { classnames } from 'tailwindcss-classnames';
 
 import React, {useState, useEffect} from "react";
-import Banner from "../../../../assets/img/music_banner.jpeg";
+import Banner from "../../../../assets/img/music_banner.png";
 import SecondMenu  from '../components/SecondMenu'
 
 import ClaimPortal from '../components/ClaimPortal'
 import useNewPortal from "../../../Hooks/useNewPortal";
 
 import Countdown from '../components/Countdown'
-import RedPortal from '../Buildspace/RedPortal'
-import BluePortal from '../Buildspace/BluePortal'
+import Artists from '../MusicNFTs/Artists'
+import Tiktok from '../MusicNFTs/Tiktok'
 import GreenPortal from '../Buildspace/GreenPortal'
 import YellowPortal from '../Buildspace/YellowPortal'
 import PurplePortal from '../Buildspace/PurplePortal'
@@ -87,7 +87,7 @@ function MainContainer() {
             background: `url(${Banner})`,
             backgroundRepeat: "no-repeat",
             // backgroundSize: "100% 100%",
-            backgroundPosition: "90% 35%",
+            backgroundPosition: "90% 50%",
           }}
         >
           <div className={classnames(styles.textContainer)}>
@@ -105,11 +105,11 @@ function MainContainer() {
           </div>         
         </div>
 
-        <div className={classnames(styles. portfolio__container)}>
-            <PurplePortal setClaim={setClaim} setColor={setColor} canClaim={canClaim} />
-            <PurplePortal setClaim={setClaim} setColor={setColor} canClaim={canClaim} />
-            <PurplePortal setClaim={setClaim} setColor={setColor} canClaim={canClaim} />
-            <PurplePortal setClaim={setClaim} setColor={setColor} canClaim={canClaim} />
+        <div className={classnames(styles.portfolio__container, '')}>
+            <Artists setClaim={setClaim} setColor={setColor} canClaim={canClaim} />
+            <Tiktok setClaim={setClaim} setColor={setColor} canClaim={canClaim} />
+            <Artists setClaim={setClaim} setColor={setColor} canClaim={canClaim} />
+            <Artists setClaim={setClaim} setColor={setColor} canClaim={canClaim} />
         </div>
         </div>
       </div>   
