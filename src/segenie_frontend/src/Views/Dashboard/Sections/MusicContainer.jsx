@@ -14,9 +14,9 @@ import useNewPortal from "../../../Hooks/useNewPortal";
 import Countdown from '../components/Countdown'
 import Artists from '../MusicNFTs/Artists'
 import Tiktok from '../MusicNFTs/Tiktok'
-import GreenPortal from '../Buildspace/GreenPortal'
-import YellowPortal from '../Buildspace/YellowPortal'
-import PurplePortal from '../Buildspace/PurplePortal'
+import Europe from '../MusicNFTs/Europe'
+import Asia from '../MusicNFTs/Asia'
+import Genres from '../MusicNFTs/Genres'
 
 function MainContainer() {
   const [claim, setClaim] = useState(false);
@@ -108,8 +108,9 @@ function MainContainer() {
         <div className={classnames(styles.portfolio__container, '')}>
             <Artists setClaim={setClaim} setColor={setColor} canClaim={canClaim} />
             <Tiktok setClaim={setClaim} setColor={setColor} canClaim={canClaim} />
-            <Artists setClaim={setClaim} setColor={setColor} canClaim={canClaim} />
-            <Artists setClaim={setClaim} setColor={setColor} canClaim={canClaim} />
+            <Europe setClaim={setClaim} setColor={setColor} canClaim={canClaim} />
+            <Genres setClaim={setClaim} setColor={setColor} canClaim={canClaim} />
+            <Asia setClaim={setClaim} setColor={setColor} canClaim={canClaim} />
         </div>
         </div>
       </div>   
