@@ -1,17 +1,17 @@
 /* eslint-disable no-unused-vars */
 import { HiOutlineFire, HiMusicalNote, HiCube, HiChatBubbleOvalLeftEllipsis, HiQrCode, HiOutlinePuzzlePiece, HiGlobeAlt, HiOutlineSparkles } from "react-icons/hi2";
 import { IconContext } from "react-icons";
-import styles from './MainContainer.module.scss'
+import styles from '../components/MainContainer.module.scss'
 import { classnames } from 'tailwindcss-classnames';
 
 import React, {useState, useEffect} from "react";
-import Banner from "../../../../assets/img/musicbanner.png";
+import Banner from "../../../../assets/img/music_banner.jpeg";
 import SecondMenu  from '../components/SecondMenu'
 
-import ClaimPortal from './ClaimPortal'
+import ClaimPortal from '../components/ClaimPortal'
 import useNewPortal from "../../../Hooks/useNewPortal";
 
-import Countdown from './Countdown'
+import Countdown from '../components/Countdown'
 import RedPortal from '../Buildspace/RedPortal'
 import BluePortal from '../Buildspace/BluePortal'
 import GreenPortal from '../Buildspace/GreenPortal'
@@ -63,13 +63,13 @@ function MainContainer() {
                 All
               </a>
               <a href="/" className={classnames(styles.button2)}>
-                Illustration
+                Nu Disco
               </a>
               <a href="/" className={classnames(styles.button2)}>
-                Art
+                Cyber Pop
               </a>
               <a href="/" className={classnames(styles.button2)}>
-                Games
+                Tiktok Stars
               </a>
             </div>
           </div>
@@ -86,8 +86,8 @@ function MainContainer() {
           style={{
             background: `url(${Banner})`,
             backgroundRepeat: "no-repeat",
-            backgroundSize: "100% 100%",
-            backgroundPosition: "contian",
+            // backgroundSize: "100% 100%",
+            backgroundPosition: "90% 35%",
           }}
         >
           <div className={classnames(styles.textContainer)}>

@@ -6,7 +6,7 @@ import { classnames } from 'tailwindcss-classnames';
 
 import React, {useState, useEffect} from "react";
 import Banner from "../../../../assets/img/nw2.png";
-import SecondMenu  from '../components/SecondMenu'
+import SecondMenu  from './SecondMenu'
 
 import ClaimPortal from './ClaimPortal'
 import useNewPortal from "../../../Hooks/useNewPortal";

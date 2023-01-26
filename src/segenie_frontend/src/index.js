@@ -24,7 +24,7 @@ import mixpanel from "mixpanel-browser";
 import '../assets/main.css';
 import '@connect2ic/core/style.css';
 import MainContainer from './Views/Dashboard/components/MainContainer';
-import MusicContainer from './Views/Dashboard/components/MusicContainer';
+import MusicContainer from './Views/Dashboard/Sections/MusicContainer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
