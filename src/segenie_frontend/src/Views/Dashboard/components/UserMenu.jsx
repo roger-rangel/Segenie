@@ -41,7 +41,7 @@ const UserMenu = ({principal}) => {
         }
       }
     });
-  }, [getAllPortals, principal]);
+  }, [getAllPortals, principal, color]);
 
   function toColor(id) {
     console.log(id);
