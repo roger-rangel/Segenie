@@ -45,10 +45,10 @@ const SecondMenu = () => {
               <NavUrl url="/music" icon={<HiMusicalNote />} name="Music" />
               <NavUrl url="/metaverse" icon={<HiGlobeAlt />} name="Metaverse" />
               <NavUrl url="/education" icon={<HiOutlinePuzzlePiece />} name="Education" />
+              <NavUrl url="/vr_ar" icon={<HiOutlineSparkles />} name="VR / AR" />
               <NavUrl url="/crypto" icon={<HiQrCode />} name="Crypto" />
               <NavUrl url="/web3" icon={<HiCube />} name="Web3" />
               <NavUrl url="/chatgpt" icon={<HiChatBubbleOvalLeftEllipsis />} name="ChatGPT" />
-              <NavUrl url="/chatgpt" icon={<HiOutlineSparkles />} name="VR / AR" />
             </div>
           </ul>
         </IconContext.Provider>

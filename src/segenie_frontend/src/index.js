@@ -26,6 +26,7 @@ import '@connect2ic/core/style.css';
 import MainContainer from './Views/Dashboard/components/MainContainer';
 import MusicContainer from './Views/Dashboard/Sections/MusicContainer';
 import MetaverseContainer from './Views/Dashboard/Sections/MetaverseContainer';
+import EducationContainer from './Views/Dashboard/Sections/EducationContainer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -66,6 +67,12 @@ root.render(
                     path="/metaverse"
                     element={
                         <MetaverseContainer />
+                    }
+                  />
+                  <Route
+                    path="/education"
+                    element={
+                        <EducationContainer />
                     }
                   />
       

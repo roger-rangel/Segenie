@@ -21,12 +21,12 @@ const Genre = ({setClaim, setColor, provider, canClaim}) => {
     <article key={'create'} className={classnames(styles. portfolio__item)}>
        <div className="relative rounded-full bg-[#3b82f6] py-1 px-2 text-center">New</div>
         <div className={classnames(styles. portfolio__item_image2)}>
-              <img className="rounded-t-lg" src='./nft_collection/genres.jpeg' alt={'title'} />
+              <img className="rounded-t-lg" src='./nft_collection/portals.jpeg' alt={'title'} />
           </div>
           <div>
-          <h3 className="pt-3">2025</h3>
-          <h3 className="text-xl text-[#3b82f6]">Genres</h3>
-          <h3>9721</h3>
+          <h3 className="pt-3">Trending</h3>
+          <h3 className="text-xl text-[#3b82f6]">Portals</h3>
+          <h3>729</h3>
           <div className={classnames(styles. portfolio__item_cta)}>
             <a  href="#about" className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6] '>Explore</a>
         </div>

@@ -55,7 +55,7 @@ function Metaverse() {
             <div className={classnames(styles.popular)}>
               <h2>Feed</h2>
               <a href="/" className={classnames(styles.button2)}>
-                Popular
+                Top
               </a>
             </div>
             <div className={classnames(styles.filter_buttons)}>
@@ -63,13 +63,13 @@ function Metaverse() {
                 All
               </a>
               <a href="/" className={classnames(styles.button2)}>
-                Nu Disco
+                Worlds
               </a>
               <a href="/" className={classnames(styles.button2)}>
-                Cyber Pop
+                E-Sports
               </a>
               <a href="/" className={classnames(styles.button2)}>
-                Tiktok Stars
+                Assets
               </a>
             </div>
           </div>
