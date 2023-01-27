@@ -31,10 +31,12 @@ const UserMenu = ({principal}) => {
 
     getAllPortals(principal).then((portals) => {
       console.log(portals);
-      // go through all of the colors.
-      for(let i = 8; i < 13; i++) {
-        if(portals.includes(i)) {
-          setColor(toColor(i));
+
+      for(let i = 0; i < portals.length; i++) {
+        console.log(portals[i]);
+        if(portals[i].id >= 8 || portals[i].id <= 12) {
+          setColor(toColor(Number(portals[i].id)));
+          console.log(color);
           break;
         }
       }
@@ -42,22 +44,23 @@ const UserMenu = ({principal}) => {
   }, [getAllPortals, principal]);
 
   function toColor(id) {
+    console.log(id);
+    let color = "purple";
     switch(id) {
       case 8:
-        setColor("blue");
+        color = "blue";
         break;
       case 9:
-        setColor("yellow");
+        color = "yellow";
         break;
       case 10:
-        setColor("green");
+        color = "green";
         break;
       case 11:
-        setColor("red");
+        color = "red";
         break;
-      default: 
-        setColor("purple");
     }
+    return color;
   }
 
   function redirectToChat() {
