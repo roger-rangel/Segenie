@@ -27,6 +27,7 @@ import MainContainer from './Views/Dashboard/components/MainContainer';
 import MusicContainer from './Views/Dashboard/Sections/MusicContainer';
 import MetaverseContainer from './Views/Dashboard/Sections/MetaverseContainer';
 import EducationContainer from './Views/Dashboard/Sections/EducationContainer';
+import VR_AR from './Views/Dashboard/Sections/VR_AR';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -73,6 +74,12 @@ root.render(
                     path="/education"
                     element={
                         <EducationContainer />
+                    }
+                  />
+                  <Route
+                    path="/vr_ar"
+                    element={
+                        <VR_AR />
                     }
                   />
       

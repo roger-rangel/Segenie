@@ -5,7 +5,7 @@ import styles from '../components/MainContainer.module.scss'
 import { classnames } from 'tailwindcss-classnames';
 
 import React, {useState, useEffect} from "react";
-import Banner from "../../../../assets/img/music_banner.png";
+import Banner from "../../../../assets/nft_collection/vr_banner.png";
 import SecondMenu  from '../components/SecondMenu'
 
 import ClaimPortal from '../components/ClaimPortal'
