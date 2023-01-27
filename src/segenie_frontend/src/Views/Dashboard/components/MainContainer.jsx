@@ -43,12 +43,8 @@ function MainContainer({principal}) {
   useEffect(() => { 
     getAllPortals(principal).then((portals) => {
       console.log(portals);
-      if(portals.includes(8) || portals.includes(9) || portals.includes(10) || portals.includes(11) || portals.includes(12)) {
-        console.log("contains")
-        setCanClaim(false);
-      }else {
-        setCanClaim(true);
-      }
+      const alreadyClaimed = portals.some((portal) => portal.id >= 8 || portal.id <= 12);
+      if(alreadyClaimed) setCanClaim(false);
     });
   }, [getAllPortals, principal, setCanClaim]);
 
