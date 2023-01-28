@@ -1,3 +1,4 @@
+/* eslint-disable default-case */
 import React, { useEffect, useState } from "react";
 import { IconContext } from "react-icons";
 import { useNavigate } from 'react-router-dom';

@@ -21,12 +21,12 @@ const Artists = ({setClaim, setColor, provider, canClaim}) => {
     <article key={'create'} className={classnames(styles. portfolio__item)}>
        <div className="relative rounded-full bg-[#3bc4f6] py-1 px-2 text-center">New</div>
         <div className={classnames(styles. portfolio__item_image2)}>
-              <img className="rounded-t-lg" src='./nft_collection/suits.png' alt={'title'} />
+            <img className="rounded-t-lg" src='./nft_collection/restaurant.gif' alt={'title'} />
           </div>
           <div>
-          <h3 className="pt-3">New Material</h3>
-          <h3 className="text-xl text-[#3b82f6]">Suits</h3>
-          <h3>2500</h3>
+          <h3 className="pt-3">Services</h3>
+          <h3 className="text-xl text-[#3b82f6]">Restaurant</h3>
+          <h3>912</h3>
           <div className={classnames(styles. portfolio__item_cta)}>
             <a  href="#about" className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6] '>Explore</a>
         </div>

@@ -12,11 +12,11 @@ import ClaimPortal from '../components/ClaimPortal'
 import useNewPortal from "../../../Hooks/useNewPortal";
 
 import Countdown from '../components/Countdown'
-import Artists from '../MusicNFTs/Artists'
-import Tiktok from '../MusicNFTs/Tiktok'
-import Europe from '../MusicNFTs/Europe'
-import Asia from '../MusicNFTs/Asia'
-import Genres from '../MusicNFTs/Genres'
+import Artists from '../VR_AR/Artists'
+import Tiktok from '../VR_AR/Tiktok'
+import Europe from '../VR_AR/Europe'
+import Asia from '../VR_AR/Asia'
+import Genres from '../VR_AR/Genres'
 
 function MainContainer() {
   const [claim, setClaim] = useState(false);
