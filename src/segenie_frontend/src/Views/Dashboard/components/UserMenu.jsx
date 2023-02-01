@@ -1,9 +1,17 @@
-import React, { useEffect } from "react";
+/* eslint-disable default-case */
+import React, { useEffect, useState } from "react";
 import { IconContext } from "react-icons";
 import { useNavigate } from 'react-router-dom';
 import { HiFingerPrint, HiBell, HiOutlineChatBubbleOvalLeft, HiOutlineCog6Tooth } from "react-icons/hi2";
+import useNewPortal from "../../../Hooks/useNewPortal";
+import mixpanel from "mixpanel-browser";
 
-const UserMenu = () => {
+mixpanel.init(process.env.MIXPANEL);
+
+const UserMenu = ({principal}) => {
+  const [color, setColor] = useState("purple");
+
+  const {getAllPortals} = useNewPortal();
 
   const navigate = useNavigate();
   const userSettings = () => {
@@ -21,7 +29,45 @@ const UserMenu = () => {
     }
 
     mainMenuLi.forEach((n) => n.addEventListener("click", changeActive));
-  }, []);
+
+    getAllPortals(principal).then((portals) => {
+      console.log(portals);
+
+      for(let i = 0; i < portals.length; i++) {
+        console.log(portals[i]);
+        if(portals[i].id >= 8 || portals[i].id <= 12) {
+          setColor(toColor(Number(portals[i].id)));
+          console.log(color);
+          break;
+        }
+      }
+    });
+  }, [getAllPortals, principal, color]);
+
+  function toColor(id) {
+    console.log(id);
+    let color = "purple";
+    switch(id) {
+      case 8:
+        color = "blue";
+        break;
+      case 9:
+        color = "yellow";
+        break;
+      case 10:
+        color = "green";
+        break;
+      case 11:
+        color = "red";
+        break;
+    }
+    return color;
+  }
+
+  function redirectToChat() {
+    mixpanel.track("Redirecting to Think Divergent");
+    window.location.replace(`https://thinkdivergent.com/?theme=segenie_${color}`);
+  }
 
   return (
     <menu className="h-screen bg-[#19162c] max-[768px]:hidden flex flex-col items-center shadow-xl sticky top-0">
@@ -33,8 +79,8 @@ const UserMenu = () => {
                 <i className="notifications">
                   <HiBell />
                 </i>
-                <i className="chat">
-                < HiOutlineChatBubbleOvalLeft />
+                <i className="chat cursor-pointer">
+                < HiOutlineChatBubbleOvalLeft onClick={redirectToChat}/>
                 </i>
                 <i id="usersettings" className="cursor-pointer" onClick={userSettings}>
                   <HiOutlineCog6Tooth color="#2ebf91" />

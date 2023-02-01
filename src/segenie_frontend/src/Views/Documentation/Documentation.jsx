@@ -32,9 +32,9 @@ const Documentation = () => {
   different content that is according to the portal.";
 
   const nws2 = "For the N&W S2 we decided to showcase the functionality of Segenie by creating team portals. \
-  Depending on the team you are part of you can claim the associated portal for free. We are looking to collaborate \
-  with a great project so that we can showcase one of the endless posibilites and use cases for Portals. More details will be shared \
-  about this once the collaboration is official in the upcoming days.";
+  Depending on the team you are part of you can claim the associated portal for free. We are collaborating with \
+  the Think Divergent project to represent one of the possiblities of portals. Based on the portal you own you will \
+  get redirected to https://thinkdivergent.com with the page styled to the color of your group portal.";
 
   return (
     <div className="absolute left-1/2 transform -translate-x-1/2">
@@ -78,7 +78,7 @@ const Documentation = () => {
         </div>
         <div>
           <p className="mt-6 text-left font-raleway text-xl text-[#e6e6e6]">
-            What is the Access Restriction feature?
+            What is the Token Gating feature?
           </p>
           <p className="mt-3 text-left font-raleway text-base text-[#e6e6e6]">
             {whatIsAccessRestriction}

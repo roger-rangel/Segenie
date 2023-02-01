@@ -432,6 +432,7 @@ code {
     gap: 2.5rem;
     width: 100%;
     margin: 2rem auto 0 auto;
+   
   }
   
   .portfolio__item {
@@ -456,6 +457,16 @@ code {
     display: flex;
     justify-content: center;
     margin-top: 1.5rem;
+  }
+
+  .portfolio__item_image2 {
+    border-radius: 1.5rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+    min-height: 10rem;
+    max-height: 10rem;
   }
   
   .portfolio__item h3 {

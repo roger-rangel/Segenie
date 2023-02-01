@@ -28,10 +28,10 @@ function CardMain({ imgSrc, title, hearts }) {
       </div>
 
       <div className="card_main_button">
-        <a href="#" className="button btn">
+        <a href="/" className="button btn">
           Place a Bid
         </a>
-        <a href="#" className="button2 btn">
+        <a href="/" className="button2 btn">
           History
         </a>
       </div>
