@@ -188,6 +188,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "creators"
+version = "0.1.0"
+dependencies = [
+ "candid",
+ "ic-cdk",
+ "ic-cdk-macros",
+]
+
+[[package]]
 name = "crunchy"
 version = "0.2.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -592,6 +601,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "db8bcd96cb740d03149cbad5518db9fd87126a10ab519c011893b1754134c468"
 
 [[package]]
+name = "portals"
+version = "0.1.0"
+dependencies = [
+ "candid",
+ "ic-cdk",
+ "ic-cdk-macros",
+]
+
+[[package]]
 name = "precomputed-hash"
 version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -690,8 +708,10 @@ name = "segenie_backend"
 version = "0.1.0"
 dependencies = [
  "candid",
+ "creators",
  "ic-cdk",
  "ic-cdk-macros",
+ "portals",
 ]
 
 [[package]]
