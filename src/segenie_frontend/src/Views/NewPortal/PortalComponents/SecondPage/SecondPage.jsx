@@ -13,6 +13,7 @@ const SecondPage = ({ heading, subtitle, goBack, onClickMintButton }) => {
     name: '',
     description: '',
     limit: NaN,
+    soulbound: false
   });
 
   const footerButtons = [

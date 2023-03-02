@@ -17,7 +17,7 @@ const newPortal = ({provider}) => {
     mixpanel.track("Portal Blueprint Creation visited");
   }, []);
 
-  const [pageIndex, setPageIndex] = useState(0);
+  const [pageIndex, setPageIndex] = useState(1);
   const [portal, setPortal] = useState({
     name: 'Portal X',
     description: 'Portal X can give you access to X Metaverse',
