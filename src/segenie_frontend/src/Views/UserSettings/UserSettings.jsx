@@ -11,6 +11,8 @@ import Communities from './components/communities/Communities'
 
 import './UserSettings.module.scss'
 
+//start adding transfer functionality UI
+
 const UserSettings = () => {
   return (
     <>
