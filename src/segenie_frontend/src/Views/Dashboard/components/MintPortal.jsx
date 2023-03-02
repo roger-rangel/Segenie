@@ -41,9 +41,9 @@ const MintPortal = ({portal, setPortal}) => {
         style={customStyles}
         contentLabel="Example Portal"
       >
-        {/* <RequireWeb3Auth> */}
+        <RequireWeb3Auth>
           <Portal/>
-        {/* </RequireWeb3Auth> */}
+        </RequireWeb3Auth>
       </Modal>
     </div>
   );
