@@ -4,8 +4,6 @@ import UserInput from '../UserInput/UserInput';
 import Title from '../../../../components/Title/Title';
 
 const SecondPageContent = ({ mintInformation, setMintInformation }) => {
-  const [nft, setNFT] = React.useState(true);
-  const [soulbound, setSoulbound] = React.useState(false);
 
   const onChangeInput = (event) => {
     setMintInformation({
@@ -14,21 +12,13 @@ const SecondPageContent = ({ mintInformation, setMintInformation }) => {
     });
   };
 
-  const handleNFT = () => {
-    setNFT(!nft);
-  };
-
-  const handleSoulbound = () => {
-    setSoulbound(!soulbound);
-  };
-
   return (
     <div>
       <Title type="secondary"></Title>
       <div className="grid grid-cols-1 gap-2 mx-10">
         <UserInput
           className=""
-          placeholder="YOUR NAMEEEE"
+          placeholder="Your Name"
           name="name"
           onChange={onChangeInput}
         />
@@ -46,12 +36,12 @@ const SecondPageContent = ({ mintInformation, setMintInformation }) => {
           name="description"
           onChange={onChangeInput}
         />
-        <div class="form-group text-[white] font-raleway text-xl justify-between flex mx-14">
+        <div class="text-[white] font-raleway text-xl justify-between flex mx-14">
           <label>
-            <input type="radio" checked={nft} onChange={handleNFT}/> NFT (Non-Fungible Token)     
+            <UserInput type="radio" name="nft" value="NFT" onChange={onChangeInput}/> NFT (Non-Fungible Token)     
           </label>
           <label>
-            <input type="radio" checked={soulbound} onChange={handleSoulbound}/> Soulbound Token  
+            <UserInput type="radio" name="nft" value="Soulbound" onChange={onChangeInput}/> Soulbound Token  
           </label>
         </div>
         </div>

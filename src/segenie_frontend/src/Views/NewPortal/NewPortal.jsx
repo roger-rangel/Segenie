@@ -40,8 +40,9 @@ const newPortal = ({provider}) => {
     });
   };
 
-  const onClickMintButton = async ({ name, description, limit }) => {
+  const onClickMintButton = async ({ name, description, limit, soulbound }) => {
     try {
+      console.log(name, description, limit, soulbound);
       await createPortalBlueprint(provider, name, description, limit, '');
       setPortal({ name, description });
       showNextPage();
