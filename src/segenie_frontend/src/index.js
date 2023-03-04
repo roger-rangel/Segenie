@@ -23,6 +23,11 @@ import mixpanel from "mixpanel-browser";
 // CSS
 import '../assets/main.css';
 import '@connect2ic/core/style.css';
+import MainContainer from './Views/Dashboard/components/MainContainer';
+import MusicContainer from './Views/Dashboard/Sections/MusicContainer';
+import MetaverseContainer from './Views/Dashboard/Sections/MetaverseContainer';
+import EducationContainer from './Views/Dashboard/Sections/EducationContainer';
+import VR_AR from './Views/Dashboard/Sections/VR_AR';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -42,7 +47,46 @@ root.render(
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/options" element={<SegenieOptions />} />
           <Route path="/portals" element={<WelcomePage />} />
-          {/* <Route path="/nft_collection" element={<NFTCollection />} /> */}
+
+          <Route path="/" element={<Dashboard />}>
+                  {
+                    // This will be the main Dashboard
+                  }
+                  <Route
+                    path="/"
+                    element={
+                        <MainContainer />   
+                    }
+                  />
+                  <Route
+                    path="/music"
+                    element={
+                        <MusicContainer />
+                    }
+                  />
+                  <Route
+                    path="/metaverse"
+                    element={
+                        <MetaverseContainer />
+                    }
+                  />
+                  <Route
+                    path="/education"
+                    element={
+                        <EducationContainer />
+                    }
+                  />
+                  <Route
+                    path="/vr_ar"
+                    element={
+                        <VR_AR />
+                    }
+                  />
+      
+                  <Route path="*" element={<main>NOT FOUND</main>} />
+          </Route>
+          {/* end of Marketplace route */}
+          
           <Route path="/auth" element={<Web3Authorization />} />
           <Route path="/documentation" element={<Documentation />} />
         </Route>

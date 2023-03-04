@@ -1,10 +1,10 @@
 import React from "react";
-import MainContainer from "./MainContainer";
+// import MainContainer from "./MainContainer";
 
-const Container = () => {
+const Container = ({children}) => {
   return (
     <div className="md:w-[calc(100%_-_80px)]">
-      <MainContainer />
+      {children}
     </div>
   );
 }

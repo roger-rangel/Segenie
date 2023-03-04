@@ -24,7 +24,7 @@ const SecondPageContent = ({ mintInformation, setMintInformation }) => {
         />
         <UserInput
           className=""
-          placeholder="Limit: [Leave empty if you don't want to set a limit.]"
+          placeholder="Limit: "
           name="limit"
           onChange={onChangeInput}
         />

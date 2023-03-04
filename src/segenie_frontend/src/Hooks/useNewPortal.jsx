@@ -1,3 +1,5 @@
+/* eslint-disable use-isnan */
+/* eslint-disable eqeqeq */
 import { createActor, canisterId } from '../../../declarations/segenie_backend/index';
 import { idlFactory } from '../../../declarations/segenie_backend/segenie_backend.did.js';
 import {Principal} from "@dfinity/principal";
@@ -24,11 +26,8 @@ const useNewPortal = () => {
       if (imageDataURL) {
         return await customActor.create_portal_blueprint(name, description, [], [imageDataURL]);
       }
-      else if(Number(limit) != NaN) {
-        await customActor.create_portal_blueprint(name, description, [Number(limit)]);
-      }
       else {
-        return await customActor.create_portal_blueprint(name, description);
+        await customActor.create_portal_blueprint(name, description, [Number(limit)]);
       }
     } catch (e) {
       console.error(e);
@@ -48,6 +47,39 @@ const useNewPortal = () => {
     }
   }
 
-  return { createPortalBlueprint, getAllPortals, mintPortal };
+  const claimPortal = async (provider, color) => {
+    let portalId;
+    switch(color) {
+      case "blue":
+        portalId = 8;
+        break;
+      case "yellow":
+        portalId = 9; 
+        break;
+      case "green":
+        portalId = 10;
+        break;
+      case "red":
+        portalId = 11;
+        break;
+      default:
+        // purple
+        portalId = 12;
+    }
+
+    const receiver = provider.principal;
+    console.log(receiver);
+    
+    try {
+      const principal = Principal.from(receiver)
+      return await actor.mint_portal(Number(portalId), principal);
+    } catch (e) {
+      console.error(e);
+      throw e;
+    }
+    
+  }
+
+  return { createPortalBlueprint, getAllPortals, mintPortal, claimPortal };
 };
 export default useNewPortal;

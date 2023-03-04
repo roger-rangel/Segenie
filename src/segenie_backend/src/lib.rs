@@ -1,6 +1,3 @@
-mod creators;
-mod portals;
-
 use creators::Creator;
 use candid::Nat;
 use ic_cdk::export::Principal;
