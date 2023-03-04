@@ -9,7 +9,7 @@ import Dashboard from './Views/Dashboard/Dashboard';
 import NewPortal from './Views/NewPortal/NewPortal';
 import WelcomePage from './Views/WelcomePage/WelcomePage';
 // import NFTCollection from './Views/NFT_Collection/NFT_Collection';
-import UserSettings from './Views/UserSettings/UserSettings';
+import ProfilePage from './Views/ProfilePage/ProfilePage';
 import Documentation from './Views/Documentation/Documentation';
 import SegenieOptions from './Views/SegenieOptions/SegenieOptions';
 import Web3Authorization from './Views/Web3Authorization/Web3Authorization';
@@ -43,8 +43,8 @@ root.render(
     <Router>
       <Routes>
         <Route path="/" element={<App />}>
-          {/* <Route path="/" exact element={<Dashboard />} /> */}
-          <Route path="/usersettings" element={<UserSettings />} />
+          <Route path="/" exact element={<Dashboard />} />
+          <Route path="/profile" element={<ProfilePage />} />
           <Route path="/options" element={<SegenieOptions />} />
           <Route path="/portals" element={<WelcomePage />} />
 

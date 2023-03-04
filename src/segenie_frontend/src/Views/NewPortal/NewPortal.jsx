@@ -17,7 +17,7 @@ const newPortal = ({provider}) => {
     mixpanel.track("Portal Blueprint Creation visited");
   }, []);
 
-  const [pageIndex, setPageIndex] = useState(0);
+  const [pageIndex, setPageIndex] = useState(1);
   const [portal, setPortal] = useState({
     name: 'Portal X',
     description: 'Portal X can give you access to X Metaverse',
@@ -40,8 +40,9 @@ const newPortal = ({provider}) => {
     });
   };
 
-  const onClickMintButton = async ({ name, description, limit }) => {
+  const onClickMintButton = async ({ name, description, limit, nft }) => {
     try {
+      console.log(name, description, limit, nft);
       await createPortalBlueprint(provider, name, description, limit, '');
       setPortal({ name, description });
       showNextPage();

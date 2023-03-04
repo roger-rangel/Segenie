@@ -18,7 +18,7 @@ const useNewPortal = () => {
     }
   };
 
-  const createPortalBlueprint = async (provider, name, description, limit, imageDataURL) => {
+  const createPortalBlueprint = async (provider, name, description, limit, nft, imageDataURL) => {
     console.log('Creating a portal blueprint.');
     const customActor = (await provider.activeProvider.createActor(canisterId, idlFactory)).value;
     console.log(customActor);

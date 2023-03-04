@@ -9,9 +9,11 @@ import Rewards from './components/rewards/Rewards'
 import Portals from './portals/Portals'
 import Communities from './components/communities/Communities'
 
-import './UserSettings.module.scss'
+import './ProfilePage.module.scss'
 
-const UserSettings = () => {
+//start adding transfer functionality UI
+
+const ProfilePage = () => {
   return (
     <>
         <Nav />
@@ -26,4 +28,4 @@ const UserSettings = () => {
   )
 }
 
-export default UserSettings
+export default ProfilePage
