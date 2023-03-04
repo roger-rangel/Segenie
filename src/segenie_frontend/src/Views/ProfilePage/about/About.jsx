@@ -10,7 +10,7 @@ const About = () => {
   return (
     <section id='about'>
       <h5>Creator</h5>
-      <h2 className="text-xl">Natalia Kowalska</h2>
+      <h2 className="text-xl">Alexander Milton</h2>
 
       <div className={classnames(styles.about__container)}>
         <div className={classnames(styles.about__me)}>

@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { IconContext } from "react-icons";
 import { useNavigate } from 'react-router-dom';
-import { HiFingerPrint, HiBell, HiOutlineChatBubbleOvalLeft, HiOutlineCog6Tooth } from "react-icons/hi2";
+import { HiFingerPrint, HiBell, HiOutlineChatBubbleOvalLeft, HiUser } from "react-icons/hi2";
 
 const UserMenu = () => {
 
   const navigate = useNavigate();
-  const userSettings = () => {
-    navigate('/usersettings');
+  const profile = () => {
+    navigate('/profile');
   };
 
   useEffect(() => {
@@ -36,8 +36,8 @@ const UserMenu = () => {
                 <i className="chat">
                 < HiOutlineChatBubbleOvalLeft />
                 </i>
-                <i id="usersettings" className="cursor-pointer" onClick={userSettings}>
-                  <HiOutlineCog6Tooth color="#2ebf91" />
+                <i className="cursor-pointer" onClick={profile}>
+                  <HiUser color="#2ebf91" />
                 </i>
             </div>
         </IconContext.Provider>
