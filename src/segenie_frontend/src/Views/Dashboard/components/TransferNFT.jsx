@@ -1,6 +1,11 @@
 /* eslint-disable no-unused-vars */
-import React, {useEffect, useState} from 'react'
+import React, { useState, useEffect } from "react";
 import Modal from 'react-modal';
+import useNewPortal from '../../../Hooks/useNewPortal';
+import mixpanel from "mixpanel-browser";
+import RequireWeb3Auth from '../../Web3Authorization/RequireWeb3Auth/RequireWeb3Auth';
+
+mixpanel.init(process.env.MIXPANEL);
 
 const customStyles = {
     content: {
@@ -9,52 +14,74 @@ const customStyles = {
       right: 'auto',
       bottom: 'auto',
       marginRight: '-50%',
+      backgroundColor: '#212534',
+      borderColor: 'white',
       transform: 'translate(-50%, -50%)',
     },
-};
-
-const TransferNFT = (transferNFT) => {
-  let subtitle;
-  console.log(`transferNFT: ${transferNFT}`);
-  const [modalIsOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    function openModal() {
-        setIsOpen(transferNFT)
+    overlay: {
+        background: 'rgba(255, 255, 255, 0.20)',
     }
-  
-  }, [transferNFT])
+  };
 
+Modal.setAppElement(document.getElementById('root'));
 
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
-  }
-
+const TransferNFT = ({transferNFT, setTransferNFT}) => {
   function closeModal() {
-    setIsOpen(false);
+    setTransferNFT(false);
   }
 
   return (
-    <div>
+    <div className="bg-opacity-50">
       <Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
+        isOpen={transferNFT}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
-        <button onClick={closeModal}>close</button>
-        <div>I am a modal</div>
-        <form>
-          <input />
-          <button>tab navigation</button>
-          <button>stays</button>
-          <button>inside</button>
-          <button>the modal</button>
-        </form>
+      {/* <RequireWeb3Auth> */}
+        <TransferModal closeModal={closeModal}/>
+      {/* </RequireWeb3Auth> */}
       </Modal>
+    </div>
+  )
+}
+
+const TransferModal = ({provider, closeModal}) => {
+  useEffect(() => {
+    mixpanel.track("TransferNFT Modal Opened");
+  }, [])
+
+  const [portalId, setPortalId] = useState(0);
+  const [receiver, setReceiver] = useState("");
+
+  const { mintPortal } = useNewPortal();
+
+  async function mint() {
+    const res = await mintPortal(provider, portalId, receiver);
+    alert(res);
+  }
+
+  return (
+    <div className="bg-opacity-50">
+    <form className=''>
+      <img className="w-80 rounded m-auto" src={'/img/music_banner.png'} alt={''}/>
+      <div className="flex flex-col mt-4">
+        <div>
+            <input 
+              className='bg-gradient-to-r from-[#a855f7] to-[#3b82f6] align-middle text-center rounded placeholder-[#475569] pl-10' 
+              placeholder="Send To"
+              value={receiver} 
+              onChange={(e) => setReceiver(e.target.value)}
+            />
+            <span
+              className='bg-gradient-to-r from-[#a855f7] to-[#3b82f6] rounded placeholder-[#475569] mb-4 ml-2 align-middle text-center px-8 py-1 border-[white] border-2'>
+                Wallet
+            </span>
+        </div>
+      </div>
+    </form>
+    <button className={'w-full py-4 rounded bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6] text-[white] mt-6 mb-5 '} onClick={mint}>Transfer</button>
+    <button className={'w-full py-2 rounded bg-gradient-to-r from-[#f12711] to-[#f5af19] text-[white]'} onClick={closeModal}>close</button>
     </div>
   );
 }

@@ -28,7 +28,7 @@ const data = [
   }
 ]
 
-const Portals = () => {
+const Portals = ({setTransferNFT}) => {
   let [portals, setPortals] = useState([]);
 
   const { getAllPortals } = useNewPortal();
@@ -92,8 +92,7 @@ const Portals = () => {
             <h3>Dfinity Developers</h3>
             <h3>Internet Computer</h3>
             <div className={classnames(styles. portfolio__item_cta)}>
-            <button onClick={openModal} className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6]'>Transfer</button>
-            <TransferNFT transferNFT={openModal} />
+            <button onClick={() => setTransferNFT(prevTransfer => !prevTransfer)} className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6]'>Transfer</button>
             </div>
           </div>
         </article>
