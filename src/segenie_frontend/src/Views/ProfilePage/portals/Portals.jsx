@@ -9,6 +9,8 @@ import IMG1 from '../../../../assets/icons/buildspace.svg'
 import IMG2 from '../../../../assets/icons/icp2.svg'
 import IMG3 from '../../../../assets/icons/logo2.svg'
 
+import TransferNFT from '../../Dashboard/components/TransferNFT';
+
 const data = [
   {
     id: 1,
@@ -28,9 +30,13 @@ const data = [
 
 const Portals = () => {
   let [portals, setPortals] = useState([]);
-  let [transfer, setTransfer] = useState(false);
 
   const { getAllPortals } = useNewPortal();
+
+  function openModal() {
+    console.log("button clicked")
+    return true;
+  }
 
   useEffect(() => {  
     if(window.localStorage.getItem("principal")) {
@@ -39,7 +45,7 @@ const Portals = () => {
         setPortals(data);
       })
     }
-  }, []);
+  }, [getAllPortals]);
 
   return (
     <section id='portals'>
@@ -86,7 +92,8 @@ const Portals = () => {
             <h3>Dfinity Developers</h3>
             <h3>Internet Computer</h3>
             <div className={classnames(styles. portfolio__item_cta)}>
-            <button onClick={() => setTransfer(showModal => !showModal)} className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6]'>Transfer</button>
+            <button onClick={openModal} className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6]'>Transfer</button>
+            <TransferNFT transferNFT={openModal} />
             </div>
           </div>
         </article>

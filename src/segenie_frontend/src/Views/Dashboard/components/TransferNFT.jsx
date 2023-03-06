@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import React, {useEffect, useState} from 'react'
-import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 
 const customStyles = {
@@ -14,13 +13,18 @@ const customStyles = {
     },
 };
 
-const TransferNFT = () => {
-let subtitle;
+const TransferNFT = (transferNFT) => {
+  let subtitle;
+  console.log(`transferNFT: ${transferNFT}`);
   const [modalIsOpen, setIsOpen] = useState(false);
 
-  function openModal() {
-    setIsOpen(true);
-  }
+  useEffect(() => {
+    function openModal() {
+        setIsOpen(transferNFT)
+    }
+  
+  }, [transferNFT])
+
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
@@ -33,7 +37,6 @@ let subtitle;
 
   return (
     <div>
-      <button onClick={openModal}>Open Modal</button>
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
