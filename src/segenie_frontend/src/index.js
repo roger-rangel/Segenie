@@ -39,7 +39,7 @@ mixpanel.init(process.env.MIXPANEL);
 mixpanel.track("Website Visited");
 
 root.render(
-  // <Connect2ICProvider client={client}>
+  <Connect2ICProvider client={client}>
     <Router>
       <Routes>
         <Route path="/" element={<App />}>
@@ -92,5 +92,5 @@ root.render(
         </Route>
       </Routes>
     </Router>
-  // </Connect2ICProvider>
+  </Connect2ICProvider>
 );

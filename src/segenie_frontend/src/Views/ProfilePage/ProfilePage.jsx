@@ -15,7 +15,7 @@ import './ProfilePage.module.scss'
 //start adding transfer functionality UI
 
 const ProfilePage = () => {
-  const [transferNFT, setTransferNFT] = useState(true);
+  const [transferNFT, setTransferNFT] = useState(false);
 
   return (
     <>

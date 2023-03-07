@@ -38,9 +38,9 @@ const TransferNFT = ({transferNFT, setTransferNFT}) => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-      {/* <RequireWeb3Auth> */}
+      <RequireWeb3Auth>
         <TransferModal closeModal={closeModal}/>
-      {/* </RequireWeb3Auth> */}
+      </RequireWeb3Auth>
       </Modal>
     </div>
   )
@@ -51,13 +51,13 @@ const TransferModal = ({provider, closeModal}) => {
     mixpanel.track("TransferNFT Modal Opened");
   }, [])
 
-  const [portalId, setPortalId] = useState(0);
   const [receiver, setReceiver] = useState("");
 
-  const { mintPortal } = useNewPortal();
+  //this function (transferPortal) does not exist yet
+  const { transferPortal } = useNewPortal();
 
-  async function mint() {
-    const res = await mintPortal(provider, portalId, receiver);
+  async function transfer() {
+    const res = await transferPortal(provider, receiver);
     alert(res);
   }
 
@@ -80,7 +80,7 @@ const TransferModal = ({provider, closeModal}) => {
         </div>
       </div>
     </form>
-    <button className={'w-full py-4 rounded bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6] text-[white] mt-6 mb-5 '} onClick={mint}>Transfer</button>
+    <button className={'w-full py-4 rounded bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6] text-[white] mt-6 mb-5 '} onClick={transfer}>Transfer</button>
     <button className={'w-full py-2 rounded bg-gradient-to-r from-[#f12711] to-[#f5af19] text-[white]'} onClick={closeModal}>close</button>
     </div>
   );
