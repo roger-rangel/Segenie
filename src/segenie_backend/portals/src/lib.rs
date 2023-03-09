@@ -14,6 +14,8 @@ pub enum Error {
     NotAllowed,
     /// The minting limit has been reached.
     LimitReached,
+    /// Tried to do something with a portal that is not owned by the caller.
+    NotOwned,
 }
 
 /// The type used to represent an Portals id.
@@ -225,4 +227,32 @@ pub fn do_get_portals_of_user(user: Principal) -> Vec<Portal> {
         }
     }
     portals
+}
+
+pub fn do_transfer_portal(
+    caller: Principal,
+    receiver: Principal,
+    portal_id: PortalId,
+) -> Result<(), Error> {
+    PORTALS_OF.with(|portals_of| -> Result<(), Error> {
+        let mut portals_of = portals_of.borrow_mut();
+        if let Some(portals) = portals_of.get_mut(&caller) {
+            let maybe_index = (*portals).iter().position(|p| *p == portal_id);
+
+            match maybe_index {
+                Some(index) => (*portals).remove(index),
+                None => return Err(Error::NotOwned),
+            };
+        } else {
+            return Err(Error::NotOwned);
+        }
+
+        if let Some(portals) = portals_of.get_mut(&receiver) {
+            (*portals).push(portal_id.clone());
+        } else {
+            portals_of.insert(receiver, vec![portal_id.clone()]);
+        }
+
+        Ok(())
+    })
 }

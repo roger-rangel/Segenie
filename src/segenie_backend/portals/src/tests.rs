@@ -170,19 +170,9 @@ fn get_portal_works_when_portal_doesnt_exist() {
 fn get_creator_portals_works() {
     let creator = get_creator();
     let name = String::from("portal1");
-    let description = String::from("A basic portal.");
     let transferable = false;
-    let image_url = None;
-    let limit: Option<Nat> = None;
 
-    do_create_portal_blueprint(
-        creator,
-        name.clone(),
-        description.clone(),
-        transferable.clone(),
-        limit.clone(),
-        image_url.clone(),
-    );
+    let portal = create_portal_blueprint(creator, name.clone(), transferable);
 
     assert_eq!(
         do_get_portals_of_creator(creator),
@@ -190,11 +180,11 @@ fn get_creator_portals_works() {
             id: Nat::from(0),
             creator,
             name,
-            description,
+            description: portal.description,
             transferable,
-            image_url,
-            limit,
-            minted: Nat::from(0),
+            image_url: portal.image_url,
+            limit: portal.limit,
+            minted: portal.minted,
         }]
     );
 }
