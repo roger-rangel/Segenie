@@ -1,13 +1,19 @@
-use creators::Creator;
 use candid::Nat;
+use creators::Creator;
 use ic_cdk::export::Principal;
 use ic_cdk_macros::*;
 use portals::{Portal, PortalId};
 
 #[update]
-fn create_portal_blueprint(name: String, description: String, limit: Option<Nat>, image_url: Option<String>) -> String {
+fn create_portal_blueprint(
+    name: String,
+    description: String,
+    transferable: bool,
+    limit: Option<Nat>,
+    image_url: Option<String>,
+) -> String {
     let creator = ic_cdk::api::caller();
-    portals::do_create_portal_blueprint(creator, name, description, limit, image_url);
+    portals::do_create_portal_blueprint(creator, name, description, transferable, limit, image_url);
 
     format!("Portal created successfully.")
 }

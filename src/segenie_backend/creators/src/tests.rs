@@ -23,6 +23,5 @@ fn getting_creator_metadata_returns_none() {
 }
 
 fn get_creator() -> Principal {
-    Principal::from_text("arlij-g2zpo-epfot-36ufg-vm4gj-3j4tj-rsjjt-fsv2m-sp4z7-nnk6b-lqe")
-        .unwrap()
+    Principal::from_text("arlij-g2zpo-epfot-36ufg-vm4gj-3j4tj-rsjjt-fsv2m-sp4z7-nnk6b-lqe").unwrap()
 }
