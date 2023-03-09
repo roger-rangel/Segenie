@@ -28,6 +28,8 @@ pub struct Portal {
     name: String,
     /// A description for the portal.
     description: String,
+    /// Specifies whether the portal is transferable or not.
+    transferable: bool,
     /// The url of the image for the portal.
     image_url: Option<String>,
     /// The limit of how many portal instances can be minted.
@@ -57,6 +59,7 @@ pub fn do_create_portal_blueprint(
     creator: Principal,
     name: String,
     description: String,
+    transferable: bool,
     limit: Option<Nat>,
     image_url: Option<String>,
 ) -> PortalId {
@@ -67,6 +70,7 @@ pub fn do_create_portal_blueprint(
             id: id.clone(),
             name,
             description,
+            transferable,
             image_url,
             limit,
             minted: Nat::from(0),
@@ -121,6 +125,7 @@ pub fn do_update_metadata(
                     name,
                     description,
                     image_url,
+                    transferable: portal.clone().transferable,
                     limit: portal.clone().limit,
                     minted: portal.clone().minted,
                     creator: portal.creator,

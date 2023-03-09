@@ -5,6 +5,7 @@ fn creating_portal_works() {
     let creator = get_creator();
     let portal_name = String::from("portal1");
     let portal_desc = String::from("A basic portal.");
+    let transferable = false;
     let limit = None;
     let image_url = None;
 
@@ -12,6 +13,7 @@ fn creating_portal_works() {
         creator,
         portal_name.clone(),
         portal_desc.clone(),
+        transferable.clone(),
         limit.clone(),
         image_url.clone(),
     );
@@ -23,6 +25,7 @@ fn creating_portal_works() {
             creator,
             name: portal_name,
             description: portal_desc,
+            transferable,
             image_url,
             limit,
             minted: Nat::from(0),
@@ -35,6 +38,7 @@ fn updating_portal_metadata_works() {
     let creator = get_creator();
     let portal_name = String::from("portal1");
     let portal_desc = String::from("A basic portal.");
+    let transferable = false;
     let image_url = None;
     let limit = None;
 
@@ -42,6 +46,7 @@ fn updating_portal_metadata_works() {
         creator,
         portal_name.clone(),
         portal_desc.clone(),
+        transferable.clone(),
         limit.clone(),
         image_url.clone(),
     );
@@ -53,6 +58,7 @@ fn updating_portal_metadata_works() {
             creator: creator.clone(),
             name: portal_name,
             description: portal_desc,
+            transferable: transferable.clone(),
             image_url,
             limit: limit.clone(),
             minted: Nat::from(0),
@@ -80,6 +86,7 @@ fn updating_portal_metadata_works() {
             creator,
             name: new_name,
             description: new_desc,
+            transferable,
             image_url: new_image_url,
             limit,
             minted: Nat::from(0),
@@ -111,6 +118,7 @@ fn updating_portal_metadata_fails_when_not_called_by_creator() {
     let creator = get_creator();
     let portal_name = String::from("portal1");
     let portal_desc = String::from("A basic portal.");
+    let transferable = false;
     let image_url = None;
     let limit = None;
 
@@ -118,6 +126,7 @@ fn updating_portal_metadata_fails_when_not_called_by_creator() {
         creator,
         portal_name.clone(),
         portal_desc.clone(),
+        transferable.clone(),
         limit.clone(),
         image_url.clone(),
     );
@@ -129,6 +138,7 @@ fn updating_portal_metadata_fails_when_not_called_by_creator() {
             creator: creator.clone(),
             name: portal_name,
             description: portal_desc,
+            transferable,
             image_url,
             limit,
             minted: Nat::from(0),
@@ -161,6 +171,7 @@ fn get_creator_portals_works() {
     let creator = get_creator();
     let name = String::from("portal1");
     let description = String::from("A basic portal.");
+    let transferable = false;
     let image_url = None;
     let limit: Option<Nat> = None;
 
@@ -168,6 +179,7 @@ fn get_creator_portals_works() {
         creator,
         name.clone(),
         description.clone(),
+        transferable.clone(),
         limit.clone(),
         image_url.clone(),
     );
@@ -179,6 +191,7 @@ fn get_creator_portals_works() {
             creator,
             name,
             description,
+            transferable,
             image_url,
             limit,
             minted: Nat::from(0),
@@ -190,8 +203,8 @@ fn get_creator_portals_works() {
 fn minting_portals_works() {
     let creator = get_creator();
 
-    let mut portal1 = create_portal_blueprint(creator, format!("Portal1"));
-    let mut portal2 = create_portal_blueprint(creator, format!("Portal2"));
+    let mut portal1 = create_portal_blueprint(creator, format!("Portal1"), false);
+    let mut portal2 = create_portal_blueprint(creator, format!("Portal2"), false);
 
     let alice = get_default_principal();
 
@@ -209,16 +222,11 @@ fn minting_limit_works() {
     let creator = get_creator();
     let name = String::from("portal");
     let description = String::from("A basic portal.");
+    let transferable = false;
     let image_url = None;
     let limit: Option<Nat> = Some(Nat::from(2));
 
-    let _ = do_create_portal_blueprint(
-        creator,
-        name.clone(),
-        description.clone(),
-        limit.clone(),
-        image_url.clone(),
-    );
+    let _ = do_create_portal_blueprint(creator, name, description, transferable, limit, image_url);
 
     let alice = get_default_principal();
 
@@ -226,10 +234,13 @@ fn minting_limit_works() {
     // We may support this kind of functionality in the future though.
     assert_eq!(do_mint_portal(creator, alice, Nat::from(0)), Ok(()));
     assert_eq!(do_mint_portal(creator, alice, Nat::from(0)), Ok(()));
-    assert_eq!(do_mint_portal(creator, alice, Nat::from(0)), Err(Error::LimitReached));
+    assert_eq!(
+        do_mint_portal(creator, alice, Nat::from(0)),
+        Err(Error::LimitReached)
+    );
 }
 
-fn create_portal_blueprint(creator: Principal, name: String) -> Portal {
+fn create_portal_blueprint(creator: Principal, name: String, transferable: bool) -> Portal {
     let description = format!("Description of: {}", name);
     let image_url = None;
     let limit: Option<Nat> = None;
@@ -238,6 +249,7 @@ fn create_portal_blueprint(creator: Principal, name: String) -> Portal {
         creator,
         name.clone(),
         description.clone(),
+        transferable.clone(),
         limit.clone(),
         image_url.clone(),
     );
@@ -247,6 +259,7 @@ fn create_portal_blueprint(creator: Principal, name: String) -> Portal {
         creator,
         name,
         description,
+        transferable,
         image_url,
         limit,
         minted: Nat::from(0),
@@ -254,8 +267,7 @@ fn create_portal_blueprint(creator: Principal, name: String) -> Portal {
 }
 
 fn get_creator() -> Principal {
-    Principal::from_text("arlij-g2zpo-epfot-36ufg-vm4gj-3j4tj-rsjjt-fsv2m-sp4z7-nnk6b-lqe")
-        .unwrap()
+    Principal::from_text("arlij-g2zpo-epfot-36ufg-vm4gj-3j4tj-rsjjt-fsv2m-sp4z7-nnk6b-lqe").unwrap()
 }
 
 fn get_default_principal() -> Principal {
