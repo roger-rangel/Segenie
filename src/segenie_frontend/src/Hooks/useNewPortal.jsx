@@ -24,10 +24,10 @@ const useNewPortal = () => {
     console.log(customActor);
     try {
       if (imageDataURL) {
-        return await customActor.create_portal_blueprint(name, description, [], [imageDataURL]);
+        return await customActor.create_portal_blueprint(name, description, true, [], [imageDataURL]);
       }
       else {
-        await customActor.create_portal_blueprint(name, description, [Number(limit)]);
+        await customActor.create_portal_blueprint(name, description, true, [Number(limit)]);
       }
     } catch (e) {
       console.error(e);
