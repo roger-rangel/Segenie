@@ -230,6 +230,35 @@ fn minting_limit_works() {
     );
 }
 
+#[test]
+fn portal_transfer_works() {
+    let creator = get_creator();
+    let name = String::from("portal");
+    let transferable = true;
+
+    let mut portal = create_portal_blueprint(creator, name, transferable);
+
+    // The creator mints a portal for himself.
+    assert_eq!(do_mint_portal(creator, creator, portal.clone().id), Ok(()));
+    // The supply increased.
+    portal.minted = Nat::from(1);
+    assert_eq!(do_get_portals_of_user(creator), vec![portal.clone()]);
+
+    // Alice is going to be the recepient.
+    let alice = get_default_principal();
+    // She doesn't have any portals at the moment.
+    assert_eq!(do_get_portals_of_user(alice), vec![]);
+
+    // Creator transfers the token to alice.
+    assert_eq!(
+        do_transfer_portal(creator, alice, portal.clone().id),
+        Ok(())
+    );
+
+    assert_eq!(do_get_portals_of_user(alice), vec![portal]);
+    assert_eq!(do_get_portals_of_user(creator), vec![]);
+}
+
 fn create_portal_blueprint(creator: Principal, name: String, transferable: bool) -> Portal {
     let description = format!("Description of: {}", name);
     let image_url = None;
