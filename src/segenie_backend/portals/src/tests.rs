@@ -170,19 +170,9 @@ fn get_portal_works_when_portal_doesnt_exist() {
 fn get_creator_portals_works() {
     let creator = get_creator();
     let name = String::from("portal1");
-    let description = String::from("A basic portal.");
     let transferable = false;
-    let image_url = None;
-    let limit: Option<Nat> = None;
 
-    do_create_portal_blueprint(
-        creator,
-        name.clone(),
-        description.clone(),
-        transferable.clone(),
-        limit.clone(),
-        image_url.clone(),
-    );
+    let portal = create_portal_blueprint(creator, name.clone(), transferable);
 
     assert_eq!(
         do_get_portals_of_creator(creator),
@@ -190,11 +180,11 @@ fn get_creator_portals_works() {
             id: Nat::from(0),
             creator,
             name,
-            description,
+            description: portal.description,
             transferable,
-            image_url,
-            limit,
-            minted: Nat::from(0),
+            image_url: portal.image_url,
+            limit: portal.limit,
+            minted: portal.minted,
         }]
     );
 }
@@ -238,6 +228,35 @@ fn minting_limit_works() {
         do_mint_portal(creator, alice, Nat::from(0)),
         Err(Error::LimitReached)
     );
+}
+
+#[test]
+fn portal_transfer_works() {
+    let creator = get_creator();
+    let name = String::from("portal");
+    let transferable = true;
+
+    let mut portal = create_portal_blueprint(creator, name, transferable);
+
+    // The creator mints a portal for himself.
+    assert_eq!(do_mint_portal(creator, creator, portal.clone().id), Ok(()));
+    // The supply increased.
+    portal.minted = Nat::from(1);
+    assert_eq!(do_get_portals_of_user(creator), vec![portal.clone()]);
+
+    // Alice is going to be the recepient.
+    let alice = get_default_principal();
+    // She doesn't have any portals at the moment.
+    assert_eq!(do_get_portals_of_user(alice), vec![]);
+
+    // Creator transfers the token to alice.
+    assert_eq!(
+        do_transfer_portal(creator, alice, portal.clone().id),
+        Ok(())
+    );
+
+    assert_eq!(do_get_portals_of_user(alice), vec![portal]);
+    assert_eq!(do_get_portals_of_user(creator), vec![]);
 }
 
 fn create_portal_blueprint(creator: Principal, name: String, transferable: bool) -> Portal {

@@ -73,6 +73,15 @@ fn mint_portal(portal: PortalId, receiver: Principal) -> String {
     }
 }
 
+#[update]
+fn transfer_portal(portal: PortalId, receiver: Principal) -> String {
+    let caller = ic_cdk::api::caller();
+    match portals::do_transfer_portal(caller, receiver, portal) {
+        Ok(_) => format!("Portal transfered successfully."),
+        Err(e) => format!("Error while transfering the portal: {:?}", e),
+    }
+}
+
 #[ic_cdk_macros::query]
 fn get_portals_of_user(user: Principal) -> Vec<Portal> {
     portals::do_get_portals_of_user(user)
