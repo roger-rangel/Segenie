@@ -22,7 +22,6 @@ const DashboardWrapper = () => {
       </RequireWeb3Auth>
     )
   }
-  // return <Dashboard principal={principal}/>
 }
 
 const Dashboard = ({principal, children}) => {

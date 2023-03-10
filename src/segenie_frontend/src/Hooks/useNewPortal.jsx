@@ -22,12 +22,13 @@ const useNewPortal = () => {
     console.log('Creating a portal blueprint.');
     const customActor = (await provider.activeProvider.createActor(canisterId, idlFactory)).value;
     console.log(customActor);
+    const isNft = nft === "NFT"? true : false;
     try {
       if (imageDataURL) {
-        return await customActor.create_portal_blueprint(name, description, true, [], [imageDataURL]);
+        return await customActor.create_portal_blueprint(name, description, isNft, [], [imageDataURL]);
       }
       else {
-        await customActor.create_portal_blueprint(name, description, true, [Number(limit)]);
+        await customActor.create_portal_blueprint(name, description, isNft, [Number(limit)], []);
       }
     } catch (e) {
       console.error(e);
