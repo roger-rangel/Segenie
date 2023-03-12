@@ -25,18 +25,19 @@ const customStyles = {
 
 Modal.setAppElement(document.getElementById('root'));
 
-const TransferNFT = ({transferNFT, setTransferNFT}) => {
+const TransferNFT = ({transferPortal, setTransferPortal, portalId}) => {
   function closeModal() {
-    setTransferNFT(false);
+    setTransferPortal(false);
   }
 
   return (
     <div className="bg-opacity-50">
       <Modal
-        isOpen={transferNFT}
+        isOpen={transferPortal}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
+        portalId={portalId}
       >
       <RequireWeb3Auth>
         <TransferModal closeModal={closeModal}/>
@@ -46,18 +47,17 @@ const TransferNFT = ({transferNFT, setTransferNFT}) => {
   )
 }
 
-const TransferModal = ({provider, closeModal}) => {
+const TransferModal = ({provider, closeModal, portalId}) => {
   useEffect(() => {
     mixpanel.track("TransferNFT Modal Opened");
   }, [])
 
   const [receiver, setReceiver] = useState("");
 
-  //this function (transferPortal) does not exist yet
   const { transferPortal } = useNewPortal();
 
   async function transfer() {
-    const res = await transferPortal(provider, receiver);
+    const res = await transferPortal(provider, portalId, receiver);
     alert(res);
   }
 

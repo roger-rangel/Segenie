@@ -48,6 +48,18 @@ const useNewPortal = () => {
     }
   }
 
+  const transferPortal = async (provider, portalId, receiver) => {
+    console.log("Transferring a portal");
+    const customActor = (await provider.activeProvider.createActor(canisterId, idlFactory)).value;
+    try {
+      const principal = Principal.from(receiver)
+      return await customActor.transfer_portal(Number(portalId), principal);
+    } catch (e) {
+      console.error(e);
+      throw e;
+    }
+  }
+
   const claimPortal = async (provider, color) => {
     let portalId;
     switch(color) {
@@ -81,6 +93,6 @@ const useNewPortal = () => {
     
   }
 
-  return { createPortalBlueprint, getAllPortals, mintPortal, claimPortal };
+  return { createPortalBlueprint, getAllPortals, mintPortal, claimPortal, transferPortal };
 };
 export default useNewPortal;

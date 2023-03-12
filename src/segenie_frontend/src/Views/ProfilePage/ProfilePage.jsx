@@ -15,14 +15,20 @@ import './ProfilePage.module.scss'
 //start adding transfer functionality UI
 
 const ProfilePage = () => {
-  const [transferNFT, setTransferNFT] = useState(false);
+  const [transferPortal, setTransferPortal] = useState(false);
+  const [portal, setPortal] = useState(0);
+
+  const setSelectedPortal = (portalId) => {
+    setTransferPortal(transferPortal => !transferPortal);
+    setPortal(portalId);
+  }
 
   return (
     <>
         <Nav />
         <About />
-        <Portals setTransferNFT={setTransferNFT} />
-        <TransferNFT transferNFT={transferNFT} setTransferNFT={setTransferNFT}/>
+        <Portals setSelectedPortal={setSelectedPortal} />
+        <TransferNFT transferPortal={transferPortal} setTransferPortal={setTransferPortal} portalId={portal}/>
         {/* <Communities />
         <NFTs />
         <Rewards />

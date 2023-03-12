@@ -28,7 +28,7 @@ const data = [
   }
 ]
 
-const Portals = ({setTransferNFT}) => {
+const Portals = ({setSelectedPortal}) => {
   let [portals, setPortals] = useState([]);
 
   const { getAllPortals } = useNewPortal();
@@ -64,25 +64,12 @@ const Portals = ({setTransferNFT}) => {
                 <h3>{portal.name}</h3>
                 <h3>{portal.description}</h3>
                 <div className={classnames(styles. portfolio__item_cta)}>
-                <a href="#about" className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6]'>Transfer</a>
+                <button onClick={() => setSelectedPortal(prevTransfer => !prevTransfer, portal.id)} className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6]'>Transfer</button>
                 </div>
               </div>
             </article>
           )})
         }
-        {/* <article key={'mock1'} className={classnames(styles. portfolio__item)}>
-            <div className="absolute rounded-full bg-[#ff006e] py-1 px-2">Coming Soon!</div>
-            <div className={classnames(styles. portfolio__item_image)}>
-                <img className="rounded-t-lg" src={IMG1} alt={'title'} />
-            </div>
-            <div>
-            <h3>N&W2</h3>
-            <h3>Buildspace</h3>
-            <div className={classnames(styles. portfolio__item_cta)}>
-            <a href="#about" className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6]'>Jan. 28th</a>
-            </div>
-          </div>
-        </article> */}
         <article key={'mock2'} className={classnames(styles. portfolio__item)}>
             <div className="absolute rounded-full bg-[#ff006e] py-1 px-2">Coming Soon!</div>
             <div className={classnames(styles. portfolio__item_image)}>
@@ -92,23 +79,10 @@ const Portals = ({setTransferNFT}) => {
             <h3>Dfinity Developers</h3>
             <h3>Internet Computer</h3>
             <div className={classnames(styles. portfolio__item_cta)}>
-            <button onClick={() => setTransferNFT(prevTransfer => !prevTransfer)} className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6]'>Transfer</button>
+            <button onClick={() => setSelectedPortal(prevTransfer => !prevTransfer, 0)} className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6]'>Transfer</button>
             </div>
           </div>
         </article>
-        {/* <article key={'mock3'} className={classnames(styles. portfolio__item)}>
-            <div className="absolute rounded-full bg-[red] py-1 px-2">Demo</div>
-            <div className={classnames(styles. portfolio__item_image)}>
-                <img className="rounded-t-lg" src={IMG3} alt={'title'} />
-            </div>
-            <div>
-            <h3>New Portal</h3>
-            <h3>Create Your Own</h3>
-            <div className={classnames(styles. portfolio__item_cta)}>
-            <a href="/portal" className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6]'>Try it out!</a>
-            </div>
-            </div>
-        </article> */}
       </div>
     </section>
   )
