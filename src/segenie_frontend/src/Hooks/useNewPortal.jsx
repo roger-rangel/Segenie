@@ -25,7 +25,7 @@ const useNewPortal = () => {
     const isNft = nft === "NFT"? true : false;
     try {
       if (imageDataURL) {
-        return await customActor.create_portal_blueprint(name, description, isNft, [], [imageDataURL]);
+        return await customActor.create_portal_blueprint(name, description, isNft, [Number(limit)], [imageDataURL]);
       }
       else {
         await customActor.create_portal_blueprint(name, description, isNft, [Number(limit)], []);
