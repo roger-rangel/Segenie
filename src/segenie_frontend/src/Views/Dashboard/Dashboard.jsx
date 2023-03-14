@@ -15,7 +15,7 @@ const DashboardWrapper = () => {
   const principal = localStorage.getItem("principal");
   if(principal) {
     return <Dashboard principal={principal}/>
-  }else {
+  } else {
     return (
       <RequireWeb3Auth>
         <ClaimPortal principal={localStorage.getItem("principal")}/>

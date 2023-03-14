@@ -43,7 +43,7 @@ const newPortal = ({provider}) => {
   const onClickMintButton = async ({ name, description, limit, nft }) => {
     try {
       console.log(name, description, limit, nft);
-      await createPortalBlueprint(provider, name, description, limit, '');
+      await createPortalBlueprint(provider, name, description, limit, nft);
       setPortal({ name, description });
       showNextPage();
     } catch (error) {

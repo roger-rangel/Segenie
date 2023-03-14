@@ -22,12 +22,13 @@ const useNewPortal = () => {
     console.log('Creating a portal blueprint.');
     const customActor = (await provider.activeProvider.createActor(canisterId, idlFactory)).value;
     console.log(customActor);
+    const isNft = nft === "NFT"? true : false;
     try {
       if (imageDataURL) {
-        return await customActor.create_portal_blueprint(name, description, [], [imageDataURL]);
+        return await customActor.create_portal_blueprint(name, description, isNft, [Number(limit)], [imageDataURL]);
       }
       else {
-        await customActor.create_portal_blueprint(name, description, [Number(limit)]);
+        await customActor.create_portal_blueprint(name, description, isNft, [Number(limit)], []);
       }
     } catch (e) {
       console.error(e);
@@ -41,6 +42,18 @@ const useNewPortal = () => {
     try {
       const principal = Principal.from(receiver)
       return await customActor.mint_portal(Number(portalId), principal);
+    } catch (e) {
+      console.error(e);
+      throw e;
+    }
+  }
+
+  const transferPortal = async (provider, portalId, receiver) => {
+    console.log("Transferring a portal");
+    const customActor = (await provider.activeProvider.createActor(canisterId, idlFactory)).value;
+    try {
+      const principal = Principal.from(receiver)
+      return await customActor.transfer_portal(Number(portalId), principal);
     } catch (e) {
       console.error(e);
       throw e;
@@ -80,6 +93,6 @@ const useNewPortal = () => {
     
   }
 
-  return { createPortalBlueprint, getAllPortals, mintPortal, claimPortal };
+  return { createPortalBlueprint, getAllPortals, mintPortal, claimPortal, transferPortal };
 };
 export default useNewPortal;
