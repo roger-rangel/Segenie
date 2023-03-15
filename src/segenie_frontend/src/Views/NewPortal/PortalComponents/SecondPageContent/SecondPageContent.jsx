@@ -18,7 +18,7 @@ const SecondPageContent = ({ mintInformation, setMintInformation }) => {
       <div className="grid grid-cols-1 gap-2 mx-10">
         <UserInput
           className=""
-          placeholder="Your Name"
+          placeholder="Name"
           name="name"
           onChange={onChangeInput}
         />
