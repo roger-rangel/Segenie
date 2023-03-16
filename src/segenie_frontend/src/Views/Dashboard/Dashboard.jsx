@@ -12,16 +12,17 @@ import ClaimPortal from './components/ClaimPortal'
 import { Outlet } from 'react-router-dom';
 
 const DashboardWrapper = () => {
-  const principal = localStorage.getItem("principal");
-  if(principal) {
-    return <Dashboard principal={principal}/>
-  } else {
-    return (
-      <RequireWeb3Auth>
-        <ClaimPortal principal={localStorage.getItem("principal")}/>
-      </RequireWeb3Auth>
-    )
-  }
+  // const principal = localStorage.getItem("principal");
+  // if(principal) {
+  //   return <Dashboard principal={principal}/>
+  // } else {
+  //   return (
+  //     <RequireWeb3Auth>
+  //       <ClaimPortal principal={localStorage.getItem("principal")}/>
+  //     </RequireWeb3Auth>
+  //   )
+  // }
+  return <Dashboard />
 }
 
 const Dashboard = ({principal, children}) => {
