@@ -40,7 +40,7 @@ const TransferNFT = ({transferPortal, setTransferPortal, portalId}) => {
         portalId={portalId}
       >
       <RequireWeb3Auth>
-        <TransferModal closeModal={closeModal}/>
+        <TransferModal closeModal={closeModal} portalId={portalId}/>
       </RequireWeb3Auth>
       </Modal>
     </div>
@@ -57,6 +57,7 @@ const TransferModal = ({provider, closeModal, portalId}) => {
   const { transferPortal } = useNewPortal();
 
   async function transfer() {
+    console.log("Portal id: " + portalId);
     const res = await transferPortal(provider, portalId, receiver);
     alert(res);
   }
