@@ -17,7 +17,7 @@
     "copy:types": "rsync -avr .dfx/$(echo ${DFX_NETWORK:-'**'})/canisters/** --exclude='assets/' --exclude='idl/' --exclude='*.wasm' --exclude='*.most' --delete src/declarations"
   },
   "devDependencies": {
-    "@dfinity/agent": "0.14.0",
+    "@dfinity/agent": "^0.14.0",
     "@dfinity/candid": "0.14.0",
     "@dfinity/principal": "^0.14.0",
     "assert": "2.0.0",
@@ -60,6 +60,7 @@
   "dependencies": {
     "@connect2ic/core": "^0.2.0-beta.5",
     "@connect2ic/react": "^0.2.0-beta.5",
+    "@dfinity/assets": "^0.15.4",
     "@dfinity/auth-client": "^0.14.1",
     "@dfinity/identity": "^0.15.1",
     "@dfinity/utils": "^0.0.6",

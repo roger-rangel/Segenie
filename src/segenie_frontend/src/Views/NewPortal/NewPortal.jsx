@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
-
 import useNewPortal from '../../Hooks/useNewPortal';
-
 import FirstPage from './PortalComponents/FirstPage/FirstPage';
 import SecondPage from './PortalComponents/SecondPage/SecondPage';
 import ThirdPage from './PortalComponents/ThirdPage/ThirdPage';
-
 import MainWrapper from '../../components/MainWrapper/MainWrapper';
 import mixpanel from "mixpanel-browser";
 
@@ -17,7 +14,7 @@ const newPortal = ({provider}) => {
     mixpanel.track("Portal Blueprint Creation visited");
   }, []);
 
-  const [pageIndex, setPageIndex] = useState(1);
+  const [pageIndex, setPageIndex] = useState(0);
   const [portal, setPortal] = useState({
     name: 'Portal X',
     description: 'Portal X can give you access to X Metaverse',
