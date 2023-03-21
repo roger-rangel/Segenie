@@ -44,6 +44,11 @@ const SecondPageContent = ({ mintInformation, setMintInformation }) => {
             <UserInput type="radio" name="nft" value="Soulbound" onChange={onChangeInput}/> Soulbound Token  
           </label>
         </div>
+        
+          <label htmlFor="image">NFT Image:</label>
+          <input id="image" alt="image" type="file" accept="image/x-png, image/jpeg, image/gif, image/svg+xml, image/webp" />
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Upload</button>
+        
         </div>
     </div>
   );
