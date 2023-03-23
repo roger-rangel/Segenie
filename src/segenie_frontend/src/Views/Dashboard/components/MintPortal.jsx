@@ -24,7 +24,7 @@ const customStyles = {
 
 Modal.setAppElement(document.getElementById('root'));
 
-const MintPortal = ({portal, setPortal}) => {
+const MintPortal = ({portal, setPortal, provider}) => {
   useEffect(() => {
     mixpanel.track("Mint Portal Opened");
   }, []);
@@ -41,9 +41,7 @@ const MintPortal = ({portal, setPortal}) => {
         style={customStyles}
         contentLabel="Example Portal"
       >
-        <RequireWeb3Auth>
-          <Portal/>
-        </RequireWeb3Auth>
+      <Portal provider={provider}/>
       </Modal>
     </div>
   );

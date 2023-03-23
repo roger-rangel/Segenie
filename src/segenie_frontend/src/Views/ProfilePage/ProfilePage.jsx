@@ -9,6 +9,7 @@ import Rewards from './components/rewards/Rewards'
 import TransferNFT from '../Dashboard/components/TransferNFT'
 import Portals from './portals/Portals'
 import Communities from './components/communities/Communities'
+import {useLocation} from 'react-router-dom';
 
 import './ProfilePage.module.scss'
 
@@ -17,6 +18,10 @@ import './ProfilePage.module.scss'
 const ProfilePage = () => {
   const [transferPortal, setTransferPortal] = useState(false);
   const [portal, setPortal] = useState(0);
+
+  const location = useLocation();
+
+  console.log(location);
 
   const setSelectedPortal = (portalId) => {
     setTransferPortal(transferPortal => !transferPortal);
@@ -28,7 +33,7 @@ const ProfilePage = () => {
         <Nav />
         <About />
         <Portals setSelectedPortal={setSelectedPortal} />
-        <TransferNFT transferPortal={transferPortal} setTransferPortal={setTransferPortal} portalId={portal}/>
+        <TransferNFT provider={location.state.provider} transferPortal={transferPortal} setTransferPortal={setTransferPortal} portalId={portal}/>
         {/* <Communities />
         <NFTs />
         <Rewards />
