@@ -25,7 +25,7 @@ const customStyles = {
 
 Modal.setAppElement(document.getElementById('root'));
 
-const TransferNFT = ({provider, transferPortal, setTransferPortal, portalId}) => {
+const TransferNFT = ({transferPortal, setTransferPortal, portalId}) => {
   function closeModal() {
     setTransferPortal(false);
   }
@@ -39,7 +39,9 @@ const TransferNFT = ({provider, transferPortal, setTransferPortal, portalId}) =>
         contentLabel="Example Modal"
         portalId={portalId}
       >
-      <TransferModal provider={provider} closeModal={closeModal} portalId={portalId}/>
+      <RequireWeb3Auth>
+        <TransferModal closeModal={closeModal} portalId={portalId}/>
+      </RequireWeb3Auth>
       </Modal>
     </div>
   )

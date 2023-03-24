@@ -12,6 +12,7 @@ import Communities from './components/communities/Communities'
 import {useLocation} from 'react-router-dom';
 
 import './ProfilePage.module.scss'
+import RequireWeb3Auth from '../Web3Authorization/RequireWeb3Auth/RequireWeb3Auth'
 
 //start adding transfer functionality UI
 
@@ -33,7 +34,9 @@ const ProfilePage = () => {
         <Nav />
         <About />
         <Portals setSelectedPortal={setSelectedPortal} />
-        <TransferNFT provider={location.state.provider} transferPortal={transferPortal} setTransferPortal={setTransferPortal} portalId={portal}/>
+        {/* The location.state.provider is not the whole provider object */}
+        {/* <TransferNFT provider={location.state.provider} transferPortal={transferPortal} setTransferPortal={setTransferPortal} portalId={portal}/> */}
+        <TransferNFT transferPortal={transferPortal} setTransferPortal={setTransferPortal} portalId={portal}/> 
         {/* <Communities />
         <NFTs />
         <Rewards />
