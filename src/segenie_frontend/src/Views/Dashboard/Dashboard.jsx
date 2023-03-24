@@ -12,19 +12,14 @@ import ClaimPortal from './components/ClaimPortal'
 import { Outlet } from 'react-router-dom';
 
 const DashboardWrapper = () => {
-  const principal = localStorage.getItem("principal");
-  if(principal) {
-    return <Dashboard principal={principal}/>
-  } else {
-    return (
-      <RequireWeb3Auth>
-        <ClaimPortal principal={localStorage.getItem("principal")}/>
-      </RequireWeb3Auth>
-    )
-  }
+  return (
+    <RequireWeb3Auth>
+      <Dashboard />
+    </RequireWeb3Auth>
+  )
 }
 
-const Dashboard = ({principal, children}) => {
+const Dashboard = ({provider}) => {
   const [modal, setModal] = useState(false);
   const [portal, setPortal] = useState(false);
 
@@ -41,13 +36,13 @@ const Dashboard = ({principal, children}) => {
       <div className="w-full h-screen bg-[#121026] flex overflow-hidden scrollbar-hide max-[525px]:overflow-x-hidden max-[525px]:overflow-y-scroll"> 
         <Menu setModal={setModal} setPortal={setPortal}/>
 
-        <MintModal modal={modal} setModal={setModal} />
-        <MintPortal portal={portal} setPortal={setPortal} />
+        <MintModal provider={provider} modal={modal} setModal={setModal} />
+        <MintPortal provider={provider} portal={portal} setPortal={setPortal} />
 
         <Container>
           <Outlet />
         </Container>
-        <UserMenu principal={principal}/>
+        <UserMenu provider={provider} principal={provider.principal}/>
       </div>
     </div>
   );
