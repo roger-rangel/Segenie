@@ -8,14 +8,16 @@ import mixpanel from "mixpanel-browser";
 
 mixpanel.init(process.env.MIXPANEL);
 
-const UserMenu = ({principal}) => {
+const UserMenu = ({principal, provider}) => {
   const [color, setColor] = useState("purple");
 
   const {getAllPortals} = useNewPortal();
 
   const navigate = useNavigate();
   const profile = () => {
-    navigate('/profile');
+    navigate('/profile', {state: {
+      provider
+    }});
   };
 
   useEffect(() => {

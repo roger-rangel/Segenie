@@ -24,7 +24,7 @@ const customStyles = {
 
 Modal.setAppElement(document.getElementById('root'));
 
-const MintModalWrapper = ({modal, setModal}) => {
+const MintModalWrapper = ({modal, setModal, provider}) => {
   function closeModal() {
     setModal(false);
   }
@@ -37,9 +37,7 @@ const MintModalWrapper = ({modal, setModal}) => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-      <RequireWeb3Auth>
-        <MintModal closeModal={closeModal}/>
-      </RequireWeb3Auth>
+      <MintModal closeModal={closeModal} provider={provider}/>
       </Modal>
     </div>
   )

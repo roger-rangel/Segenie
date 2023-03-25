@@ -64,7 +64,7 @@ const Portals = ({setSelectedPortal}) => {
                 <h3>{portal.name}</h3>
                 <h3>{portal.description}</h3>
                 <div className={classnames(styles. portfolio__item_cta)}>
-                <button onClick={() => setSelectedPortal(prevTransfer => !prevTransfer, portal.id)} className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6]'>Transfer</button>
+                <button onClick={() => setSelectedPortal(portal.id)} className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6]'>Transfer</button>
                 </div>
               </div>
             </article>
@@ -79,7 +79,7 @@ const Portals = ({setSelectedPortal}) => {
             <h3>Dfinity Developers</h3>
             <h3>Internet Computer</h3>
             <div className={classnames(styles. portfolio__item_cta)}>
-            <button onClick={() => setSelectedPortal(prevTransfer => !prevTransfer, 0)} className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6]'>Transfer</button>
+            <button onClick={() => setSelectedPortal(0)} className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6]'>Transfer</button>
             </div>
           </div>
         </article>
