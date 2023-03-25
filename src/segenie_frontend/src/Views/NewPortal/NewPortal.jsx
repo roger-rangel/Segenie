@@ -23,6 +23,7 @@ const newPortal = ({provider}) => {
     console.log('Portal', portal);
     console.log("Provider: ");
     console.log(provider);
+    console.log("Principal: " + provider.principal);
   }, [portal]);
 
   const { createPortalBlueprint } = useNewPortal();
@@ -56,6 +57,7 @@ const newPortal = ({provider}) => {
       subtitle="Portal holders will be able to access your special content, community, web app, or anything imaginable in the Metaverse"
       goBack={showPreviousPage}
       onClickMintButton={onClickMintButton}
+      provider={provider}
     />,
     <ThirdPage
       heading="Amazing! A new Portal has been created!"

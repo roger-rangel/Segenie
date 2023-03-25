@@ -1,9 +1,28 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import UserInput from '../UserInput/UserInput';
 import Title from '../../../../components/Title/Title';
+import { HttpAgent } from "@dfinity/agent";
+import {AssetManager} from "@dfinity/assets";
+import { canisterId } from '../../../../../../declarations/segenie_frontend/index';
 
-const SecondPageContent = ({ mintInformation, setMintInformation }) => {
+const isLocal = !window.location.host.endsWith("ic0.app");
+
+const SecondPageContent = ({ mintInformation, setMintInformation, provider }) => {
+  const [upload, setUpload] = useState("");
+  const [assetManager, setAssetManager] = useState(null);
+
+  useEffect(async () => {
+    const agent = new HttpAgent({
+      host: isLocal ? `http://127.0.0.1:${window.location.port}` : `https://ic0.app`, 
+      principal: provider.principal
+    });
+    await agent.fetchRootKey();
+
+    const manager = new AssetManager({ canisterId, agent, provider});
+
+    setAssetManager(manager);
+  }, []);
 
   const onChangeInput = (event) => {
     setMintInformation({
@@ -11,6 +30,27 @@ const SecondPageContent = ({ mintInformation, setMintInformation }) => {
       [event.target.name]: event.target.value,
     });
   };
+
+  const uploadPhoto = () => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.multiple = true;
+    input.onchange = async () => { 
+      try {
+        const file = input.files[0];
+        const key = await assetManager.store(file);
+        console.log(key);
+      } catch (e) {
+        if (e.message.includes('Caller is not authorized')) {
+          alert("Caller is not authorized");
+        } else {
+          throw e;
+        }
+      }
+    };
+    input.click();
+  }
 
   return (
     <div>
@@ -43,12 +83,9 @@ const SecondPageContent = ({ mintInformation, setMintInformation }) => {
           <label>
             <UserInput type="radio" name="nft" value="Soulbound" onChange={onChangeInput}/> Soulbound Token  
           </label>
-        </div>
-        
-          <label htmlFor="image">NFT Image:</label>
-          <input id="image" alt="image" type="file" accept="image/x-png, image/jpeg, image/gif, image/svg+xml, image/webp" />
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Upload</button>
-        
+
+          <button onClick={uploadPhoto} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Upload</button>
+        </div>  
         </div>
     </div>
   );
@@ -57,11 +94,14 @@ const SecondPageContent = ({ mintInformation, setMintInformation }) => {
 export const mintInformationPropTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+  limit: PropTypes.number,
+  nft: PropTypes.string
 };
 
 SecondPageContent.propTypes = {
   mintInformation: PropTypes.exact(mintInformationPropTypes).isRequired,
   setMintInformation: PropTypes.func.isRequired,
+  provider: PropTypes.any.isRequired,
 };
 
 export default SecondPageContent;
