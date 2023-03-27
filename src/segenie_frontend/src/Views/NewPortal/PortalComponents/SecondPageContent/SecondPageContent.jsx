@@ -8,8 +8,8 @@ import { canisterId } from '../../../../../../declarations/segenie_frontend/inde
 
 const isLocal = !window.location.host.endsWith("ic0.app");
 
-const SecondPageContent = ({ mintInformation, setMintInformation, provider }) => {
-  const [upload, setUpload] = useState("");
+const SecondPageContent = ({ mintInformation, setMintInformation, provider, portalCount }) => {
+  const [url, setUrl] = useState("");
   const [assetManager, setAssetManager] = useState(null);
 
   useEffect(async () => {
@@ -28,7 +28,7 @@ const SecondPageContent = ({ mintInformation, setMintInformation, provider }) =>
     setMintInformation({
       ...mintInformation,
       [event.target.name]: event.target.value,
-    });
+    }, url);
   };
 
   const uploadPhoto = () => {
@@ -39,8 +39,16 @@ const SecondPageContent = ({ mintInformation, setMintInformation, provider }) =>
     input.onchange = async () => { 
       try {
         const file = input.files[0];
-        const key = await assetManager.store(file);
+
+        const name = "collection-" + portalCount + "." + file.type.split('/')[1];
+        const blob = file.slice(0, file.size, 'image/*'); 
+        
+        const renamedFile = new File([blob], name, {type: 'image/*'});
+        const key = await assetManager.store(renamedFile);
         console.log(key);
+
+        const url = window.location.host + key + "?canisterId=" + canisterId;
+        setUrl(url);
       } catch (e) {
         if (e.message.includes('Caller is not authorized')) {
           alert("Caller is not authorized");

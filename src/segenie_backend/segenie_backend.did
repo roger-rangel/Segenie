@@ -24,4 +24,5 @@ service : {
     "get_portals_of_creator": (principal) -> (vec Portal);
     "get_portals_of_caller": () -> (vec Portal);
     "get_portals_of_user": (principal) -> (vec Portal);
+    "get_portal_count": () -> (nat);
 }

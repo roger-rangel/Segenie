@@ -18,6 +18,16 @@ const useNewPortal = () => {
     }
   };
 
+  const getPortalCount = async () => {
+    console.log('Getting portal count.');
+    try {
+      return await actor.get_portal_count();
+    } catch (e) {
+      console.error(e);
+      throw e;
+    }
+  };
+
   const createPortalBlueprint = async (provider, name, description, limit, nft, imageDataURL) => {
     console.log('Creating a portal blueprint.');
     const customActor = (await provider.activeProvider.createActor(canisterId, idlFactory)).value;
@@ -93,6 +103,6 @@ const useNewPortal = () => {
     
   }
 
-  return { createPortalBlueprint, getAllPortals, mintPortal, claimPortal, transferPortal };
+  return { createPortalBlueprint, getAllPortals, getPortalCount, mintPortal, claimPortal, transferPortal };
 };
 export default useNewPortal;

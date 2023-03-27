@@ -56,6 +56,12 @@ thread_local! {
     static PORTALS_OF: RefCell<PortalsOfStore> = RefCell::default();
 }
 
+pub fn do_get_portal_count() -> PortalId {
+    PORTAL_COUNT.with(|count| { 
+        count.borrow().clone()
+    }) 
+}
+
 /// Creates a new portal and increases the `PORTAL_COUNT`.
 pub fn do_create_portal_blueprint(
     creator: Principal,

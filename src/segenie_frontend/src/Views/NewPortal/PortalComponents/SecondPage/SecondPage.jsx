@@ -8,7 +8,7 @@ import SecondPageContent from '../SecondPageContent/SecondPageContent';
 import Page from '../../../../components/Page/Page';
 import Button from '../../../../components/Button/Button';
 
-const SecondPage = ({ heading, subtitle, goBack, onClickMintButton, provider }) => {
+const SecondPage = ({ heading, subtitle, goBack, onClickMintButton, provider, portalCount }) => {
   const [mintInformation, setMintInformation] = useState({
     name: '',
     description: '',
@@ -34,6 +34,7 @@ const SecondPage = ({ heading, subtitle, goBack, onClickMintButton, provider }) 
         mintInformation={mintInformation}
         setMintInformation={setMintInformation}
         provider={provider}
+        portalCount={portalCount}
       />
       <PageFooter buttons={footerButtons} />
     </Page>

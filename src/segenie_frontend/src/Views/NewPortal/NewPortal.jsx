@@ -10,8 +10,10 @@ mixpanel.init(process.env.MIXPANEL);
 
 const newPortal = ({provider}) => {
 
-  useEffect(() => {
+  useEffect(async () => {
     mixpanel.track("Portal Blueprint Creation visited");
+    const count = await getPortalCount();
+    setPortalCount(count);
   }, []);
 
   const [pageIndex, setPageIndex] = useState(1);
@@ -19,6 +21,8 @@ const newPortal = ({provider}) => {
     name: 'Portal X',
     description: 'Portal X can give you access to X Metaverse',
   });
+  const [portalCount, setPortalCount] = useState(0);
+
   useEffect(() => {
     console.log('Portal', portal);
     console.log("Provider: ");
@@ -26,7 +30,7 @@ const newPortal = ({provider}) => {
     console.log("Principal: " + provider.principal);
   }, [portal]);
 
-  const { createPortalBlueprint } = useNewPortal();
+  const { createPortalBlueprint, getPortalCount } = useNewPortal();
 
   const showPreviousPage = () => setPageIndex(pageIndex - 1);
   const showNextPage = () => setPageIndex(pageIndex + 1);
@@ -38,10 +42,10 @@ const newPortal = ({provider}) => {
     });
   };
 
-  const onClickMintButton = async ({ name, description, limit, nft }) => {
+  const onClickMintButton = async ({ name, description, limit, nft }, imageUrl) => {
     try {
       console.log(name, description, limit, nft);
-      await createPortalBlueprint(provider, name, description, limit, nft);
+      await createPortalBlueprint(provider, name, description, limit, nft, imageUrl);
       setPortal({ name, description });
       showNextPage();
     } catch (error) {
@@ -58,6 +62,7 @@ const newPortal = ({provider}) => {
       goBack={showPreviousPage}
       onClickMintButton={onClickMintButton}
       provider={provider}
+      portalCount={portalCount}
     />,
     <ThirdPage
       heading="Amazing! A new Portal has been created!"
