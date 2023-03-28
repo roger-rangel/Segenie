@@ -11,12 +11,12 @@ const isLocal = !window.location.host.endsWith("ic0.app");
 const SecondPageContent = ({ mintInformation, setMintInformation, provider, portalCount }) => {
   const [assetManager, setAssetManager] = useState(null);
 
-  useEffect(async () => {
+  useEffect(() => {
     const agent = new HttpAgent({
       host: isLocal ? `http://127.0.0.1:${window.location.port}` : `https://ic0.app`, 
       principal: provider.principal
     });
-    await agent.fetchRootKey();
+    agent.fetchRootKey();
 
     const manager = new AssetManager({ canisterId, agent, provider});
 

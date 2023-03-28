@@ -45,7 +45,7 @@ const Portals = ({setSelectedPortal}) => {
         setPortals(data);
       })
     }
-  }, [getAllPortals]);
+  }, []);
 
   return (
     <section id='portals'>

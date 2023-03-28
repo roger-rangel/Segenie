@@ -8,29 +8,20 @@ import mixpanel from "mixpanel-browser";
 
 mixpanel.init(process.env.MIXPANEL);
 
-const newPortal = ({provider}) => {
-
-  useEffect(async () => {
-    mixpanel.track("Portal Blueprint Creation visited");
-    const count = await getPortalCount();
-    setPortalCount(count);
-  }, []);
-
-  const [pageIndex, setPageIndex] = useState(1);
+const NewPortal = ({provider}) => {
+  const [pageIndex, setPageIndex] = useState(0);
   const [portal, setPortal] = useState({
     name: 'Portal X',
     description: 'Portal X can give you access to X Metaverse',
   });
   const [portalCount, setPortalCount] = useState(0);
+  const { createPortalBlueprint, getPortalCount } = useNewPortal();
 
   useEffect(() => {
-    console.log('Portal', portal);
-    console.log("Provider: ");
-    console.log(provider);
-    console.log("Principal: " + provider.principal);
-  }, [portal]);
-
-  const { createPortalBlueprint, getPortalCount } = useNewPortal();
+    mixpanel.track("Portal Blueprint Creation visited");
+    const count = getPortalCount();
+    setPortalCount(count);
+  }, []);
 
   const showPreviousPage = () => setPageIndex(pageIndex - 1);
   const showNextPage = () => setPageIndex(pageIndex + 1);
@@ -80,4 +71,4 @@ const newPortal = ({provider}) => {
   );
 };
 
-export default newPortal;
+export default NewPortal;
