@@ -58,7 +58,7 @@ const Portals = ({setSelectedPortal}) => {
             return (
             <article key={portal.id} className={classnames(styles. portfolio__item)}>
                 <div className={classnames(styles. portfolio__item_image)}>
-                    <img className="rounded-t-lg" src={IMG2} alt={'title'} />
+                    <img className="rounded-t-lg" src={portal.image_url? portal.image_url : IMG2} alt={'title'} />
                 </div>
                 <div>
                 <h3>{portal.name}</h3>

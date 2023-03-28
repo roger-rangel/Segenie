@@ -35,14 +35,14 @@ const newPortal = ({provider}) => {
   const showPreviousPage = () => setPageIndex(pageIndex - 1);
   const showNextPage = () => setPageIndex(pageIndex + 1);
 
-  const onClickNextButton = async (imageDataURL) => {
+  const onClickNextButton = async () => {
     showNextPage();
     setPortal({
       ...portal,
     });
   };
 
-  const onClickMintButton = async ({ name, description, limit, nft }, imageUrl) => {
+  const onClickMintButton = async ({ name, description, limit, nft, imageUrl }) => {
     try {
       console.log(name, description, limit, nft);
       await createPortalBlueprint(provider, name, description, limit, nft, imageUrl);

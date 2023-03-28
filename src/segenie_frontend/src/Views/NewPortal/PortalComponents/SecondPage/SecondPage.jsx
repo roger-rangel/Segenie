@@ -13,7 +13,8 @@ const SecondPage = ({ heading, subtitle, goBack, onClickMintButton, provider, po
     name: '',
     description: '',
     limit: NaN,
-    nft: 'NFT'
+    nft: 'NFT',
+    imageUrl: null,
   });
 
   const footerButtons = [

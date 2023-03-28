@@ -35,10 +35,12 @@ const useNewPortal = () => {
     const isNft = nft === "NFT"? true : false;
     try {
       if (imageDataURL) {
-        return await customActor.create_portal_blueprint(name, description, isNft, [Number(limit)], [imageDataURL]);
+        //return await customActor.create_portal_blueprint(name, description, isNft, [Number(limit)], [imageDataURL]);
+        return await actor.create_portal_blueprint(name, description, isNft, [Number(limit)], [imageDataURL]);
       }
       else {
-        await customActor.create_portal_blueprint(name, description, isNft, [Number(limit)], []);
+        //await customActor.create_portal_blueprint(name, description, isNft, [Number(limit)], []);
+        await actor.create_portal_blueprint(name, description, isNft, [Number(limit)], []);
       }
     } catch (e) {
       console.error(e);
@@ -51,7 +53,8 @@ const useNewPortal = () => {
     const customActor = (await provider.activeProvider.createActor(canisterId, idlFactory)).value;
     try {
       const principal = Principal.from(receiver)
-      return await customActor.mint_portal(Number(portalId), principal);
+      // return await customActor.mint_portal(Number(portalId), principal);
+      return await actor.mint_portal(Number(portalId), principal);
     } catch (e) {
       console.error(e);
       throw e;
