@@ -86,3 +86,8 @@ fn transfer_portal(portal: PortalId, receiver: Principal) -> String {
 fn get_portals_of_user(user: Principal) -> Vec<Portal> {
     portals::do_get_portals_of_user(user)
 }
+
+#[ic_cdk_macros::query]
+fn get_portal_count() -> PortalId {
+    portals::do_get_portal_count()
+}

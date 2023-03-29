@@ -8,12 +8,13 @@ import SecondPageContent from '../SecondPageContent/SecondPageContent';
 import Page from '../../../../components/Page/Page';
 import Button from '../../../../components/Button/Button';
 
-const SecondPage = ({ heading, subtitle, goBack, onClickMintButton }) => {
+const SecondPage = ({ heading, subtitle, goBack, onClickMintButton, provider, portalCount }) => {
   const [mintInformation, setMintInformation] = useState({
     name: '',
     description: '',
     limit: NaN,
-    nft: 'NFT'
+    nft: 'NFT',
+    imageUrl: null,
   });
 
   const footerButtons = [
@@ -33,6 +34,8 @@ const SecondPage = ({ heading, subtitle, goBack, onClickMintButton }) => {
       <SecondPageContent
         mintInformation={mintInformation}
         setMintInformation={setMintInformation}
+        provider={provider}
+        portalCount={portalCount}
       />
       <PageFooter buttons={footerButtons} />
     </Page>
@@ -44,6 +47,7 @@ SecondPage.propTypes = {
   subtitle: PropTypes.string.isRequired,
   goBack: PropTypes.func.isRequired,
   onClickMintButton: PropTypes.func.isRequired,
+  provider: PropTypes.any.isRequired,
 };
 
 export default SecondPage;

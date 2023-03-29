@@ -43,7 +43,6 @@ root.render(
     <Router>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route path="/" exact element={<Dashboard />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/options" element={<SegenieOptions />} />
           <Route path="/portals" element={<WelcomePage />} />

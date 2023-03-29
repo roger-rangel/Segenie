@@ -1,49 +1,41 @@
 import React, { useState, useEffect } from 'react';
-
 import useNewPortal from '../../Hooks/useNewPortal';
-
 import FirstPage from './PortalComponents/FirstPage/FirstPage';
 import SecondPage from './PortalComponents/SecondPage/SecondPage';
 import ThirdPage from './PortalComponents/ThirdPage/ThirdPage';
-
 import MainWrapper from '../../components/MainWrapper/MainWrapper';
 import mixpanel from "mixpanel-browser";
 
 mixpanel.init(process.env.MIXPANEL);
 
-const newPortal = ({provider}) => {
-
-  useEffect(() => {
-    mixpanel.track("Portal Blueprint Creation visited");
-  }, []);
-
-  const [pageIndex, setPageIndex] = useState(1);
+const NewPortal = ({provider}) => {
+  const [pageIndex, setPageIndex] = useState(0);
   const [portal, setPortal] = useState({
     name: 'Portal X',
     description: 'Portal X can give you access to X Metaverse',
   });
-  useEffect(() => {
-    console.log('Portal', portal);
-    console.log("Provider: ");
-    console.log(provider);
-  }, [portal]);
+  const [portalCount, setPortalCount] = useState(0);
+  const { createPortalBlueprint, getPortalCount } = useNewPortal();
 
-  const { createPortalBlueprint } = useNewPortal();
+  useEffect(() => {
+    mixpanel.track("Portal Blueprint Creation visited");
+    getPortalCount().then(count => setPortalCount(count));
+  }, []);
 
   const showPreviousPage = () => setPageIndex(pageIndex - 1);
   const showNextPage = () => setPageIndex(pageIndex + 1);
 
-  const onClickNextButton = async (imageDataURL) => {
+  const onClickNextButton = async () => {
     showNextPage();
     setPortal({
       ...portal,
     });
   };
 
-  const onClickMintButton = async ({ name, description, limit, nft }) => {
+  const onClickMintButton = async ({ name, description, limit, nft, imageUrl }) => {
     try {
       console.log(name, description, limit, nft);
-      await createPortalBlueprint(provider, name, description, limit, nft);
+      await createPortalBlueprint(provider, name, description, limit, nft, imageUrl);
       setPortal({ name, description });
       showNextPage();
     } catch (error) {
@@ -59,6 +51,8 @@ const newPortal = ({provider}) => {
       subtitle="Portal holders will be able to access your special content, community, web app, or anything imaginable in the Metaverse"
       goBack={showPreviousPage}
       onClickMintButton={onClickMintButton}
+      provider={provider}
+      portalCount={portalCount}
     />,
     <ThirdPage
       heading="Amazing! A new Portal has been created!"
@@ -76,4 +70,4 @@ const newPortal = ({provider}) => {
   );
 };
 
-export default newPortal;
+export default NewPortal;

@@ -45,7 +45,7 @@ const Portals = ({setSelectedPortal}) => {
         setPortals(data);
       })
     }
-  }, [getAllPortals]);
+  }, []);
 
   return (
     <section id='portals'>
@@ -58,13 +58,13 @@ const Portals = ({setSelectedPortal}) => {
             return (
             <article key={portal.id} className={classnames(styles. portfolio__item)}>
                 <div className={classnames(styles. portfolio__item_image)}>
-                    <img className="rounded-t-lg" src={IMG2} alt={'title'} />
+                  <img className="rounded-t-lg" src={portal.image_url.length > 0? portal.image_url[0] : IMG2} alt={'title'} />
                 </div>
                 <div>
                 <h3>{portal.name}</h3>
                 <h3>{portal.description}</h3>
                 <div className={classnames(styles. portfolio__item_cta)}>
-                <button onClick={() => setSelectedPortal(portal.id)} className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6]'>Transfer</button>
+                <button onClick={() => setSelectedPortal(portal.id, portal.image_url)} className='py-2 px-4 rounded-lg bg-gradient-to-r from-[#a855f7] to-[#3b82f6] hover:from-[#4ade80] hover:to-[#3b82f6]'>Transfer</button>
                 </div>
               </div>
             </article>
