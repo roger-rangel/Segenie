@@ -19,8 +19,7 @@ const NewPortal = ({provider}) => {
 
   useEffect(() => {
     mixpanel.track("Portal Blueprint Creation visited");
-    const count = getPortalCount();
-    setPortalCount(count);
+    getPortalCount().then(count => setPortalCount(count));
   }, []);
 
   const showPreviousPage = () => setPageIndex(pageIndex - 1);
