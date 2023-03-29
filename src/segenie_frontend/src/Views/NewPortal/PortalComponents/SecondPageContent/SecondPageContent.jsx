@@ -46,7 +46,12 @@ const SecondPageContent = ({ mintInformation, setMintInformation, provider, port
         const key = await assetManager.store(renamedFile);
         console.log(key);
 
-        const imageUrl = window.location.host + key + "?canisterId=" + canisterId;
+        let imageUrl = "";
+        if(isLocal) {
+          imageUrl = "http://" + window.location.host + key + "?canisterId=" + canisterId;
+        }else {
+          imageUrl = "https://" + window.location.host + key + "?canisterId=" + canisterId;
+        }
         setMintInformation({
           ...mintInformation,
           imageUrl,

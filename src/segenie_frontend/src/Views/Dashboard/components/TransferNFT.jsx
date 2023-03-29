@@ -25,7 +25,7 @@ const customStyles = {
 
 Modal.setAppElement(document.getElementById('root'));
 
-const TransferNFT = ({transferPortal, setTransferPortal, portalId}) => {
+const TransferNFT = ({transferPortal, setTransferPortal, portalId, imageUrl}) => {
   function closeModal() {
     setTransferPortal(false);
   }
@@ -40,14 +40,14 @@ const TransferNFT = ({transferPortal, setTransferPortal, portalId}) => {
         portalId={portalId}
       >
       <RequireWeb3Auth>
-        <TransferModal closeModal={closeModal} portalId={portalId}/>
+        <TransferModal closeModal={closeModal} portalId={portalId} imageUrl={imageUrl}/>
       </RequireWeb3Auth>
       </Modal>
     </div>
   )
 }
 
-const TransferModal = ({provider, closeModal, portalId}) => {
+const TransferModal = ({provider, closeModal, portalId, imageUrl}) => {
   useEffect(() => {
     mixpanel.track("TransferNFT Modal Opened");
   }, [])
@@ -65,7 +65,7 @@ const TransferModal = ({provider, closeModal, portalId}) => {
   return (
     <div className="bg-opacity-50">
     <form className=''>
-      <img className="w-80 rounded m-auto" src={'/img/music_banner.png'} alt={''}/>
+      <img className="w-80 rounded m-auto" src={imageUrl.length > 0? imageUrl[0] : '/img/music_banner.png'} alt={''}/>
       <div className="flex flex-col mt-4">
         <div>
             <input 

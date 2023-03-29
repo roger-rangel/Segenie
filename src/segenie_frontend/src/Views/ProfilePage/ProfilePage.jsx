@@ -19,14 +19,16 @@ import RequireWeb3Auth from '../Web3Authorization/RequireWeb3Auth/RequireWeb3Aut
 const ProfilePage = () => {
   const [transferPortal, setTransferPortal] = useState(false);
   const [portal, setPortal] = useState(0);
+  const [imageUrl, setImageUrl] = useState("");
 
   const location = useLocation();
 
   console.log(location);
 
-  const setSelectedPortal = (portalId) => {
+  const setSelectedPortal = (portalId, imageUrl) => {
     setTransferPortal(transferPortal => !transferPortal);
     setPortal(portalId);
+    setImageUrl(imageUrl);
   }
 
   return (
@@ -36,7 +38,7 @@ const ProfilePage = () => {
         <Portals setSelectedPortal={setSelectedPortal} />
         {/* The location.state.provider is not the whole provider object */}
         {/* <TransferNFT provider={location.state.provider} transferPortal={transferPortal} setTransferPortal={setTransferPortal} portalId={portal}/> */}
-        <TransferNFT transferPortal={transferPortal} setTransferPortal={setTransferPortal} portalId={portal}/> 
+        <TransferNFT transferPortal={transferPortal} setTransferPortal={setTransferPortal} portalId={portal} imageUrl={imageUrl}/> 
         {/* <Communities />
         <NFTs />
         <Rewards />
