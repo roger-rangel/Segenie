@@ -1,5 +1,25 @@
 
 # Segenie ✨
+<div align="center">
+    <img src="https://github.com/roger-rangel/Segenie/blob/main/src/segenie_frontend/assets/Screenshot%202023-04-02%20at%205.07.53%20PM.png" alt="Segenie Logo">
+    <h1>Segenie</h1>
+    <strong>Web3 tools 🌿</strong>
+    <strong>AI-powered NFT Creator Platform: NFTs as magic keys for AI-generated projects</strong>
+</div>
+<br>
+<div align="center">
+  
+</div>
+<div align="center">
+    <br>
+    <a href="https://segenie.xyz"><b>segenie.xyz »</b></a>
+    <br><br>
+    <a href="https://twitter.com/segeniexyz"><b>Twitter</b></a>
+    •
+    <a href="https://github.com/roger-rangel/segenie/issues/new"><b>Issues</b></a>
+</div>
+
+## 🌎 About Segenie
 
 Segenie is a platform deployed to the IC that enables users and developers to create their collections(called portal blueprints) and mint nfts(portals).
 
