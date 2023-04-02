@@ -34,6 +34,14 @@ A basic Segenie documentation can be found [here](https://o37ht-fyaaa-aaaap-qavs
 The developer package we have built for token gating can already be used, but we are looking to officially deploy it to NPM once the Segenie platform is production ready.
 We are still documenting the package, but for the curious ones the code can be viewed [here](https://github.com/Szegoo/Segenie-js).
 
+## 🗝️ NFTs as magic keys
+
+![](https://github.com/roger-rangel/Segenie/blob/main/src/segenie_frontend/assets/nft2_segenie.png)  |  ![](https://github.com/roger-rangel/Segenie/blob/main/src/segenie_frontend/assets/segenienfr.png)
+:-------------------------:|:-------------------------:
+![](https://github.com/roger-rangel/Segenie/blob/main/src/segenie_frontend/assets/nft2_segenie.png)  |  ![](https://github.com/roger-rangel/Segenie/blob/main/src/segenie_frontend/assets/segenienfr.png)
+
+We are still documenting the package, but for the curious ones the code can be viewed [here](https://github.com/Szegoo/Segenie-js).
+
 ## 🧑‍💻 Running Segenie Locally
 
 To run Segenie locally you will have to follow the following instructions.
