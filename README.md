@@ -67,3 +67,11 @@ To launch the webapp withot deploying the canister run:
 ```
 npm start
 ```
+
+
+<div align="center">
+    <img src="https://github.com/roger-rangel/Segenie/blob/main/src/segenie_frontend/assets/pyramid_segenie.png" alt="Segenie Logo">
+    <h1>Launch Date: June 2023</h1>
+    <strong>Web3 tools 🌿</strong>
+    <strong>AI-powered NFT Creator Platform: NFTs as magic keys for AI-generated projects</strong>
+</div>
