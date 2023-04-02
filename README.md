@@ -21,7 +21,7 @@
 
 Segenie is a platform deployed to the [Internet Computer](https://internetcomputer.org/).
 
-Our startup provides a platform that allows users to create their own NFTs, which gives them exclusive access to premium content. We leverage AI-powered algorithms to generate unique designs for each NFT, making them more desirable for collectors!
+Our startup provides a platform that allows content creators to mint their own NFT Collections, which give users exclusive access to premium content. We leverage AI-powered algorithms to generate unique designs for each NFT, making them more desirable for collectors!
 
 
 The segenie project implements a feature called token gating which makes this project different from others. Our goal is to make a platform that developers can easily use and integrate to their application. This will give the developers the possibility to utilize the token gating feature we have built which is very developer friendly and easy to use out of the box.
