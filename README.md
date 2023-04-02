@@ -1,8 +1,6 @@
-
-# Segenie ✨
 <div align="center">
     <img src="https://github.com/roger-rangel/Segenie/blob/main/src/segenie_frontend/assets/Screenshot%202023-04-02%20at%205.07.53%20PM.png" alt="Segenie Logo">
-    <h1>Segenie</h1>
+    <h1>Segenie ✨</h1>
     <strong>Web3 tools 🌿</strong>
     <strong>AI-powered NFT Creator Platform: NFTs as magic keys for AI-generated projects</strong>
 </div>
