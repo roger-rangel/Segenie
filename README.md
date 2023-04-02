@@ -77,6 +77,8 @@ npm start
     <strong>AI-powered NFT Creator Platform: NFTs as magic keys for AI-generated projects</strong>
 </div>
 
+
+
 <img src="https://github.com/roger-rangel/Segenie/blob/main/src/segenie_frontend/assets/Screenshot%202023-04-03%20at%2012.26.42%20AM.png" alt="Segenie Log
   o" height="auto" width="100%" style="border-radius:50%">
 
