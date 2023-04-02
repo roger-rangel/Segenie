@@ -17,9 +17,12 @@
     <a href="https://github.com/roger-rangel/segenie/issues/new"><b>Issues</b></a>
 </div>
 
-## 🌎 About Segenie
+## About Segenie 👥
 
-Segenie is a platform deployed to the IC that enables users and developers to create their collections(called portal blueprints) and mint nfts(portals).
+Segenie is a platform deployed to the [Internet Computer](https://internetcomputer.org/).
+
+Our startup provides a platform that allows users to create their own NFTs, which gives them exclusive access to premium content. We leverage AI-powered algorithms to generate unique designs for each NFT, making them more desirable for collectors!
+
 
 The segenie project implements a feature called token gating which makes this project different from others. Our goal is to make a platform that developers can easily use and integrate to their application. This will give the developers the possibility to utilize the token gating feature we have built which is very developer friendly and easy to use out of the box.
 
