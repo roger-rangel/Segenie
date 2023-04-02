@@ -6,7 +6,9 @@
 </div>
 <br>
 <div align="center">
-  
+    <a href="[https://github.com/lensterxyz/lenster/blob/main/LICENSE](https://github.com/roger-rangel/Segenie/blob/main/LICENSE.md)">
+        <img src="" alt="License">
+    </a>
 </div>
 <div align="center">
     <br>
