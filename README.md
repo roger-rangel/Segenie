@@ -36,7 +36,7 @@ We are still documenting the package, but for the curious ones the code can be v
 
 ## 🗝️ NFTs as magic keys
 
-![](https://github.com/roger-rangel/Segenie/blob/main/src/segenie_frontend/assets/nft2_segenie.png)  |  ![](https://github.com/roger-rangel/Segenie/blob/main/src/segenie_frontend/assets/segenienfr.png)
+![](https://github.com/roger-rangel/Segenie/blob/main/src/segenie_frontend/assets/nft3_segenie.png)  |  ![](https://github.com/roger-rangel/Segenie/blob/main/src/segenie_frontend/assets/nft6_segenie.png)
 :-------------------------:|:-------------------------:
 ![](https://github.com/roger-rangel/Segenie/blob/main/src/segenie_frontend/assets/nft2_segenie.png)  |  ![](https://github.com/roger-rangel/Segenie/blob/main/src/segenie_frontend/assets/segenienfr.png)
 
